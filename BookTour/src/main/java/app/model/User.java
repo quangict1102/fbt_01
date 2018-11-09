@@ -135,4 +135,5 @@ public class User implements Serializable {
 	public void setBooktourses(List<Booktour> booktourses) {
 		this.booktourses = booktourses;
 	}
+
 }
