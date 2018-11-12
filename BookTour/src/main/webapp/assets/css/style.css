@@ -2882,3 +2882,40 @@ span.menu {
  .fix-with80{
         width: 80%;
     }
+.fix-width-auto{
+	width: auto;
+	font-style: italic;
+    color: #060606;
+}   
+.list-tour-by-city{
+	width: 65%;
+	margin: 0px;
+	position: absolute;
+	top: 16%;right: 6%;
+	height: 310px; 
+	overflow-y: scroll;
+} 
+.list-tour-img{
+	border: 1px solid #000000;
+	 width: 100%; 
+	 float: left;
+	 background-color: #fff;
+}
+.list-tour-text{
+	float: right; 
+	width: 67%; 
+	color: #000000;
+}
+#images1 span{
+	font-size: large;
+    font-style: oblique;
+    padding: 5px;
+}
+#images1 img {
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+#images1 img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}  

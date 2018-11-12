@@ -12,4 +12,5 @@ public interface TourDAO extends BaseDAO<Integer, Tour> {
 
 	List<Object[]> getTourToday(Date date);
 
+	List<Tour> getAllTourByDateAndCity(int city, Date date);
 }

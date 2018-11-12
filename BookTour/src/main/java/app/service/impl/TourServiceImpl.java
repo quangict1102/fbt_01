@@ -10,6 +10,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import app.bean.TourInfo;
 import app.dao.impl.TourDAOImpl;
+import app.helper.TourConvertHelper;
 import app.model.Rating;
 import app.model.Tour;
 import app.service.TourService;
@@ -80,12 +81,25 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 				tourInfo.setDateStart(lTour.get(i).getDateStart());
 
 				lTourInfo.add(tourInfo);
+				
+				Đang lỗi chị ạ
 			}*/
+
+
 			return null;
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
+	@Override
+	public List<TourInfo> getAllTourByDateAndCity(int city, Date date) {
+		try {
+			return TourConvertHelper.convertTourToTourInfo(getTourDAO().getAllTourByDateAndCity(city, date));
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
 
 }

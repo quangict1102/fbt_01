@@ -40,8 +40,19 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		 * builder.and(builder.equal(root.get("dateStart"), dateStart));
 		 * cr.where(tkDate);
 		 */
+
 		Query tk = getSession().createQuery("select t,max(r.numberRank) as numberRank from Tour t inner join Rating r on r.id = t.id where t.dateStart = :dateStart group by t.id ;");
-		return ((org.hibernate.query.Query) tk.setParameter("dateStart", dateStart)).list();
+		return ((org.hibernate.query.Query) tk.setParameter("dateStart", dateStart)).getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Tour> getAllTourByDateAndCity(int idcity, Date date) {
+		String sql = "select t from City c join Place p on c.id = p.city.id join Toursplace tp on tp.place.id = p.id join Tour t on tp.tour.id = t.id where c.id = :idcity and t.dateStart = :date ";
+		Query tk = getSession().createQuery(sql, Tour.class);
+		tk.setParameter("idcity", idcity);
+		tk.setParameter("date", date);
+		return tk.getResultList();
 	}
 
 }

@@ -12,27 +12,27 @@
 					<ul class="slides">
 						<li>
 							<div class="slider-info">
-								<img src="assets/images/1.jpg" alt="">
-							</div>
-						</li>
-						<li>
-							<div class="slider-info">
-								<img src="assets/images/2.jpg" alt="">
-							</div>
-						</li>
-						<li>
-							<div class="slider-info">
 								<img src="assets/images/3.jpg" alt="">
 							</div>
 						</li>
 						<li>
 							<div class="slider-info">
-								<img src="assets/images/4.jpg" alt="">
+								<img src="assets/images/2.jpg" alt="">
 							</div>
 						</li>
 						<li>
 							<div class="slider-info">
-								<img src="assets/images/2.jpg" alt="">
+								<img src="assets/images/1.jpg" alt="">
+							</div>
+						</li>
+						<li>
+							<div class="slider-info">
+								<img src="assets/images/7.jpg" alt="">
+							</div>
+						</li>
+						<li>
+							<div class="slider-info">
+								<img src="assets/images/8.jpg" alt="">
 							</div>
 						</li>
 					</ul>
@@ -52,7 +52,7 @@
 						<div class="clearfix"></div>
 					</ul>
 					<!---->
-					<div class="resp-tabs-container">
+					<div class="resp-tabs-container" style="width: 30%">
 						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 							<div class="facts">
 								<div class="booking-form">
@@ -72,27 +72,17 @@
 												<div class="reservation">
 													<ul>
 														<li class="span1_of_1 desti">
-															<h5>Place from</h5>
+															<h5>City</h5>
 															<div class="book_date">
-																<form>
-																	<span class="glyphicon glyphicon-map-marker"
-																		aria-hidden="true"></span> <input type="text"
-																		placeholder="Type Departure City"
-																		class="typeahead1 input-md form-control tt-input"
-																		required="">
-																</form>
-															</div>
-														</li>
-														<li class="span1_of_1 left desti">
-															<h5>Place to</h5>
-															<div class="book_date">
-																<form>
-																	<span class="glyphicon glyphicon-map-marker"
-																		aria-hidden="true"></span> <input type="text"
-																		placeholder="Type Destination City"
-																		class="typeahead1 input-md form-control tt-input"
-																		required="">
-																</form>
+																<div class="section_room">
+																	<select id="city" name="citys"
+																		class="frm-field required">
+																		<option value="null">--Select--</option>
+																		<c:forEach var="lCity" items="${ cities}">
+																			<option value="${lCity.id }">${lCity.name }</option>
+																		</c:forEach>
+																	</select>
+																</div>
 															</div>
 														</li>
 														<div class="clearfix"></div>
@@ -104,55 +94,11 @@
 															<h5>Departure</h5>
 															<div class="book_date">
 																<form>
-																	<span class="glyphicon glyphicon-calendar"
-																		aria-hidden="true"></span> <input type="date"
-																		value="Select date" onfocus="this.value = '';"
-																		onblur="if (this.value == '') {this.value = 'Select date';}">
+																	<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> 
+																	<input type="date" onblur="if (this.value == '') {this.value = 'Select date';}">
 																</form>
 															</div>
 														</li>
-														<li class="span1_of_1 left">
-															<h5>Return</h5>
-															<div class="book_date">
-																<form>
-																	<span class="glyphicon glyphicon-calendar"
-																		aria-hidden="true"></span> <input type="date"
-																		value="Select date" onfocus="this.value = '';"
-																		onblur="if (this.value == '') {this.value = 'Select date';}">
-																</form>
-															</div>
-														</li>
-														<li class="span1_of_1 left adult">
-															<h5>Adults (18+)</h5> <!----------start section_room----------->
-															<div class="section_room">
-																<select id="country"
-																	onchange="change_country(this.value)"
-																	class="frm-field required">
-																	<option value="null">1</option>
-																	<option value="null">2</option>
-																	<option value="AX">3</option>
-																	<option value="AX">4</option>
-																	<option value="AX">5</option>
-																	<option value="AX">6</option>
-																</select>
-															</div>
-														</li>
-														<li class="span1_of_1 left children">
-															<h5>Children (0-17)</h5> <!----------start section_room----------->
-															<div class="section_room">
-																<select id="country"
-																	onchange="change_country(this.value)"
-																	class="frm-field required">
-																	<option value="null">1</option>
-																	<option value="null">2</option>
-																	<option value="AX">3</option>
-																	<option value="AX">4</option>
-																	<option value="AX">5</option>
-																	<option value="AX">6</option>
-																</select>
-															</div>
-														</li>
-
 														<div class="clearfix"></div>
 													</ul>
 												</div>
@@ -161,7 +107,7 @@
 														<li class="span1_of_3">
 															<div class="date_btn">
 																<form>
-																	<input type="submit" value="Search" />
+																	<input type="submit" id="search-tour" value="Search" />
 																</form>
 															</div>
 														</li>
@@ -176,7 +122,8 @@
 								</div>
 							</div>
 						</div>
-
+					</div>
+					<div class="list-tour-by-city" id="list-tour-by-city12">
 					</div>
 				</div>
 			</div>

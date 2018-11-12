@@ -5,7 +5,7 @@
     <class name="Bill" table="bill" catalog="db_bookingtour" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="fullName" type="string">
             <column name="fullName" length="225" not-null="true" />

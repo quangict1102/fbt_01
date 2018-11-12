@@ -9,7 +9,22 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	    	<bean id="TourDAO" class="app.dao.impl.TourDAOImpl">
+	<bean id="TourDAO" class="app.dao.impl.TourDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="CityDAO" class="app.dao.impl.CityDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="PlaceDAO" class="app.dao.impl.PlaceDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="RatingDAO" class="app.dao.impl.RatingDAOImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>

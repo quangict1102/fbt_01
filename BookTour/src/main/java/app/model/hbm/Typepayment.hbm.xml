@@ -6,7 +6,7 @@
     <class name="Typepayment" table="typepayments" catalog="db_bookingtour" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="bill" class="Bill" fetch="select">
             <column name="bill_id" not-null="true" />

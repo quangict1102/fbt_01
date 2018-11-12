@@ -5,7 +5,7 @@
     <class name="Rating" table="ratings" catalog="db_bookingtour" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="tour" class="Tour" fetch="select">
             <column name="tour_id" not-null="true" />
