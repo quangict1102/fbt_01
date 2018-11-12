@@ -11,5 +11,11 @@
 			</bean>
 		</property>
 	</bean>
-
+    	<bean id="TourService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="app.service.impl.TourServiceImpl">
+				<property name="tourDAO" ref="TourDAO" />
+			</bean>
+		</property>
+	</bean>
 </beans>

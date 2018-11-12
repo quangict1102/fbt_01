@@ -2,32 +2,56 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="app.model">
-	<class name="User" table="User_tbl">
-		<id name="id" column="id">
-			<generator class="increment" />
+	<class name="User" table="users" catalog="db_bookingtour"
+		optimistic-lock="version">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="assigned" />
 		</id>
-
 		<property name="fullName" type="string">
-			<column name="fullName" />
+			<column name="fullName" length="225" not-null="true" />
 		</property>
-		<property name="gender" type="integer">
-			<column name="gender" default="1" />
+		<property name="gender" type="byte">
+			<column name="gender" not-null="true" />
 		</property>
 		<property name="address" type="string">
-			<column name="address" />
+			<column name="address" length="225" not-null="true" />
 		</property>
 		<property name="email" type="string">
-			<column name="email" />
+			<column name="email" length="225" not-null="true" unique="true" />
 		</property>
 		<property name="phoneNumber" type="string">
-			<column name="phoneNumber" />
+			<column name="phoneNumber" length="20" not-null="true" />
 		</property>
 		<property name="password" type="string">
-			<column name="password" />
+			<column name="password" length="225" not-null="true" />
 		</property>
 		<property name="role" type="string">
-			<column name="role" />
+			<column name="role" length="6" />
 		</property>
-
+		<list name="commentses" table="comments" inverse="true" 
+			fetch="select">
+			<key>
+				<column name="userId" not-null="true" />
+			</key>
+			<list-index column="id" />
+			<one-to-many class="Comment" />
+		</list>
+		<list name="ratingses" table="ratings" inverse="true" 
+			fetch="select">
+			<key>
+				<column name="user_id" not-null="true" />
+			</key>
+			<list-index column="id" />
+			<one-to-many class="Rating" />
+		</list>
+		<list name="booktourses" table="booktours" inverse="true" 
+			fetch="select">
+			<key>
+				<column name="userId" not-null="true" />
+			</key>
+			<list-index column="id" />
+			<one-to-many class="Booktour" />
+		</list>
 	</class>
 </hibernate-mapping>

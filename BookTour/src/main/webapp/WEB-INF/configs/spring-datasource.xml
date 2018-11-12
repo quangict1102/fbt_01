@@ -43,7 +43,17 @@
 		<!-- Load mapping of model and table -->
 		<property name="mappingResources">
 			<list>
-			
+				<value>app/model/hbm/Tour.hbm.xml</value>
+				<value>app/model/hbm/Banking.hbm.xml</value>
+				<value>app/model/hbm/Bill.hbm.xml</value>
+				<value>app/model/hbm/Booktour.hbm.xml</value>
+				<value>app/model/hbm/City.hbm.xml</value>
+				<value>app/model/hbm/Comment.hbm.xml</value>
+				<value>app/model/hbm/Placeimage.hbm.xml</value>
+				<value>app/model/hbm/Place.hbm.xml</value>
+				<value>app/model/hbm/Rating.hbm.xml</value>
+				<value>app/model/hbm/Toursplace.hbm.xml</value>
+				<value>app/model/hbm/Typepayment.hbm.xml</value>
 				<value>app/model/hbm/User.hbm.xml</value>
 			</list>
 		</property>

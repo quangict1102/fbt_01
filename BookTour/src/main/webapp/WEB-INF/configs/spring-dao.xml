@@ -9,5 +9,9 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	
+	    	<bean id="TourDAO" class="app.dao.impl.TourDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 </beans>
