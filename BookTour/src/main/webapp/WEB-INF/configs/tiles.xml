@@ -11,12 +11,18 @@
 		<put-attribute name="footer" value="/views/layout/footer.jsp" />
 	</definition>
 
-
+	<!-- Banner Search Tour -->
 	<definition name="home" extends="baseLayout">
 		<put-attribute name="title" value="HOME" />
-		<put-attribute name="body" value="/views/home/home.jsp" />
+		<put-attribute name="body" value="/views/tours/bannerSTour.jsp" />
+		<put-attribute name="body" value="/views/tours/listTour.jsp" />
 	</definition>
-	
+
+	<!-- List Tour -->
+	<!-- <definition name="ListTour" extends="baseLayout">
+		<put-attribute name="title" value="HOME" />
+		<put-attribute name="body" value="/views/tours/listTour.jsp" />
+	</definition> -->
 
 
 </tiles-definitions>

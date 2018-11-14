@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 11, 2018 7:10:42 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping package="app.model">
+    <class name="Toursplace" table="toursplaces" catalog="db_bookingtour" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="place" class="Place" fetch="select">
+            <column name="places_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tour" class="Tour" fetch="select">
+            <column name="tours_id" not-null="true" />
+        </many-to-one>
+        <property name="typeFromTo" type="java.lang.Byte">
+            <column name="typeFromTo" />
+        </property>
+    </class>
+</hibernate-mapping>

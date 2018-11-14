@@ -1,10 +1,10 @@
 package app.model;
 
-import java.util.function.Function;
+import java.io.Serializable;
+import java.util.List;
 
-import app.bean.UserInfo;
-
-public class User {
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String fullName;
 	private int gender;
@@ -13,6 +13,40 @@ public class User {
 	private String phoneNumber;
 	private String password;
 	private String role;
+	private List<Comment> commentses;
+	private List<Rating> ratingses;
+	private List<Booktour> booktourses;
+
+	public User() {
+	}
+
+	public User(Integer id, String fullName, int gender, String address, String email, String phoneNumber,
+			String password, String role) {
+		this.id = id;
+		this.fullName = fullName;
+		this.gender = gender;
+		this.address = address;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.role = role;
+	}
+
+	public User(Integer id, String fullName, int gender, String address, String email, String phoneNumber,
+			String password, String role, List<Comment> commentses, List<Rating> ratingses,
+			List<Booktour> booktourses) {
+		this.id = id;
+		this.fullName = fullName;
+		this.gender = gender;
+		this.address = address;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.role = role;
+		this.commentses = commentses;
+		this.ratingses = ratingses;
+		this.booktourses = booktourses;
+	}
 
 	public Integer getId() {
 		return id;
@@ -78,35 +112,27 @@ public class User {
 		this.role = role;
 	}
 
-	public User(Integer id, String fullName, int gender, String address, String email, String phoneNumber,
-			String password, String role) {
-		super();
-		this.id = id;
-		this.fullName = fullName;
-		this.gender = gender;
-		this.address = address;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.password = password;
-		this.role = role;
+	public List<Comment> getCommentses() {
+		return commentses;
 	}
 
-	public User(String fullName, int gender, String address, String email, String phoneNumber, String password,
-			String role) {
-		super();
-		this.fullName = fullName;
-		this.gender = gender;
-		this.address = address;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.password = password;
-		this.role = role;
+	public void setCommentses(List<Comment> commentses) {
+		this.commentses = commentses;
 	}
 
-	public User() {
-		super();
+	public List<Rating> getRatingses() {
+		return ratingses;
 	}
 
+	public void setRatingses(List<Rating> ratingses) {
+		this.ratingses = ratingses;
+	}
 
+	public List<Booktour> getBooktourses() {
+		return booktourses;
+	}
 
+	public void setBooktourses(List<Booktour> booktourses) {
+		this.booktourses = booktourses;
+	}
 }

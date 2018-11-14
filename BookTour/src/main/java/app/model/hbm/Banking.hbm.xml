@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="app.model">
+    <class name="Banking" table="bankings" catalog="db_bookingtour" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="typepayment" class="Typepayment" fetch="select">
+            <column name="TypePaymentId" not-null="true" />
+        </many-to-one>
+        <property name="namebanking" type="string">
+            <column name="namebanking" length="225" />
+        </property>
+    </class>
+</hibernate-mapping>

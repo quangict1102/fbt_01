@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="app.model">
+    <class name="Booktour" table="booktours" catalog="db_bookingtour" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bill" class="Bill" fetch="select">
+            <column name="bill_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tour" class="Tour" fetch="select">
+            <column name="tourId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="User" fetch="select">
+            <column name="userId" not-null="true" />
+        </many-to-one>
+        <property name="primeTour" type="string">
+            <column name="primeTour" length="225" />
+        </property>
+        <property name="adults" type="int">
+            <column name="Adults" not-null="true" />
+        </property>
+        <property name="children" type="int">
+            <column name="children" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="45" />
+        </property>
+        <property name="notel" type="string">
+            <column name="notel" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>
