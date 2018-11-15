@@ -40,7 +40,9 @@
 	var="easyResponsiveTabsJs" />
 <spring:url value="/assets/js/jquery-ui.js" var="jqueryUiJs" />
 <spring:url value="/assets/js/script.js" var="scriptJs" />
-
+<spring:url value="/assets/js/jquery-client-ajax.js" var="jquery_client_ajax" />
+<spring:url value="/assets/js/load-img.js" var="load_img" />
+<spring:url value="/assets/js/horizontalTab.js" var="horizontalTab" />
 
 <!-- //Custom Theme files -->
 <link href="${bootstrapCss }" type="text/css" rel="stylesheet"
@@ -61,16 +63,7 @@
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
 	rel='stylesheet' type='text/css'>
 <!-- //fonts -->
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#horizontalTab').easyResponsiveTabs({
-			type : 'default', //Types: default, vertical, accordion           
-			width : 'auto', //auto or any width like 600px
-			fit : true
-		// 100% fit in a container
-		});
-	});
-</script>
+<script type="text/javascript" src="${horizontalTab }"></script>
 <!--pop-up-->
 <script src="${menu_jqueryJs }"></script>
 <!--//pop-up-->
@@ -90,18 +83,7 @@
 	<script src="${easyResponsiveTabsJs }" type="text/javascript"></script>
 	<script src="${jqueryUiJs }"></script>
 	<script type="text/javascript" src="${scriptJs }"></script>
-	<script type="text/javascript">
-		$(function() {
-			SyntaxHighlighter.all();
-		});
-		$(window).load(function() {
-			$('.flexslider').flexslider({
-				animation : "slide",
-				start : function(slider) {
-					$('body').removeClass('loading');
-				}
-			});
-		});
-	</script>
+	<script src="${jquery_client_ajax }"></script>
+		<script type="text/javascript" src="${load_img }"></script>
 </body>
 </html>

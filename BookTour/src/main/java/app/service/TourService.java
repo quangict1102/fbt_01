@@ -12,4 +12,6 @@ public interface TourService extends BaseService<Integer, TourInfo> {
 	
 	List<TourInfo> getTourToday(Date date);
 
+	List<TourInfo> getAllTourByDateAndCity(int city, Date date);
+
 }

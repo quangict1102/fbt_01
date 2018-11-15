@@ -15,14 +15,17 @@
 	<definition name="home" extends="baseLayout">
 		<put-attribute name="title" value="HOME" />
 		<put-attribute name="body" value="/views/tours/bannerSTour.jsp" />
-		<put-attribute name="body" value="/views/tours/listTour.jsp" />
+		<!-- <put-attribute name="body" value="/views/tours/listTour.jsp" /> -->
 	</definition>
 
 	<!-- List Tour -->
-	<!-- <definition name="ListTour" extends="baseLayout">
-		<put-attribute name="title" value="HOME" />
-		<put-attribute name="body" value="/views/tours/listTour.jsp" />
-	</definition> -->
-
-
+	<definition name="searchTourAdvance" extends="baseLayout">
+		<put-attribute name="title" value="Product" />
+		<put-attribute name="body" value="/views/tours/searchTourAdvance.jsp" />
+	</definition>
+	<!-- Detail Tour -->
+	<definition name="detailTour" extends="baseLayout">
+		<put-attribute name="title" value="Product" />
+		<put-attribute name="body" value="/views/tours/detailTour.jsp" />
+	</definition>
 </tiles-definitions>
