@@ -2,7 +2,6 @@ package app.bean;
 
 import java.util.List;
 
-import app.model.City;
 import app.model.Placeimage;
 import app.model.Toursplace;
 

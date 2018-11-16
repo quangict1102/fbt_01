@@ -1,6 +1,5 @@
 package app.service.impl;
 
-
 import app.dao.CityDAO;
 import app.dao.PlaceDAO;
 import app.dao.RatingDAO;
@@ -14,7 +13,6 @@ public class BaseServiceImpl {
 	protected CityDAO cityDAO;
 	protected PlaceDAO placeDAO;
 	protected RatingDAO ratingDAO;
-
 
 	public UserDAO getUserDAO() {
 		return userDAO;

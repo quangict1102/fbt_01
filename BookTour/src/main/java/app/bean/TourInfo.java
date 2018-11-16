@@ -1,7 +1,6 @@
 package app.bean;
 
 import java.util.Date;
-import java.util.List;
 
 import app.model.Rating;
 

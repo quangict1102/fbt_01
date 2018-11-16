@@ -9,7 +9,8 @@ import app.model.User;
 
 public class UserConverHelper {
 
-	static Function<User, UserInfo> userToUserInfo = (User user) -> {
+	private static Function<User, UserInfo> userToUserInfo = (User user) -> {
+
 		UserInfo userInfo = new UserInfo();
 		userInfo.setId(user.getId());
 		userInfo.setFullName(user.getFullName());
@@ -21,8 +22,8 @@ public class UserConverHelper {
 		userInfo.setRole(user.getRole());
 		return userInfo;
 	};
-	
-	public static List<UserInfo> convertUserInfoToUser(List<User> userList) {
+
+	public static List<UserInfo> convertUserTouserInfo(List<User> userList) {
 		List<UserInfo> userInfoList = new ArrayList<>();
 		for (User user : userList) {
 			userInfoList.add(userToUserInfo.apply(user));
@@ -30,11 +31,12 @@ public class UserConverHelper {
 		return userInfoList;
 	}
 
-	public static UserInfo convertSingleUserInfoToUser(User user) {
+	public static UserInfo convertSingleUserToUserInfo(User user) {
 		return userToUserInfo.apply(user);
 	}
-	
-	public static Function<UserInfo, User> userInfoToUser = (UserInfo userInfo) -> {
+
+	private static Function<UserInfo, User> userInfoToUser = (UserInfo userInfo) -> {
+
 		User user = new User();
 		user.setId(userInfo.getId());
 		user.setFullName(userInfo.getFullName());
@@ -47,7 +49,7 @@ public class UserConverHelper {
 		return user;
 	};
 
-	public static List<User> convertUserToUserInfo(List<UserInfo> userInfoList) {
+	public static List<User> convertUserInfoToUser(List<UserInfo> userInfoList) {
 		List<User> userList = new ArrayList<>();
 		for (UserInfo userInfo : userInfoList) {
 			userList.add(userInfoToUser.apply(userInfo));
@@ -55,7 +57,8 @@ public class UserConverHelper {
 		return userList;
 	}
 
-	public static User convertSingleUserToUserInfo(UserInfo userInfo) {
+	public static User convertUserToUserInfo(UserInfo userInfo) {
 		return userInfoToUser.apply(userInfo);
+
 	}
 }
