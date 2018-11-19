@@ -13,11 +13,11 @@ import app.model.Tour;
 
 public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	private static final Logger logger = Logger.getLogger(TourDAOImpl.class);
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tour> loadAllTour() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Tour").getResultList();
 	}
 
 	@Override

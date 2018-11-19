@@ -29,6 +29,8 @@
 		<put-attribute name="body" value="/views/tours/detailTour.jsp" />
 	</definition>
 	
+	
+	<!--  Admin -->
 	<definition name="LayoutAdminLogInRegister" template="/views/layoutAdmin/layoutLoginRegister.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/views/layoutAdmin/header.jsp" />
@@ -43,28 +45,28 @@
 		
 	</definition>
 
-	<definition name="home2" extends="baseLayout">
-		<put-attribute name="title" value="HOME" />
-		<put-attribute name="body" value="/views/home/home.jsp" />
-	</definition>
-	
 	<definition name="homeAdmin" extends="baseLayoutAdmin">
 		<put-attribute name="title" value="HOME" />
-		<put-attribute name="body" value="/views/admin/homeAdmin.jsp" /> 
+		<put-attribute name="body" value="/views/admin/home.jsp" /> 
 	</definition>
 	
-	<definition name="tableUser" extends="baseLayoutAdmin">
+	<definition name="showUser" extends="baseLayoutAdmin">
 		<put-attribute name="title" value="USERS" />
-		<put-attribute name="body" value="/views/admin/tableUser.jsp" />
+		<put-attribute name="body" value="/views/admin/users/show.jsp" />
 	</definition>
 	
-	<definition name="register" extends="LayoutAdminLogInRegister">
+	<definition name="adminRegister" extends="LayoutAdminLogInRegister">
 		<put-attribute name="title" value="REGISTER" />
 		<put-attribute name="body" value="/views/admin/register.jsp" />
 	</definition>
 	
-	<definition name="login" extends="LayoutAdminLogInRegister">
+	<definition name="adminLogin" extends="LayoutAdminLogInRegister">
 		<put-attribute name="title" value="LOGIN" />
 		<put-attribute name="body" value="/views/admin/login.jsp" />
+	</definition>
+	
+	<definition name="showTour" extends="baseLayoutAdmin">
+		<put-attribute name="title" value="TOURS" />
+		<put-attribute name="body" value="/views/admin/tours/show.jsp" />
 	</definition>
 </tiles-definitions>

@@ -7,16 +7,15 @@
 	prefix="tilesx"%>
 
 <div id="wrapper">
-
-
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Data Table Example
+			<i class="fas fa-table"></i> Data Table User
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%"cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -26,6 +25,7 @@
 							<th>Email</th>
 							<th>Phone Number</th>
 							<th>Role</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -37,6 +37,7 @@
 							<th>Email</th>
 							<th>Phone Number</th>
 							<th>Role</th>
+							<th>Action</th>
 						</tr>
 					</tfoot>
 
@@ -56,7 +57,15 @@
 								<td>${user.email}</td>
 								<td>${user.phoneNumber}</td>
 								<td>${user.role}</td>
-
+								<td><spring:url value="/${tour.id}" var="detailActionUrl" />
+									<button class="btn btn-info" data-toggle="modal"
+										data-target="#myModal">Detail</button> <spring:url
+										value="/${tour.id}/edit" var="editActionUrl" />
+									<button class="btn btn-warning"
+										onclick="location.href='${editActionUrl}'">Edit</button> <spring:url
+										value="/${tour.id}/delete" var="deleteActionUrl" />
+									<button class="btn btn-danger"
+										onclick="location.href='${deleteActionUrl}'">Delete</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>

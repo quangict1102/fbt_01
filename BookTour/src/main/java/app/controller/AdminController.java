@@ -1,7 +1,7 @@
 package app.controller;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,13 +13,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import app.bean.UserInfo;
 import app.model.User;
-import app.service.UserService;
 
 @Controller
-public class AdminController {
+public class AdminController extends BaseController {
 	private static final Logger logger = Logger.getLogger(AdminController.class);
-	@Autowired
-	private UserService userService;
 
 	@RequestMapping(value = "/admin")
 	public ModelAndView home() {
@@ -34,48 +31,46 @@ public class AdminController {
 	public String deleteUser(@PathVariable("id") Integer id, final RedirectAttributes redirectAttributes) {
 		logger.info("delete User");
 		if (userService.deleteUser(id)) {
-			System.out.println("s");
 			redirectAttributes.addFlashAttribute("css", "success");
 			redirectAttributes.addFlashAttribute("msg", "user is deleted!");
 		} else {
-			System.out.println("s2");
 			redirectAttributes.addFlashAttribute("css", "error");
 			redirectAttributes.addFlashAttribute("msg", "Delete user fails!!!!");
 		}
 		return "redirect:/admin";
 	}
 
-	@RequestMapping(value = "/tableUser")
-	public ModelAndView showTableUser() {
+	@RequestMapping(value = "/users")
+	public ModelAndView showUser() {
 		logger.info("Table user page");
-		ModelAndView model = new ModelAndView("tableUser");
+		ModelAndView model = new ModelAndView("showUser");
 		model.addObject("user", new UserInfo());
 		model.addObject("users", userService.loadUsers());
 		return model;
 	}
 
-	@RequestMapping(value = "/register")
+	@RequestMapping(value = "/adminRegister")
 	public String register() {
-		return "register";
+		return "adminRegister";
 	}
 
-	@RequestMapping(value = "/login")
-	public String toLogin(Model model) {
+	@RequestMapping(value = "/adminLogin")
+	public String toLoginAdmin(Model model) {
 		model.addAttribute("userLogin", new UserInfo());
-		return "login";
+		return "adminLogin";
 	}
 
 	@RequestMapping(value = "/admin/login")
-	public String doLogin(@ModelAttribute("UserLogin") UserInfo userInfo, Model model) {
+	public String doLoginAdmin(@ModelAttribute("UserLogin") UserInfo userInfo, Model model) {
 		User user = userService.findByEmailAndPassword(userInfo.getEmail(), userInfo.getPassword());
 		if (user != null && user.getRole().equals("admin")) {
-			model.addAttribute("messageLogin", "success");
+			model.addAttribute("logNotice",
+					messageSource.getMessage("login.valid", null, LocaleContextHolder.getLocale()));
 			return "forward:/admin";
 		}
-		model.addAttribute("messageLogin", "err");
-		return "forward:/login";
+		model.addAttribute("logNotice", messageSource.getMessage("login.invalid", null, LocaleContextHolder.getLocale()));
+		return "forward:/adminLogin";
 	}
-
 	/*
 	 * @RequestMapping(value = "/") public String index(Model model) { return
 	 * "home"; }

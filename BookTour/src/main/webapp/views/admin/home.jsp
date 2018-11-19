@@ -12,7 +12,7 @@
 </a>
 
 
-<div id="messageLogin" hidden>${messageLogin}</div>
+<div id="messageLogin" hidden>${logNotice}</div>
 		<!-- aler -->
 		<spring:url value="/assets/alertify/js/alertifyLog.js" var="alertifyJsLog" />
-		<script src="${alertifyJsLog}" type="text/javascript"></script>  
+			<script src="${alertifyJsLog}" type="text/javascript"></script>  

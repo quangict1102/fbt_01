@@ -48,7 +48,7 @@
 	</div>
 </div>
 
-<div id="messageLogin" hidden>${messageLogin}</div>
+<div id="messageLogin" hidden>${logNotice}</div>
 
 
 
