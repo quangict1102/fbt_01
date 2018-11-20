@@ -3,6 +3,7 @@ package app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
+import app.service.BillService;
 import app.service.BookTourService;
 import app.service.CityService;
 import app.service.CommentService;
@@ -33,5 +34,6 @@ public class BaseController {
 	@Autowired
 	protected BookTourService bookingtourService;
 
-
+	@Autowired
+	BillService billService;
 }

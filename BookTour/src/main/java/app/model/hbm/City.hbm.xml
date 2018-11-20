@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 11, 2018 7:10:42 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping package="app.model">
-    <class name="City" table="citys" catalog="db_bookingtour" optimistic-lock="version">
+    <class name="City" table="citys" catalog="bookingtour" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="identity" />

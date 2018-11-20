@@ -27,9 +27,6 @@
 		<put-attribute name="title" value="Product" />
 		<put-attribute name="body" value="/views/tours/detailTour.jsp" />
 	</definition>
-	<!-- Admin -->
-	<definition name="LayoutAdminLogInRegister"
-		template="/views/layoutAdmin/layoutLoginRegister.jsp"></definition>
 	<!-- Register User -->
 	<definition name="registerUser" extends="baseLayout">
 		<put-attribute name="title" value="RegisterUser" />
@@ -40,8 +37,22 @@
 		<put-attribute name="title" value="BookTour" />
 		<put-attribute name="body" value="/views/tours/booking.jsp" />
 	</definition>
-	<!--  Admin -->
-	<definition name="LayoutAdminLogInRegister" template="/views/layoutAdmin/layoutLoginRegister.jsp">
+	<!-- Bill -->
+	<definition name="bills" extends="baseLayout">
+		<put-attribute name="title" value="Bills Tour" />
+		<put-attribute name="body" value="/views/bills/bill.jsp" />
+	</definition>
+		<!-- ListBookTour -->
+	<definition name="listBookTour" extends="baseLayout">
+		<put-attribute name="title" value="List Book Tour" />
+		<put-attribute name="body" value="/views/tours/listBookTour.jsp" />
+	</definition>
+	<!-- Page Error -->
+		<definition name="pageError" template="/views/error/error500.jsp">
+	</definition>
+	<!-- Admin -->
+	<definition name="LayoutAdminLogInRegister"
+		template="/views/layoutAdmin/layoutLoginRegister.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/views/layoutAdmin/header.jsp" />
 		<!-- <put-attribute name="menu" value="/views/layoutAdmin/menu.jsp" /> -->

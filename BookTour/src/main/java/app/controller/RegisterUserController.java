@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "register")
 @SessionAttributes({ "userSession" })
-public class RegisterUser {
+public class RegisterUserController {
 
 	@GetMapping
 	public ModelAndView register() {

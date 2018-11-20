@@ -28,11 +28,11 @@ public class DetailTourController {
 	public ModelAndView detailTour(@PathVariable int id, HttpSession httpSession) {
 
 		ModelAndView view = new ModelAndView("detailTours");
-		view.addObject("id_tour", id);
+		view.addObject("idTour", id);
 		if (httpSession.getAttribute("userSession") != null) {
 			User user = (User) httpSession.getAttribute("userSession");
-			view.addObject("id_user", user.getId());
-			view.addObject("name_user", user.getFullName());
+			view.addObject("idUser", user.getId());
+			view.addObject("nameUser", user.getFullName());
 		}
 
 		return view;

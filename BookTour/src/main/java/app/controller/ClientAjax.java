@@ -70,25 +70,30 @@ public class ClientAjax extends BaseController {
 		if (httpSession.getAttribute("userSession") == null) {
 			return "";
 		}
+		setAddComment(idTour, idUser, message, status, date, httpSession);
+		return "success";
+	}
+
+	private void setAddComment(int idTour, int idUser, String message, int status, String date,
+			HttpSession httpSession) {
 		Comment cmt = new Comment();
 		cmt.setContext(message);
 		cmt.setTime(ConvertDateSql.convertStringtoDateSQL(date));
-		User u = new User();
-		u.setId(idUser);
-		cmt.setUser(u);
+		User currentUser = new User();
+		currentUser.setId(idUser);
+		cmt.setUser(currentUser);
 		Tour tour = new Tour();
 		tour.setId(idTour);
 		cmt.setTour(tour);
 		cmt.setStatus(status);
 		commentService.saveOrUpdate(cmt);
-		return "tc";
+		
 	}
 
 	@GetMapping(value = "loadComment", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public List<CommentInfo> loadComment(@RequestParam("idTour") int idTour, Model model) {
 		return commentService.getAllCommentByIdTour(idTour);
-
 	}
 
 }

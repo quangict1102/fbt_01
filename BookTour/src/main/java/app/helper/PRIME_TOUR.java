@@ -2,8 +2,7 @@ package app.helper;
 
 public enum PRIME_TOUR {
 	TYPE1, TYPE2, TYPE3;
-
-	public static String selectPrime(PRIME_TOUR v) {
+	public static String selectPrime(PRIME_TOUR v){
 		String prime = null;
 		switch (v) {
 		case TYPE1:
@@ -20,5 +19,4 @@ public enum PRIME_TOUR {
 		}
 		return prime;
 	}
-
 }

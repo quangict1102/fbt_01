@@ -17,7 +17,7 @@
 
 						<input value="${tour.id }" type="hidden" class="tour_id">
 						<input value="${userSession.id }" type="hidden" class="user_id">
-						<form action='<c:url value="/booking/${tour.id }/add" />'
+						<form action='<c:url value="/bookings/${tour.id }/add" />'
 							 method="post" modelAttribute="formBook">
 							<p>Số lương người lớn</p>
 							<input type="number" name="adults" value="1" class="slnl" min="1"
@@ -32,44 +32,37 @@
 								onfocus="this.value='';"
 								onblur="if (this.value == '') {this.value ='';}"></textarea>
 							<p>Giá tour</p>
-							<input type="radio" value="1" checked="checked"  name="primeTour">1.200.000
-							<input type="radio" value="2"  name="primeTour">3.200.000
-							<input type="radio" value="3"  name="primeTour">5.200.000
+							<p><input type="radio" value="1" checked="checked"  name="primeTour">Standard package 2*  1.200.000 VND</p>
+							<p><input type="radio" value="2"  name="primeTour">Superior package 3* 3.200.000 VND</p>
+							<p><input type="radio" value="3"  name="primeTour">Deluxe package 4* 5.200.000 VND</p>
 							<p>Bạn chọn: <span id="gia_tour_radio">1.200.000</span></p>
 							<input type="hidden" id="input-tour" value="1200">
 							<p>Book</p>
 							<input type="submit" class="book_tour" name="Book" value="Book">
 						</form>
 						<p >Giá toàn bộ Tour: <span id="giatien-tour">1.200.000</span> VND</p>
-					<strong>${statusLogin}</strong>
-							<c:if test="${not empty statusLogin }">
-								<strong>${statusLogin}</strong>
-							</c:if>
 						
 					</div>
 				</div>
-				<div class="col-md-6 book-left book-right">
+				<div id="bill-display" class="col-md-6 book-left book-right bill-display-none">
 					<div class="book-left-info">
-						<h3>View/print your booking without signing in</h3>
+						<h3>Danh sách Tour đã đăng ký</h3>
 					</div>
 					<div class="book-left-form">
-						<form>
-							<p>FullName</p>
-							<input type="text" value="" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='';}">
-							<p>Email</p>
-							<input type="text" value="" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='';}">
-							<p>Phone Number</p>
-							<input type="text" value="" onfocus="this.value='';"
-								onblur="if (this.value == '') {this.value ='';}">
-							<p>Time Start</p>
-							<input type="date" value="Select date" onfocus="this.value = '';"
-								onblur="if (this.value == '') {this.value = 'Select date';}">
-							<p></p>
-							<input type="submit" id="login" value="Submit">
-						</form>
-
+					
+					
+				<div>	
+					<c:forEach var="lBookTour" items="${booktours }">
+				<div id='images1'  class='list-tour-img'>
+				<a href="<c:url value='/bills/${lBookTour.id }'/> "> <img alt='Paris'style='width: 150px' src="<c:url value='/assets/images/a1.jpg' />" >
+				<div class='list-tour-text'>
+				<p><span></span></p>
+				<p>Giá toàn bộ tour<span>${lBookTour.primeTour } VND</span></p>
+				<p><a href="<c:url value='/bills/${lBookTour.id }'/> ">Thanh toán Tour này</a></p>
+				</div></a></div>
+				</c:forEach>
+				</div>
+				
 					</div>
 				</div>
 				<div class="clearfix"></div>

@@ -60,9 +60,9 @@
 					<!-- Comment -->
 					<div id="comment_user" class="response">
 						<h3>Responses</h3>
-						<div id="idTour" data-idTour="${id_tour }"></div>
-						<div id="idUser" data-idUser="${id_user }"></div>
-						<div id="nameUser" data-nameUser="${name_user }"></div>
+						<div id="idTour" data-idTour="${idTour }"></div>
+						<div id="idUser" data-idUser="${idUser }"></div>
+						<div id="nameUser" data-nameUser="${nameUser }"></div>
 						<ul class="ul_comment" style="list-style-type: none;">
 						</ul>
 					</div>
@@ -90,7 +90,7 @@
 								<span>$8,750</span> $4,850
 							</h4>
 							<p class="best-pri">Best price</p>
-							<a class="best-btn" href="<c:url value="/booking/${id_tour}" />">Book Now</a>
+							<a class="best-btn" href="<c:url value="/bookings/${idTour}" />">Book Now</a>
 						</div>
 					</div>
 					<div class="map-gd">

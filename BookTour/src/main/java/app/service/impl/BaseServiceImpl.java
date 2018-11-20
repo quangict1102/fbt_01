@@ -1,5 +1,6 @@
 package app.service.impl;
 
+import app.dao.BillDAO;
 import app.dao.BookTourDAO;
 import app.dao.CityDAO;
 import app.dao.CommentDAO;
@@ -17,6 +18,7 @@ public class BaseServiceImpl {
 	protected RatingDAO ratingDAO;
 	protected CommentDAO commentDAO;
 	protected BookTourDAO booktourDAO;
+	protected BillDAO billDAO;
 
 	public BaseServiceImpl(TourDAO tourDAO) {
 		this.tourDAO = tourDAO;
@@ -79,6 +81,14 @@ public class BaseServiceImpl {
 
 	public void setBooktourDAO(BookTourDAO booktourDAO) {
 		this.booktourDAO = booktourDAO;
+	}
+
+	public BillDAO getBillDAO() {
+		return billDAO;
+	}
+
+	public void setBillDAO(BillDAO billDAO) {
+		this.billDAO = billDAO;
 	}
 
 }
