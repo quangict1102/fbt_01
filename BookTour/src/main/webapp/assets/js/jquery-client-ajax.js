@@ -35,7 +35,6 @@ $(document).ready(function() {
 		console.log(id)
 		$('#idCity_js').val(id);
 	});
-
 	
 	$('#login').click(function(){
 		var email = $('#email_user').val();
@@ -185,7 +184,21 @@ $(document).ready(function() {
 	     }
 	});
 
-
+	// Add book tour
+	$('.book_tour').click(function(){
+		if($('.user_id').val() == ''){
+			alert('Ban can dang nhap');
+		}
+	});
+	$('#search-tour').click(function(){
+		var date_js = $('#date_js').val();
+		var idCity_js = $('#idCity_js').val();
+		if(date_js == '' || idCity_js == ''){
+			alert("Bạn cần chọn ngày và thành phố")
+			return false;
+		}
+		
+	})
 /*	$('#search-tour').click(function() {
 		var date_tour = $('#date-tour').val();
 		var idCity = parseInt($('#city').val());

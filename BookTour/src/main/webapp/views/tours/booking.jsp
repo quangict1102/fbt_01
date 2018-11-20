@@ -14,8 +14,11 @@
 					</div>
 					<div class="book-left-form">
 						<p>${tour.name }</p>
+
+						<input value="${tour.id }" type="hidden" class="tour_id">
+						<input value="${userSession.id }" type="hidden" class="user_id">
 						<form action='<c:url value="/booking/${tour.id }/add" />'
-							 method="post">
+							 method="post" modelAttribute="formBook">
 							<p>Số lương người lớn</p>
 							<input type="number" name="adults" value="1" class="slnl" min="1"
 								max="20" ">
@@ -35,7 +38,7 @@
 							<p>Bạn chọn: <span id="gia_tour_radio">1.200.000</span></p>
 							<input type="hidden" id="input-tour" value="1200">
 							<p>Book</p>
-							<input type="submit" class="" name="Book" value="Book">
+							<input type="submit" class="book_tour" name="Book" value="Book">
 						</form>
 						<p >Giá toàn bộ Tour: <span id="giatien-tour">1.200.000</span> VND</p>
 					<strong>${statusLogin}</strong>

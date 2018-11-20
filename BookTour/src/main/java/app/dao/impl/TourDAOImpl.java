@@ -8,26 +8,19 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.ParameterExpression;
-import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
 
 import org.apache.log4j.Logger;
-import org.hibernate.LockMode;
 
 import app.dao.GenericDAO;
 import app.dao.TourDAO;
-import app.model.RankOfTour;
-import app.model.Tour;
-import app.model.User;
 import app.model.City;
 import app.model.Place;
 import app.model.Rating;
 import app.model.Tour;
 import app.model.Toursplace;
-
 
 public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	private static final Logger logger = Logger.getLogger(TourDAOImpl.class);
@@ -56,7 +49,6 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	public List<Object[]> getAllTourByDateAndCity(int idcity, Date date) {
 		logger.info("date: " + date);
 		logger.info("idcity: " + idcity);
-
 		CriteriaBuilder builder = getSession().getCriteriaBuilder();
 		CriteriaQuery query = builder.createQuery();
 		Root<Toursplace> root = query.from(Toursplace.class);
@@ -83,7 +75,6 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	@Override
 	public Tour getAllById(Integer id) {
 		return getSession().load(Tour.class, id);
-
 	}
 
 	@Override

@@ -6,4 +6,6 @@ import app.model.Booktour;
 
 public interface BookTourDAO extends BaseDAO<Integer, Booktour> {
 	List<Booktour> getAll();
+
+	List<Object[]> countCart(Integer idTour);
 }

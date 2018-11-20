@@ -82,12 +82,14 @@
 						<div class="product-right-top">
 							<div class="p-left">
 								<div class="p-right-img">
-									<a href="detailtour/${lTours.id}"> </a>
+									
+									<a href="<c:url value='/detailtours/${lTours.id}'/> " > </a>
+
 								</div>
 							</div>
 							<div class="p-right">
 								<div class="col-md-6 p-right-left">
-									<a href="detailtour/${lTours.id}">${lTours.name}</a>
+									<a href="<c:url value='/detailtours/${lTours.id}'/> ">${lTours.name}</a>
 									<div class="p-right-price">
 									<c:forEach var = "i" begin = "1" end = '${lTours.rankTour}'>
 										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
