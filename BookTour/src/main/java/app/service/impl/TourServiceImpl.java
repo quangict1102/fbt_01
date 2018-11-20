@@ -134,6 +134,7 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	}
 
 	@Override
+
 	public boolean delete(TourInfo entity) {
 		try {
 			Tour tour = TourConvertHelper.convertSingleTourInfoToTour(entity);

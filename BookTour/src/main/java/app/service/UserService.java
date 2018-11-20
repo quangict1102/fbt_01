@@ -18,4 +18,7 @@ public interface UserService extends BaseService<Integer, User> {
 	
 	List<UserInfo> saveOrUpdate(List<UserInfo> userInfos);
 
+	User updateUser(UserInfo userInfo);
+	
+	UserInfo findByIdUser(Integer id);
 }

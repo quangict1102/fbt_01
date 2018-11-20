@@ -40,7 +40,7 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	@Override
 	public List<Tour> getTourToday(Date dateStart) {
 		logger.info("date: " + dateStart);
-		Query tk = getSession().createQuery("select t from Tour t  where t.dateStart > :dateStart");
+		Query tk = getSession().createQuery("select t from Tour t  where t.dateStart = :dateStart");
 		return ((org.hibernate.query.Query) tk.setParameter("dateStart", dateStart)).getResultList();
 	}
 
@@ -64,7 +64,7 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		Join<Rating, Tour> joinRating = ratingRoot.join("tour", JoinType.INNER);
 		query.multiselect(joinTour, builder.max(ratingRoot.get("numberRank"))).groupBy(joinTour.get("id"));
 
-		Predicate getByDate = builder.and(builder.greaterThan(joinTour.<Date>get("dateStart"), date));
+		Predicate getByDate = builder.and(builder.greaterThan(joinTour.<Date> get("dateStart"), date));
 
 		Predicate getByIdPlace = builder.and(builder.in(joinPlace.get("id")).value(subquery));
 
@@ -87,6 +87,5 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	public Tour findTourLast() {
 		return (Tour) getSession().createQuery("FROM Tour WHERE id IN( SELECT Max(id) FROM Tour)").getSingleResult();
 	}
-
 
 }

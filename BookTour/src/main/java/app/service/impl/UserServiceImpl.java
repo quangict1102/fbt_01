@@ -16,8 +16,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Override
 	public User saveOrUpdate(User entity) {
 		try {
-			User user = userDAO.findByIdLock(entity.getId());
-			if (user == null) {
+			if (entity.getId() != null) {
 				return null;
 			}
 			return getUserDAO().saveOrUpdate(entity);
@@ -30,7 +29,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Override
 	public boolean deleteUser(Integer id) {
 		try {
-			User user = getUserDAO().findByIdLock(id);
+			User user = getUserDAO().findByIdLock(id, true);
 			if (user == null) {
 				return false;
 			}
@@ -108,6 +107,31 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			logger.error(e);
 			throw e;
 		}
+	}
+
+	@Override
+	public User updateUser(UserInfo userInfo) {
+		User user = getUserDAO().findByIdLock(userInfo.getId(), true);
+		try {
+			if (user == null) {
+				return null;
+			}
+			user.setId(userInfo.getId());
+			user.setFullName(userInfo.getFullName());
+			user.setGender(userInfo.getGender());
+			user.setAddress(userInfo.getAddress());
+			user.setEmail(userInfo.getEmail());
+			user.setPhoneNumber(userInfo.getPhoneNumber());
+			return getUserDAO().saveOrUpdate(user);
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+	}
+
+	@Override
+	public UserInfo findByIdUser(Integer id) {
+		return UserConverHelper.convertSingleUserToUserInfo(getUserDAO().findByIdLock(id, false));
 	}
 
 }

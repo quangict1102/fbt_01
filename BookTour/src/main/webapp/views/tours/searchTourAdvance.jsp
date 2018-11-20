@@ -11,7 +11,7 @@
 			<div class="product-grids">
 				<div class="col-md-3 product-left filter-button-group">
 					<div class="h-class">
-						<h5>Rating</h5>
+						<h5><spring:message code="search.rank" /></h5>
 						<div class="hotel-price" data-idStart="5">
 							<label class="check"> <input type="checkbox" name="start5" value=".start5" id="start5"> <span
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
@@ -19,7 +19,7 @@
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
-								class="starTextLabel">5 Stars</span>
+								class="starTextLabel"><spring:message code="search.start5" /></span>
 							</label>
 						</div>
 						<div class="hotel-price" data-idStart="4">
@@ -29,7 +29,7 @@
 								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								<span class="starTextLabel">4 Stars</span>
+								<span class="starTextLabel"><spring:message code="search.start4" /></span>
 							</label>
 						</div>
 						<div class="hotel-price" data-idStart="3">
@@ -37,25 +37,25 @@
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
-								class="starTextLabel">3 Stars</span>
+								class="starTextLabel"><spring:message code="search.start3" /></span>
 							</label>
 						</div>
 						<div class="hotel-price" data-idStart="2">
 							<label class="check"> <input type="checkbox" name="start2" value=".start2" id="start2"> <span
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
-								class="starTextLabel">2 Stars</span>
+								class="starTextLabel"><spring:message code="search.start2" /></span>
 							</label>
 						</div>
 						<div class="hotel-price" data-idStart="1">
 							<label class="check"> <input type="checkbox" name="start1" value=".start1" id="start1"> <span
 								class="glyphicon glyphicon-star" aria-hidden="true"></span> <span
-								class="starTextLabel">1 Stars</span>
+								class="starTextLabel"><spring:message code="search.start1" /></span>
 							</label>
 						</div>
 					</div>
 					<div class="h-class filters">
-						<h5>Price Adults</h5>
+						<h5><spring:message code="search.PriceAdults" /></h5>
 						<div class="hotel-price">
 							<label class="check"> <input type="radio" name="filter" value="numberGreaterThan150">
 								<span class="p-day-grid"> &#62; 150.000VND </span>
@@ -64,14 +64,6 @@
 						<div class="hotel-price">
 							<label class="check"> <input type="radio" name="filter" value="numberLThan150"> <span
 								class="p-day-grid"> &#60; 150.000VND</span>
-							</label>
-						</div>
-					</div>
-					<div class="h-class p-day">
-						<h5>Place</h5>
-						<div class="hotel-price">
-							<label class="check"> <input type="checkbox">
-								<span class="p-day-grid">Hotel resort (67)</span>
 							</label>
 						</div>
 					</div>
@@ -96,15 +88,15 @@
 									</c:forEach>
 									</div>
 									
-									<p>Ngày khởi hành:  <fmt:formatDate pattern = "dd-MM-yyyy" value = "${lTours.dateStart }" /></p>
+									<p><spring:message code="search.dateStart" />:  <fmt:formatDate pattern = "dd-MM-yyyy" value = "${lTours.dateStart }" /></p>
 									<p class="p-call">0979867463</p>
 								</div>
 								<div class="col-md-6 p-right-right">
-									<h6>Rating : ${lTours.rankTour}/5</h6>
+									<h6><spring:message code="search.rank" />: ${lTours.rankTour}/5</h6>
 									<p>(123) Views</p>
-									<p>Người lớn: <span class="fix-fontsize numberAdults">${lTours.primeAdults}</span> VND<p>
+									<p><spring:message code="search.adults" />: <span class="fix-fontsize numberAdults">${lTours.primeAdults}</span> VND<p>
 									<br/>
-									<p>Trẻ nhỏ: <span class="fix-fontsize numberChilden" >${lTours.primeChilden}</span> VND<p>
+									<p><spring:message code="search.childen" />: <span class="fix-fontsize numberChilden" >${lTours.primeChilden}</span> VND<p>
 								</div>
 								<div class="clearfix"></div>
 							</div>

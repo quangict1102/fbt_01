@@ -47,9 +47,12 @@ $(document).ready(function() {
 				password:password
 			},
 			success: function(value){
-				if(value != ""){
+				if(value == "error"){
+					alert("Account not exists");
+				}else{
 					location.reload();
 				}
+				
 			}
 		});
 		return false;

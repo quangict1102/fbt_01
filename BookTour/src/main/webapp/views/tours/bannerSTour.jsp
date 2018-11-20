@@ -43,7 +43,7 @@
 		<div class="col-md-8 banner-right">
 			<div class="sap_tabs">
 				<div class="booking-info">
-					<h2>Book Domestic & International Flight Tickets</h2>
+					<h2><spring:message code="page.titel" /></h2>
 				</div>
 				<div id="horizontalTab"
 					style="display: block; width: 100%; margin: 0px;">
@@ -134,7 +134,7 @@
 	<!-- container -->
 	<div class="container">
 		<div class="banner-bottom-info">
-			<h3>Today's Top Deals</h3>
+			<h3><spring:message code="page.todaytour" /></h3>
 		</div>
 		<div class="banner-bottom-grids">
 			<div class="col-md-4 banner-bottom-grid">
@@ -154,7 +154,7 @@
 											class="glyphicon glyphicon-star" aria-hidden="true"></span><span
 											class="glyphicon glyphicon-star" aria-hidden="true"></span>
 									</div>
-									<div class="destinations-price fix-width-auto">Ít nhất ${lTourToday.primeAdults }VND</div>
+									<div class="destinations-price fix-width-auto"><spring:message code="page.least" /> ${lTourToday.primeAdults }VND</div>
 									<div class="clearfix"></div>
 								</div>
 						</a></li>
@@ -164,7 +164,7 @@
 				</div>
 				<div class="choose">
 					<div class="choose-info">
-						<h4>Why Choose Us</h4>
+						<h4><spring:message code="page.us" /></h4>
 					</div>
 					<div class="choose-grids">
 						<div class="choose-grids-info">

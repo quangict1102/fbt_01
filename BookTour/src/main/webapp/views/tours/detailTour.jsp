@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <spring:url value="/assets/js/load-cmt.js" var="load_cmt" />
 <spring:url value="/assets/js/load-img.js" var="load_img" />
 <spring:url value="/assets/js/jquery.flexslider.js" var="flexsliderJs" />
@@ -13,25 +14,15 @@
 			<div class="single-page">
 				<div class="col-md-8 single-gd-lt">
 					<div class="single-pg-hdr">
-						<h2>Morbi mollis mattis dolor</h2>
-						<p>Eiusmod Tempor inc , St Dolore Place,Kingsport 56777</p>
+						<h2>${tours.name }</h2>
+						<p><fmt:formatDate pattern = "dd-MM-yyyy" value = "${tours.dateStart}" /></p>
 						<p>
-							Jump to: <a href="#">Over View</a>|<a href="#">Room Choices</a>|<a
-								href="#">Hotel Information</a>
+							<spring:message code="search.PriceAdults" /> ${tours.primeAdults } VND
 						</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed
-							blandit massa vel mauris sollicitudin dignissim. Phasellus
-							ultrices tellus eget ipsum ornare molestie scelerisque eros
-							dignissim. Phasellus fringilla hendrerit lectus nec vehicula.
-							ultrices tellus eget ipsum ornare consectetur adipiscing elit.Sed
-							blandit . estibulum aliquam neque nibh, sed accumsan nulla ornare
-							sit amet.Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit.Sed blandit massa vel mauris sollicitudin dignissim.
-							Phasellus ultrices tellus eget ipsum ornare molestie scelerisque
-							eros dignissim. Phasellus fringilla hendrerit lectus nec
-							vehicula. ultrices tellus eget ipsum ornare consectetur
-							adipiscing elit.Sed blandit . estibulum aliquam neque nibh, sed
-							accumsan nulla ornare sit amet.</p>
+						<p>
+							<spring:message code="search.childen" /> ${tours.primeChilden } VND
+						</p>
+						<p>${tours.describe }</p>
 
 					</div>
 					<div class="flexslider">
@@ -67,7 +58,7 @@
 						</ul>
 					</div>
 					<div class="opinion">
-						<h3>Your comment</h3>
+						<h3><spring:message code="detailTour.yourcomment" /></h3>
 						<form>
 							<textarea class="message" style="min-height: 0px; width: 100%"
 								placeholder="Message" required=""></textarea>
@@ -86,11 +77,8 @@
 							</script>
 						</div>
 						<div class="sp-bor-btn text-right">
-							<h4>
-								<span>$8,750</span> $4,850
-							</h4>
-							<p class="best-pri">Best price</p>
-							<a class="best-btn" href="<c:url value="/bookings/${idTour}" />">Book Now</a>
+							<p class="best-pri"><spring:message code="detailTour.bestprice" /></p>
+							<a class="best-btn" href="<c:url value="/bookings/${idTour}" />"><spring:message code="detailTour.book" /></a>
 						</div>
 					</div>
 					<div class="map-gd">

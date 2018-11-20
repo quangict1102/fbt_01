@@ -48,7 +48,11 @@
 		<put-attribute name="body" value="/views/tours/listBookTour.jsp" />
 	</definition>
 	<!-- Page Error -->
-		<definition name="pageError" template="/views/error/error500.jsp">
+		<definition name="pageError" template="/views/error/error500.jsp"></definition>
+			<!-- profile -->
+	<definition name="profileUser" extends="baseLayout">
+		<put-attribute name="title" value="Profile User" />
+		<put-attribute name="body" value="/views/users/profile.jsp" />
 	</definition>
 	<!-- Admin -->
 	<definition name="LayoutAdminLogInRegister"

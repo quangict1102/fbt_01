@@ -49,6 +49,18 @@ public class UserConverHelper {
 		return user;
 	};
 
+	public static User updateConvertInfoToUser(UserInfo userInfo) {
+		User user = new User();
+		user.setId(userInfo.getId());
+		user.setFullName(userInfo.getFullName());
+		user.setGender(userInfo.getGender());
+		user.setAddress(userInfo.getAddress());
+		user.setEmail(userInfo.getEmail());
+		user.setPhoneNumber(userInfo.getPhoneNumber());
+		user.setPassword(userInfo.getPassword());
+		return user;
+	}
+
 	public static List<User> convertUserInfoToUser(List<UserInfo> userInfoList) {
 		List<User> userList = new ArrayList<>();
 		for (UserInfo userInfo : userInfoList) {
@@ -61,5 +73,5 @@ public class UserConverHelper {
 		return userInfoToUser.apply(userInfo);
 
 	}
-	
+
 }

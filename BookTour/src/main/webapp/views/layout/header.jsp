@@ -17,8 +17,8 @@
 		<div class="header-dropdown">
 			<div class="emergency-grid">
 				<ul>
-					<li>Toll Free :</li>
-					<li class="call">+1 234 567 8901</li>
+					<li><a href="?lang=en"><img alt="" style="width:50px" src="<c:url value="/assets/images/en.jpg"/> "> </a>
+					 <a href="?lang=vi"><img alt="" style="width:50px" src="<c:url value="/assets/images/vn.jpg"/> "></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"></div>
@@ -29,7 +29,7 @@
 		<div class="top-nav">
 			<span class="menu"><img src="assets/images/menu.png" alt="" /></span>
 			<ul class="nav1">
-				<li class="active"> <a href='<c:url value="/"></c:url>'>HOME</a></li>
+				<li class="active"> <a href='<c:url value="/"></c:url>'><spring:message code="page.main" /></a></li>
 				<li><a href="weekend.html">Weekend Getaways</a></li>
 			</ul>
 			<div class="clearfix"></div>
@@ -46,31 +46,31 @@
 									<div class="login-grid-left">
 										<fieldset id="body">
 											<fieldset>
-												<label for="email">Email Address</label> <input type="text"
+												<label for="email"><spring:message code="page.email" /></label> <input type="text"
 													name="email" id="email_user">
 											</fieldset>
 											<fieldset>
-												<label for="password">Password</label> <input
+												<label for="password"><spring:message code="page.password" /></label> <input
 													type="password" name="password" id="password_user">
 											</fieldset>
 											<input type="submit" id="login" value="Sign in"> <label
 												for="checkbox"><input type="checkbox" id="checkbox">
-												<i>Remember me</i></label>
+												<i><spring:message code="page.remenber" /></i></label>
 										</fieldset>
-										<span><a href="#">Forgot your password?</a></span>
+										<span><a href="#"><spring:message code="page.forgot" /></a></span>
 										<div class="or-grid">
-											<p>OR</p>
+											<p><spring:message code="page.or" /></p>
 										</div>
 										<div class="social-sits">
 											<div class="facebook-button">
-												<a href="#">Connect with Facebook</a>
+												<a href="#"><spring:message code="page.fb" /></a>
 											</div>
 											<div class="chrome-button">
-												<a href="#">Connect with Google</a>
+												<a href="#"><spring:message code="page.gmail" /></a>
 											</div>
 											<div class="button-bottom">
 												<p>
-													New account? <a href='<c:url value="/register"></c:url>'>Signup</a>
+													<spring:message code="page.account" /> <a href='<c:url value="/register"></c:url>'>Signup</a>
 												</p>
 											</div>
 										</div>
@@ -83,11 +83,13 @@
 					</c:when>
 					<c:otherwise>
 					<div class="login_cart">
-						<span>Hello <c:out value="${userSession.fullName }" /></span>
-						<button id="logout_user">
+						<span><spring:message code="users.login" /> <c:out value="${userSession.fullName }" /></span>
+						<a href="<c:url value='/profileUser/${userSession.id }'/> ">Profile</a>
+						<button class="btn btn-primary" id="logout_user">
 							<span>Logout</span>
 						</button>
 						<a href="<c:url value="/booktours/${userSession.id }"/> " class="notification_cart">
+
 							<img src="<c:url value='/assets/images/cart.png'/> " width="50px">
 							<span id="soluong_giahang" class="badge">${cart}</span>
 						</a>

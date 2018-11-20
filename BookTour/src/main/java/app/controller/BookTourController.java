@@ -73,14 +73,11 @@ public class BookTourController extends BaseController {
 		if (null == currentUser) {
 			return "";
 		}
-		Booktour bookTour = setValueBookTour(idTour, slnl, sltc, primeTour, notel, currentUser, httpSession);
-		if (bookTour == null) {
-			return "error";
-		}
+		setValueBookTour(idTour, slnl, sltc, primeTour, notel, currentUser, httpSession);
 		return "success";
 	}
 
-	private Booktour setValueBookTour(int idTour, int slnl, int sltc, String primeTour, String notel,
+	private void setValueBookTour(int idTour, int slnl, int sltc, String primeTour, String notel,
 			User currentUser, HttpSession httpSession) {
 		BookTourInfo bt = new BookTourInfo();
 		Integer idBookTour = (Integer) httpSession.getAttribute("ibBookTour");
@@ -96,7 +93,7 @@ public class BookTourController extends BaseController {
 		user.setId(currentUser.getId());
 		bt.setUser(user);
 		bt.setNotel(notel);
-		return bookingtourService.updateBt(bt);
+		 bookingtourService.updateBt(bt);
 	}
 	
 	@RequestMapping()

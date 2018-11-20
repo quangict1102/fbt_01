@@ -11,7 +11,7 @@ public interface UserDAO extends BaseDAO<Integer, User> {
 
 	List<User> loadUsers();
 	
-	User findByIdLock(Integer id);
+	User findByIdLock(Integer id,boolean lock);
 	
 	User findByEmailAndPassword(String email,String password);
 	 
