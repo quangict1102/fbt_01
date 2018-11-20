@@ -1,8 +1,9 @@
 package app.dao;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
+import app.model.RankOfTour;
 import app.model.Tour;
 
 public interface TourDAO extends BaseDAO<Integer, Tour> {
@@ -10,7 +11,7 @@ public interface TourDAO extends BaseDAO<Integer, Tour> {
 
 	List<Tour> findByPlace(String place);
 
-	List<Object[]> getTourToday(Date date);
+	List<Tour> getTourToday(Date date);
 
-	List<Tour> getAllTourByDateAndCity(int city, Date date);
+	List<Object[]> getAllTourByDateAndCity(int city, Date date);
 }

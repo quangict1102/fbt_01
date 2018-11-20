@@ -1,6 +1,6 @@
 package app.dao.impl;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import app.dao.GenericDAO;
 import app.dao.TourDAO;
+import app.model.RankOfTour;
 import app.model.Tour;
 
 public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
@@ -27,28 +28,24 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	}
 
 	@Override
-	public List<Object[]> getTourToday(Date dateStart) {
+	public List<Tour> getTourToday(Date dateStart) {
 		logger.info("date: " + dateStart);
-		/*
-		 * CriteriaBuilder builder = getSession().getCriteriaBuilder();
-		 * CriteriaQuery<Tour> cr = builder.createQuery(Tour.class); Root<Tour>
-		 * root = cr.from(Tour.class); cr.select(root); Predicate tkDate =
-		 * builder.and(builder.equal(root.get("dateStart"), dateStart));
-		 * cr.where(tkDate);
-		 */
-
-		Query tk = getSession().createQuery("select t,max(r.numberRank) as numberRank from Tour t inner join Rating r on r.id = t.id where t.dateStart = :dateStart group by t.id ;");
+		Query tk = getSession().createQuery("select t from Tour t  where t.dateStart > :dateStart");
 		return ((org.hibernate.query.Query) tk.setParameter("dateStart", dateStart)).getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Tour> getAllTourByDateAndCity(int idcity, Date date) {
-		String sql = "select t from City c join Place p on c.id = p.city.id join Toursplace tp on tp.place.id = p.id join Tour t on tp.tour.id = t.id where c.id = :idcity and t.dateStart = :date ";
-		Query tk = getSession().createQuery(sql, Tour.class);
-		tk.setParameter("idcity", idcity);
-		tk.setParameter("date", date);
-		return tk.getResultList();
+	public List<Object[]> getAllTourByDateAndCity(int idcity, Date date) {
+		logger.info("date: " + date);
+		logger.info("idcity: " + idcity);
+		String sql=
+			"select t,max(r.numberRank) from  Toursplace tp join Place p "
+			+ " on tp.place.id = p.id join Tour t on t.id = tp.tour.id join Rating r"
+			+ " on r.tour.id=t.id where tp.place.id in "
+			+ " (select p.id from City c,Place p where c.id=p.city.id and c.id= :idcity) "
+			+ " and t.dateStart > :date group by t.id";
+		return getSession().createQuery(sql).setParameter("idcity", idcity).setParameter("date", date).getResultList();
 	}
 
 }

@@ -1,8 +1,9 @@
 package app.service;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
+import app.bean.RankOfTourInfo;
 import app.bean.TourInfo;
 
 public interface TourService extends BaseService<Integer, TourInfo> {
@@ -12,6 +13,6 @@ public interface TourService extends BaseService<Integer, TourInfo> {
 	
 	List<TourInfo> getTourToday(Date date);
 
-	List<TourInfo> getAllTourByDateAndCity(int city, Date date);
+	List<RankOfTourInfo> getAllTourByDateAndCity(int city, Date date);
 
 }

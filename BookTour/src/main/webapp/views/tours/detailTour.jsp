@@ -93,22 +93,14 @@
 						</ul>
 					</div>
 					<!-- FlexSlider -->
-					<script defer src="js/jquery.flexslider.js"></script>
-					<script>
-						// Can also be used with $(document).ready()
-						$(window).load(function() {
-							$('.flexslider').flexslider({
-								animation : "slide",
-								controlNav : "thumbnails"
-							});
-						});
-					</script>
+					<script defer src="${flexsliderJs }"></script>
+					<script type="text/javascript" src="${load_img }"></script>
 					<!-- Comment -->
 					<div class="response">
-						<h3>Comment</h3>
+						<h3>Responses</h3>
 						<div class="media response-info">
 							<div class="media-left response-text-left">
-								<a href="#"> <img class="media-object fix-with80"
+								<a href="#"> <img class="media-object"
 									src="assets/images/user1.jpg" alt="">
 								</a>
 								<h5>
@@ -126,7 +118,7 @@
 								</ul>
 								<div class="media response-info">
 									<div class="media-left response-text-left">
-										<a href="#"> <img class="media-object fix-with80"
+										<a href="#"> <img class="media-object"
 											src="assets/images/user2.jpg" alt="">
 										</a>
 										<h5>
@@ -150,7 +142,7 @@
 						</div>
 						<div class="media response-info">
 							<div class="media-left response-text-left">
-								<a href="#"> <img class="media-object fix-with80"
+								<a href="#"> <img class="media-object"
 									src="assets/images/user3.jpg" alt="">
 								</a>
 								<h5>
@@ -187,10 +179,7 @@
 								aria-hidden="true"></span>
 							</a>
 							<p>Special Offer</p>
-							<script>
-								$(document).ready(function() {
-									$('[data-toggle="tooltip"]').tooltip();
-								});
+							<script type="text/javascript" src="${tooltipjs }">
 							</script>
 						</div>
 						<div class="sp-bor-btn text-right">
