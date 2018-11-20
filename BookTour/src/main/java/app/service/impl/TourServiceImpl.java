@@ -38,8 +38,7 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 
 	@Override
 	public List<TourInfo> loadAllTour() {
-		// TODO Auto-generated method stub
-		return null;
+		return TourConvertHelper.convertTourToTourInfo(getTourDAO().loadAllTour());
 	}
 
 	@Override

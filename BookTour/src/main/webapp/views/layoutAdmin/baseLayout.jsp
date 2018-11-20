@@ -22,16 +22,8 @@
 	<link rel="stylesheet" href="${allCss}" />
 	<link rel="stylesheet" href="${bootstrap4Css}" />
 	<link rel="stylesheet" href="${sbAdminCss}" />
-	
-	<!-- aler -->
-	<spring:url value="/assets/alertify/themes/alertify.core.css" var="coreCss" />
-	<spring:url value="/assets/alertify/themes/alertify.bootstrap.css" var="bootstrapCss" />
-	<spring:url value="/assets/alertify/themes/alertify.default.css" var="defaultCss" />
-	<link rel="stylesheet" href="${coreCss}" />
-	<link rel="stylesheet" href="${defaultCss}" />
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<spring:url value="/assets/alertify/js/alertify.min.js" var="alertifyJs" />
-	<script src="${alertifyJs}" type="text/javascript"></script>
+
+
 	
 	<title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
@@ -49,8 +41,8 @@
 		<spring:url value="/assets/vendor/datatables/dataTables.bootstrap4.js" var="bootstrap4Js" />
 		<spring:url value="/assets/js/adminJs/sb-admin.min.js" var="adminJs" />
 		<spring:url value="/assets/js/adminJs/datatables-demo.js" var="dataTableDemoJs" />
-		<spring:url value="/assets/js/bootstrap.min.js" var="bootstrapJs" />
-	
+
+
 		<script src="${jqueryJs}" type="text/javascript"></script>
 		<script src="${bootstrapBundleJs}" type="text/javascript"></script>
 		<script src="${bootstrapEasingJs}" type="text/javascript"></script>
@@ -59,7 +51,6 @@
 		<script src="${bootstrap4Js}" type="text/javascript"></script>
 		<script src="${adminJs}" type="text/javascript"></script>
 		<script src="${dataTableDemoJs}" type="text/javascript"></script>
-		<script src="${bootstrapJs}" type="text/javascript"></script>
 		
 
 	</body>
