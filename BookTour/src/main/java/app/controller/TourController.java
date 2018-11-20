@@ -1,7 +1,5 @@
 package app.controller;
 
-import java.time.LocalDate;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,13 +24,13 @@ public class TourController {
 	CityService cityService;
 
 	@GetMapping
-	public ModelAndView index() {
+	public ModelAndView index(Model model) {
 		logger.info("home page");
-		ModelAndView model = new ModelAndView("home");
-		model.addObject("tourToday",
-				tourService.getTourToday(ConvertDateSql.convertDateSql(String.valueOf(LocalDate.now()))));
-		model.addObject("cities", cityService.getAllCity());
-		return model;
+		ModelAndView view = new ModelAndView("home");
+		view.addObject("cities", cityService.getAllCity());
+		model.addAttribute("tourToday",
+				tourService.getTourToday(ConvertDateSql.getDateNowSQL()));
+		return view;
 	}
 
 	@RequestMapping(value = "/tours")

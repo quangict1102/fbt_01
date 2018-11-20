@@ -43,7 +43,13 @@
 <spring:url value="/assets/js/jquery-client-ajax.js" var="jquery_client_ajax" />
 <spring:url value="/assets/js/load-img.js" var="load_img" />
 <spring:url value="/assets/js/horizontalTab.js" var="horizontalTab" />
+<spring:url value="/assets/js/isotope.pkgd.min.js" var="isotope_pkgd" />
+<spring:url value="/assets/js/imagesloaded.pkgd.min.js" var="imagesloaded_pkgd" />
+<spring:url value="/assets/js/isotope-min.js" var="isotope_min" />
 
+<spring:url value="/assets/js/datepickerjs.js" var="datepickerjs" />
+<spring:url value="/assets/js/cyclejs.js" var="cyclejs" />
+<spring:url value="/assets/js/tooltipjs.js" var="tooltipjs" />
 <!-- //Custom Theme files -->
 <link href="${bootstrapCss }" type="text/css" rel="stylesheet"
 	media="all">
@@ -85,5 +91,8 @@
 	<script type="text/javascript" src="${scriptJs }"></script>
 	<script src="${jquery_client_ajax }"></script>
 		<script type="text/javascript" src="${load_img }"></script>
+		<script type="text/javascript" src="${isotope_pkgd }"></script>
+		<script type="text/javascript" src="${imagesloaded_pkgd }"></script>
+		<script type="text/javascript" src="${isotope_min }"></script>
 </body>
 </html>

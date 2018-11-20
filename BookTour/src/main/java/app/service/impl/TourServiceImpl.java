@@ -1,16 +1,19 @@
 package app.service.impl;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 
+import app.bean.RankOfTourInfo;
 import app.bean.TourInfo;
 import app.dao.impl.TourDAOImpl;
+import app.helper.ConvertDateSql;
+import app.helper.RankOfTourHelper;
 import app.helper.TourConvertHelper;
+import app.model.RankOfTour;
 import app.model.Rating;
 import app.model.Tour;
 import app.service.TourService;
@@ -50,52 +53,39 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	@Override
 	public List<TourInfo> getTourToday(Date date) {
 		try {
-			List<Object[]> lObject = getTourDAO().getTourToday(date);
-			List<Tour> lTour = new ArrayList<>();
-			List<Rating> lRating = new ArrayList<>();
-			ObjectMapper mapper = new ObjectMapper();
-			String json = null;
-			for (Object[] o : lObject) {
-				Tour tours = (Tour) o[0];
-				lTour.add(tours);
-				Rating ratings = (Rating) o[1];
-				lRating.add(ratings);
-				 json = mapper.writeValueAsString(o);
-			}
-			System.out.println(json);
-/*			
-			logger.info("date: " + date);
-			List<TourInfo> lTourInfo = new ArrayList<>();
-			for (int i = 0; i < lTour.size(); i++) {
-				TourInfo tourInfo = new TourInfo();
-				tourInfo.setId(lTour.get(i).getId());
-				tourInfo.setName(lTour.get(i).getName());
-				tourInfo.setMaxPeople(lTour.get(i).getMaxPeople());
-				tourInfo.setDescribe(lTour.get(i).getDescribe());
-				tourInfo.setPrimeAdults(lTour.get(i).getPrimeAdults());
-				tourInfo.setPrimeChilden(lTour.get(i).getPrimeChilden());
-				tourInfo.setDurationTime(lTour.get(i).getDurationTime());
-				tourInfo.setPlaceFromId(lTour.get(i).getPlaceFromId());
-				tourInfo.setPlaceToId(lTour.get(i).getPlaceToId());
-				tourInfo.setDateStart(lTour.get(i).getDateStart());
-
-				lTourInfo.add(tourInfo);
-				
-				Đang lỗi chị ạ
-			}*/
-
-
-			return null;
+			return TourConvertHelper.convertTourToTourInfo(getTourDAO().getTourToday(date));
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
 	@Override
-	public List<TourInfo> getAllTourByDateAndCity(int city, Date date) {
+	public List<RankOfTourInfo> getAllTourByDateAndCity(int city, Date date) {
 		try {
-			return TourConvertHelper.convertTourToTourInfo(getTourDAO().getAllTourByDateAndCity(city, date));
+			List<Object[]> arrObject = getTourDAO().getAllTourByDateAndCity(city, date);
+			List<RankOfTour> arrRankOfTour = new ArrayList<>();
+			List<Tour> arrTour = new ArrayList<>();
+			List<String> arrRating = new ArrayList<>();
+			for (Object[] o : arrObject) {
+				Tour tour = (Tour) o[0];
+				arrTour.add(tour);
+				String rating =  (String) o[1];
+				arrRating.add(rating);
+			}
+			for (int i = 0; i < arrTour.size(); i++) {
+				RankOfTour rankOfTour = new RankOfTour();
+				rankOfTour.setId(arrTour.get(i).getId());
+				rankOfTour.setName(arrTour.get(i).getName());
+				rankOfTour.setMaxPeople(arrTour.get(i).getMaxPeople());
+				rankOfTour.setPrimeAdults(arrTour.get(i).getPrimeAdults());
+				rankOfTour.setPrimeChilden(arrTour.get(i).getPrimeChilden());
+				rankOfTour.setDateStart(arrTour.get(i).getDateStart());
+				rankOfTour.setRankTour(Integer.valueOf(arrRating.get(i)));
+				arrRankOfTour.add(rankOfTour);
+			}
+			return RankOfTourHelper.convertRankTourToRankTourInfo(arrRankOfTour);
 		} catch (Exception e) {
+			logger.error("Error getAllTourByDateAndCity: ", e);
 			return null;
 		}
 
