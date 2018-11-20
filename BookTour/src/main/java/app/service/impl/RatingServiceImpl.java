@@ -3,26 +3,25 @@ package app.service.impl;
 import java.io.Serializable;
 import java.util.List;
 
-import app.bean.RatingInfo;
 import app.model.Rating;
 import app.service.RatingService;
 
 public class RatingServiceImpl extends BaseServiceImpl implements RatingService {
 
 	@Override
-	public RatingInfo findById(Serializable key) {
+	public Rating findById(Serializable key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public RatingInfo saveOrUpdate(RatingInfo entity) {
+	public Rating saveOrUpdate(Rating entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean delete(RatingInfo entity) {
+	public boolean delete(Rating entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}

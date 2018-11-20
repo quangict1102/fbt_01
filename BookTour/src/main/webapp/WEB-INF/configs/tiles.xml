@@ -4,52 +4,54 @@
 <tiles-definitions>
 
 	<!-- Base Definition -->
-	<definition name="baseLayout"
-		template="/views/layout/baseLayout.jsp">
+	<definition name="baseLayout" template="/views/layout/baseLayout.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="header"
-			value="/views/layout/header.jsp" />
+		<put-attribute name="header" value="/views/layout/header.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer"
-			value="/views/layout/footer.jsp" />
+		<put-attribute name="footer" value="/views/layout/footer.jsp" />
 	</definition>
 
 	<!-- Banner Search Tour -->
 	<definition name="home" extends="baseLayout">
 		<put-attribute name="title" value="HOME" />
-		<put-attribute name="body"
-			value="/views/tours/bannerSTour.jsp" />
+		<put-attribute name="body" value="/views/tours/bannerSTour.jsp" />
+
 	</definition>
 	<!-- List Tour -->
 	<definition name="searchTourAdvance" extends="baseLayout">
 		<put-attribute name="title" value="Product" />
-		<put-attribute name="body"
-			value="/views/tours/searchTourAdvance.jsp" />
+		<put-attribute name="body" value="/views/tours/searchTourAdvance.jsp" />
 	</definition>
 	<!-- Detail Tour -->
-	<definition name="detailTour" extends="baseLayout">
+	<definition name="detailTours" extends="baseLayout">
 		<put-attribute name="title" value="Product" />
-		<put-attribute name="body"
-			value="/views/tours/detailTour.jsp" />
+		<put-attribute name="body" value="/views/tours/detailTour.jsp" />
 	</definition>
+	<!-- Admin -->
+	<definition name="LayoutAdminLogInRegister"
+		template="/views/layoutAdmin/layoutLoginRegister.jsp"></definition>
+	<!-- Register User -->
+	<definition name="registerUser" extends="baseLayout">
+		<put-attribute name="title" value="RegisterUser" />
+		<put-attribute name="body" value="/views/users/registerUser.jsp" />
+	</definition>
+	<!-- Booking -->
+	<definition name="booking" extends="baseLayout">
 
-
+		<put-attribute name="body" value="/views/tours/booking.jsp" />
+	</definition>
 	<!-- Admin -->
 	<definition name="LayoutAdminLogInRegister"
 		template="/views/layoutAdmin/layoutLoginRegister.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="header"
-			value="/views/layoutAdmin/header.jsp" />
+		<put-attribute name="header" value="/views/layoutAdmin/header.jsp" />
 		<!-- <put-attribute name="menu" value="/views/layoutAdmin/menu.jsp" /> -->
 		<put-attribute name="body" value="" />
 	</definition>
-	<definition name="baseLayoutAdmin"
-		template="/views/layoutAdmin/baseLayout.jsp">
+	<definition name="baseLayoutAdmin" template="/views/layoutAdmin/baseLayout.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="header"
-			value="/views/layoutAdmin/header.jsp" />
-		<put-attribute name="menu"
-			value="/views/layoutAdmin/menu.jsp" />
+		<put-attribute name="header" value="/views/layoutAdmin/header.jsp" />
+		<put-attribute name="menu" value="/views/layoutAdmin/menu.jsp" />
 		<put-attribute name="body" value="" />
 
 	</definition>
@@ -61,40 +63,32 @@
 
 	<definition name="showUser" extends="baseLayoutAdmin">
 		<put-attribute name="title" value="USERS" />
-		<put-attribute name="body"
-			value="/views/admin/users/show.jsp" />
+		<put-attribute name="body" value="/views/admin/users/show.jsp" />
 	</definition>
 
-	<definition name="adminRegister"
-		extends="LayoutAdminLogInRegister">
+	<definition name="adminRegister" extends="LayoutAdminLogInRegister">
 		<put-attribute name="title" value="REGISTER" />
-		<put-attribute name="body"
-			value="/views/admin/register.jsp" />
+		<put-attribute name="body" value="/views/admin/register.jsp" />
 	</definition>
 
-	<definition name="adminLogin"
-		extends="LayoutAdminLogInRegister">
+	<definition name="adminLogin" extends="LayoutAdminLogInRegister">
 		<put-attribute name="title" value="LOGIN" />
-		<put-attribute name="body"
-			value="/views/admin/login.jsp" />
+		<put-attribute name="body" value="/views/admin/login.jsp" />
 	</definition>
 
 	<definition name="showTour" extends="baseLayoutAdmin">
 		<put-attribute name="title" value="TOURS" />
-		<put-attribute name="body"
-			value="/views/admin/tours/show.jsp" />
+		<put-attribute name="body" value="/views/admin/tours/show.jsp" />
 	</definition>
 
 	<definition name="detailTour" extends="baseLayoutAdmin">
 		<put-attribute name="title" value="TOURS" />
-		<put-attribute name="body"
-			value="/views/admin/tours/detail.jsp" />
+		<put-attribute name="body" value="/views/admin/tours/detail.jsp" />
 	</definition>
-	
+
 	<definition name="editTour" extends="baseLayoutAdmin">
 		<put-attribute name="title" value="TOURS" />
-		<put-attribute name="body"
-			value="/views/admin/tours/edit.jsp" />
+		<put-attribute name="body" value="/views/admin/tours/edit.jsp" />
 	</definition>
 
 	<definition name="demo" template="/views/admin/demo.jsp">

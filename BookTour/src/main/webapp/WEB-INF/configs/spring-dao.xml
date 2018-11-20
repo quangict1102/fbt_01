@@ -29,4 +29,14 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="CommentDAO" class="app.dao.impl.CommentDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="BookTourDAO" class="app.dao.impl.BookTourDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 </beans>

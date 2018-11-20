@@ -142,7 +142,7 @@
 					<ul>
 					<c:forEach var="lTourToday" items="${tourToday }">
 						<li class="button"><a href="#"><div>${lTourToday.name }</div></a>
-						<li class="dropdown "><a href="products.html">
+						<li class="dropdown "><a href="detailtours/${lTourToday.id }">
 								<div class="destinations-grid">
 									<img src="assets/images/a1.jpg" alt="" />
 								</div>

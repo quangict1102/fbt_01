@@ -23,7 +23,7 @@ public class UserConverHelper {
 		return userInfo;
 	};
 
-	public static List<UserInfo> convertUserTouserInfo(List<User> userList) {
+	public static List<UserInfo> convertUserToUserInfo(List<User> userList) {
 		List<UserInfo> userInfoList = new ArrayList<>();
 		for (User user : userList) {
 			userInfoList.add(userToUserInfo.apply(user));

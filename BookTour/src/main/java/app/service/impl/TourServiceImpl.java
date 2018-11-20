@@ -24,22 +24,25 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	private static final Logger logger = Logger.getLogger(TourDAOImpl.class);
 
 	@Override
-	public List<TourInfo> loadAllTour() {
-		return TourConvertHelper.convertTourToTourInfo(getTourDAO().loadAllTour());
-	}
 
-	@Override
-	public List<TourInfo> findByPlace(String place) {
+	public Tour findById(Serializable key) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<TourInfo> getTourToday(Date date) {
-		try {
-			return TourConvertHelper.convertTourToTourInfo(getTourDAO().getTourToday(date));
-		} catch (Exception e) {
-			return null;
-		}
+	public Tour saveOrUpdate(Tour entity) {
+		// TODO Auto-generated method stub
+
+		return null;
+	}
+
+	@Override
+
+	public boolean delete(Tour entity) {
+		// TODO Auto-generated method stub
+		return false;
+
 	}
 
 	@Override
@@ -94,6 +97,7 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	@Override
 	public boolean deleteTour(Integer id) {
 		try {
+
 			Tour tour = getTourDAO().findByIdLock(id);
 			if (tour == null) {
 				return false;
@@ -106,35 +110,32 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	}
 
 	@Override
-	public TourInfo findById(Serializable key) {
-		return TourConvertHelper.convertSingleTourToTourInfo(getTourDAO().findById(key));
+	public TourInfo getAllById(Integer id) {
+		return TourConvertHelper.convertSingleTourToTourInfo(getTourDAO().findById(id));
 	}
 
 	@Override
-	public TourInfo saveOrUpdate(TourInfo entity) {
+	public List<TourInfo> loadAllTour() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean delete(TourInfo entity) {
-		try {
-			Tour tour = TourConvertHelper.convertSingleTourInfoToTour(entity);
-			getTourDAO().delete(tour);
-			return true;
-		} catch (Exception e) {
-			throw e;
-		}
+	public List<TourInfo> findByPlace(String place) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TourInfo> getTourToday(Date date) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public boolean deleteTour(Tour tour) {
-		try {
-			getTourDAO().delete(tour);
-			return true;
-		} catch (Exception e) {
-			throw e;
-
-		}
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

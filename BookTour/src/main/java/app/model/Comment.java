@@ -10,9 +10,9 @@ public class Comment implements java.io.Serializable {
 	private User user;
 	private String context;
 	private Date time;
-	private byte status;
+	private int status;
 
-	public Comment(Integer id, Tour tour, User user, String context, Date time, byte status) {
+	public Comment(Integer id, Tour tour, User user, String context, Date time, int status) {
 		this.id = id;
 		this.tour = tour;
 		this.user = user;
@@ -64,11 +64,11 @@ public class Comment implements java.io.Serializable {
 		this.time = time;
 	}
 
-	public byte getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(byte status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 

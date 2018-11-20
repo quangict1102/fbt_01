@@ -82,7 +82,7 @@
 						<div class="product-right-top">
 							<div class="p-left">
 								<div class="p-right-img">
-									<a href="p-single.html"> </a>
+									<a href="detailtour/${lTours.id}"> </a>
 								</div>
 							</div>
 							<div class="p-right">

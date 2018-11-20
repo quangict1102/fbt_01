@@ -61,11 +61,11 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 	}
 
 	@Override
-	public User findByEmailAndPassword(String email, String password) throws Exception {
+	public User findByEmailAndPassword(String email, String password) {
 		logger.info("email password " + email + password);
 		return (User) getSession().createQuery("FROM User where email = :email AND password=:password")
 				.setParameter("email", email).setParameter("password", Md5Helper.getCodeMd5(password))
-				.getSingleResult();
+				.uniqueResult();
 	}
 
 }

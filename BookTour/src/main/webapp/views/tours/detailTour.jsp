@@ -2,6 +2,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<spring:url value="/assets/js/load-cmt.js" var="load_cmt" />
+<spring:url value="/assets/js/load-img.js" var="load_img" />
+<spring:url value="/assets/js/jquery.flexslider.js" var="flexsliderJs" />
 <div class="banner-bottom">
 	<!-- container -->
 	<div class="container">
@@ -29,146 +32,46 @@
 							vehicula. ultrices tellus eget ipsum ornare consectetur
 							adipiscing elit.Sed blandit . estibulum aliquam neque nibh, sed
 							accumsan nulla ornare sit amet.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed
-							blandit massa vel mauris sollicitudin dignissim. Phasellus
-							ultrices tellus eget ipsum ornare molestie scelerisque eros
-							dignissim. Phasellus fringilla hendrerit lectus nec vehicula.
-							ultrices tellus eget ipsum ornare consectetur adipiscing elit.Sed
-							blandit . estibulum aliquam neque nibh, sed accumsan nulla ornare
-							sit amet.Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit.Sed blandit massa vel mauris sollicitudin dignissim.
-							Phasellus ultrices tellus eget ipsum ornare molestie scelerisque
-							eros dignissim. Phasellus fringilla hendrerit lectus nec
-							vehicula. ultrices tellus eget ipsum ornare consectetur
-							adipiscing elit.Sed blandit . estibulum aliquam neque nibh, sed
-							accumsan nulla ornare sit amet.</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed
-							blandit massa vel mauris sollicitudin dignissim. Phasellus
-							ultrices tellus eget ipsum ornare molestie scelerisque eros
-							dignissim. Phasellus fringilla hendrerit lectus nec vehicula.
-							ultrices tellus eget ipsum ornare consectetur adipiscing elit.Sed
-							blandit . estibulum aliquam neque nibh, sed accumsan nulla ornare
-							sit amet.</p>
+
 					</div>
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="assets/images/p1.jpg"><img
-								src="assets/images/p1.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p2.jpg"><img
-								src="assets/images/p2.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p3.jpg"><img
-								src="assets/images/p3.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p4.jpg"><img
-								src="assets/images/p4.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p1.jpg"><img
-								src="assets/images/p1.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p2.jpg"><img
-								src="assets/images/p2.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p3.jpg"><img
-								src="assets/images/p3.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p4.jpg"><img
-								src="assets/images/p4.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p1.jpg"><img
-								src="assets/images/p1.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p2.jpg"><img
-								src="assets/images/p2.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p3.jpg"><img
-								src="assets/images/p3.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p4.jpg"><img
-								src="assets/images/p4.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p1.jpg"><img
-								src="assets/images/p1.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p2.jpg"><img
-								src="assets/images/p2.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p3.jpg"><img
-								src="assets/images/p3.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p4.jpg"><img
-								src="assets/images/p4.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p1.jpg"><img
-								src="assets/images/p1.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p2.jpg"><img
-								src="assets/images/p2.jpg" alt="" /></li>
-							<li data-thumb="assets/images/p3.jpg"><img
-								src="assets/images/p3.jpg" alt="" /></li>
+							<li data-thumb="<c:url value="/assets/images/p1.jpg"/>"><img
+								src="<c:url value="/assets/images/p1.jpg"/>" alt="" /></li>
+							<li data-thumb="<c:url value="/assets/images/p2.jpg"/>"><img
+								src="<c:url value="/assets/images/p2.jpg"/>" alt="" /></li>
+							<li data-thumb="<c:url value="/assets/images/p3.jpg"/>"><img
+								src="<c:url value="/assets/images/p3.jpg"/>" alt="" /></li>
+							<li data-thumb="<c:url value="/assets/images/p4.jpg"/>"><img
+								src="<c:url value="/assets/images/p4.jpg"/>" alt="" /></li>
+							<li data-thumb="<c:url value="/assets/images/p1.jpg"/>"><img
+								src="<c:url value="/assets/images/p1.jpg"/>" alt="" /></li>
+							<li data-thumb="<c:url value="/assets/images/p2.jpg"/>"><img
+								src="<c:url value="/assets/images/p2.jpg"/>" alt="" /></li>
+							<li data-thumb="<c:url value="/assets/images/p3.jpg"/>"><img
+								src="<c:url value="/assets/images/p3.jpg"/>" alt="" /></li>
+							<li data-thumb="<c:url value="/assets/images/p4.jpg"/>"><img
+								src="<c:url value="/assets/images/p4.jpg"/>" alt="" /></li>
 						</ul>
 					</div>
 					<!-- FlexSlider -->
 					<script defer src="${flexsliderJs }"></script>
 					<script type="text/javascript" src="${load_img }"></script>
 					<!-- Comment -->
-					<div class="response">
+					<div id="comment_user" class="response">
 						<h3>Responses</h3>
-						<div class="media response-info">
-							<div class="media-left response-text-left">
-								<a href="#"> <img class="media-object"
-									src="assets/images/user1.jpg" alt="">
-								</a>
-								<h5>
-									<a href="#">Admin</a>
-								</h5>
-							</div>
-							<div class="media-body response-text-right">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-									elit,There are many variations of passages of Lorem Ipsum
-									available, sed do eiusmod tempor incididunt ut labore et dolore
-									magna aliqua.</p>
-								<ul>
-									<li>June 21, 2013</li>
-									<li><a href="single.html">Reply</a></li>
-								</ul>
-								<div class="media response-info">
-									<div class="media-left response-text-left">
-										<a href="#"> <img class="media-object"
-											src="assets/images/user2.jpg" alt="">
-										</a>
-										<h5>
-											<a href="#">Admin</a>
-										</h5>
-									</div>
-									<div class="media-body response-text-right">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit,There are many variations of passages of Lorem Ipsum
-											available, sed do eiusmod tempor incididunt ut labore et
-											dolore magna aliqua.</p>
-										<ul>
-											<li>June 21, 2014</li>
-											<li><a href="single.html">Reply</a></li>
-										</ul>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div class="media response-info">
-							<div class="media-left response-text-left">
-								<a href="#"> <img class="media-object"
-									src="assets/images/user3.jpg" alt="">
-								</a>
-								<h5>
-									<a href="#">Admin</a>
-								</h5>
-							</div>
-							<div class="media-body response-text-right">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-									elit,There are many variations of passages of Lorem Ipsum
-									available, sed do eiusmod tempor incididunt ut labore et dolore
-									magna aliqua.</p>
-								<ul>
-									<li>June 21, 2013</li>
-									<li><a href="single.html">Reply</a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-						</div>
+						<div id="idTour" data-idTour="${id_tour }"></div>
+						<div id="idUser" data-idUser="${id_user }"></div>
+						<div id="nameUser" data-nameUser="${name_user }"></div>
+						<ul class="ul_comment" style="list-style-type: none;">
+						</ul>
 					</div>
 					<div class="opinion">
-						<h3>Leave your comment</h3>
+						<h3>Your comment</h3>
 						<form>
-							<input type="text" placeholder="Name" required=""> <input
-								type="text" placeholder="Email" required="">
-							<textarea placeholder="Message" required=""></textarea>
-							<input type="submit" value="SEND">
+							<textarea class="message" style="min-height: 0px; width: 100%"
+								placeholder="Message" required=""></textarea>
+							<input type="submit" data-idStatus="0" id="comment-mess" value="SEND">
 						</form>
 					</div>
 				</div>
@@ -187,7 +90,7 @@
 								<span>$8,750</span> $4,850
 							</h4>
 							<p class="best-pri">Best price</p>
-							<a class="best-btn" href="booking.html">Book Now</a>
+							<a class="best-btn" href="<c:url value="/booking/${id_tour}" />">Book Now</a>
 						</div>
 					</div>
 					<div class="map-gd">
@@ -239,7 +142,7 @@
 							<h6>Room type</h6>
 						</div>
 						<div class="p-table-grid-info">
-							<a href="#"><img src="images/p2.jpg" alt=""></a>
+							<a href="#"><img src="<c:url value="/assets/images/p2.jpg"/>" alt=""></a>
 							<div class="room-basic-info">
 								<a href="#">Fusce vestibulum ultricies rutrum</a>
 								<h6>1 king bed or 2 single beds</h6>
@@ -289,7 +192,7 @@
 							<h6>Room type</h6>
 						</div>
 						<div class="p-table-grid-info">
-							<a href="#"><img src="images/p1.jpg" alt=""></a>
+							<a href="#"><img src="<c:url value="/assets/images/p1.jpg"/>" alt=""></a>
 							<div class="room-basic-info">
 								<a href="#">Fusce vestibulum ultricies rutrum</a>
 								<h6>1 king bed or 2 single beds</h6>
@@ -386,3 +289,4 @@
 	</div>
 	<!-- //container -->
 </div>
+<script type="text/javascript" src="${load_cmt }"></script>
