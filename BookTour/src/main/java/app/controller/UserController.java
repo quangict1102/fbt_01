@@ -20,8 +20,9 @@ public class UserController extends BaseController {
 		if (user != null && user.getRole().equals("user")) {
 			model.addAttribute("logNotice",
 					messageSource.getMessage("login.valid", null, LocaleContextHolder.getLocale()));
-			return "forward:/";
+			return "forward:/admin";
 		}
+
 		model.addAttribute("logNotice",
 				messageSource.getMessage("login.invalid", null, LocaleContextHolder.getLocale()));
 		return "forward:/";

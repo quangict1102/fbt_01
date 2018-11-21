@@ -24,6 +24,20 @@ public class Tour implements Serializable {
 	public Tour() {
 	}
 
+	public Tour(String name, int maxPeople, String describe, String primeAdults, String primeChilden, int placeFromId,
+			int placeToId, int durationTime, Date dateStart) {
+		super();
+		this.name = name;
+		this.maxPeople = maxPeople;
+		this.describe = describe;
+		this.primeAdults = primeAdults;
+		this.primeChilden = primeChilden;
+		this.placeFromId = placeFromId;
+		this.placeToId = placeToId;
+		this.durationTime = durationTime;
+		this.dateStart = dateStart;
+	}
+
 	public Tour(Integer id, String name, int maxPeople, String describe, String primeAdults, String primeChilden,
 			int placeFromId, int placeToId, int durationTime, Date dateStart) {
 		this.id = id;

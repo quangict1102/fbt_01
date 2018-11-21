@@ -2,57 +2,62 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="app.model">
-    <class name="Tour" table="tours" catalog="db_bookingtour" optimistic-lock="version">
-        <id name="id" type="int">
-            <column name="id" />
-            <generator class="identity" />
-        </id>
-        <property name="name" type="string">
-            <column name="name" length="225" not-null="true" />
-        </property>
-        <property name="maxPeople" type="int">
-            <column name="maxPeople" not-null="true" />
-        </property>
-        <property name="describe" type="string">
-            <column name="describe" length="65535" not-null="true" />
-        </property>
-        <property name="primeAdults" type="string">
-            <column name="primeAdults" length="225" />
-        </property>
-        <property name="primeChilden" type="string">
-            <column name="primeChilden" length="225" />
-        </property>
-        <property name="durationTime" type="java.lang.Integer">
-            <column name="durationTime" />
-        </property>
-        <property name="placeToId" type="int">
-            <column name="placeToId" not-null="true" />
-        </property>
-        <property name="dateStart" type="date">
-            <column name="dateStart" length="10" />
-        </property>
-        <property name="placeFromId" type="int">
-            <column name="placeFromId" not-null="true" />
-        </property>
-        <list name="booktourses" table="booktours" inverse="true" fetch="select">
-            <key column="tourId" />
-            <list-index column="id" />
-            <one-to-many class="Booktour" />
-        </list>
-        <list name="toursplaceses" table="toursplaces" inverse="true"  fetch="select">
-             <key column="tours_id" />
-             <list-index column="id" />
-            <one-to-many class="Toursplace" />
-        </list>
-        <list name="ratingses" table="ratings" inverse="true"  fetch="select">
-             <key column="tours_id" />
-             <list-index column="id" />
-            <one-to-many class="Rating" />
-        </list>
-        <list name="commentses" table="comments" inverse="true"  fetch="select">
-             <key column="tourId" />
-             <list-index column="id" />
-            <one-to-many class="Comment" />
-        </list>
-    </class>
+	<class name="Tour" table="tours" catalog="db_bookingtour"
+		optimistic-lock="version">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="name" type="string">
+			<column name="name" length="225" not-null="true" />
+		</property>
+		<property name="maxPeople" type="int">
+			<column name="maxPeople" not-null="true" />
+		</property>
+		<property name="describe" type="string">
+			<column name="describe" length="225" />
+		</property>
+		<property name="primeAdults" type="string">
+			<column name="primeAdults" length="225" />
+		</property>
+		<property name="primeChilden" type="string">
+			<column name="primeChilden" length="225" />
+		</property>
+
+		<property name="placeFromId" type="int">
+			<column name="placeFromId" not-null="true" />
+		</property>
+		<property name="placeToId" type="int">
+			<column name="placeToId" not-null="true" />
+		</property>
+		<property name="durationTime" type="int">
+			<column name="durationTime" />
+		</property>
+
+
+		<list name="booktourses" table="booktours" inverse="true"
+			fetch="select">
+			<key column="tourId" />
+			<list-index column="id" />
+			<one-to-many class="Booktour" />
+		</list>
+		<list name="toursplaceses" table="toursplaces" inverse="true"
+			fetch="select">
+			<key column="tours_id" />
+			<list-index column="id" />
+			<one-to-many class="Toursplace" />
+		</list>
+		<list name="ratingses" table="ratings" inverse="true"
+			fetch="select">
+			<key column="tours_id" />
+			<list-index column="id" />
+			<one-to-many class="Rating" />
+		</list>
+		<list name="commentses" table="comments" inverse="true"
+			fetch="select">
+			<key column="tourId" />
+			<list-index column="id" />
+			<one-to-many class="Comment" />
+		</list>
+	</class>
 </hibernate-mapping>

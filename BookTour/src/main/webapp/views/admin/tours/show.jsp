@@ -6,6 +6,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
 
+<spring:url value="/addTour" var="addTourUrl" />
 <div id="wrapper">
 	<!-- DataTables Example -->
 	<div class="card mb-3">
@@ -89,43 +90,95 @@
 				</div>
 				<div class="modal-body">
 					<table class="table table-user-information">
-						<form:form class="form-horizontal" method="post"
-							modelAttribute="addTour" action="${loginUrl}">
-							<div class="col-md-6 ">
-								<div class="col-md-6 form-group">
-									<div class="form-label-group">
-										<form:input path="name" type="text" id="name"
-											class="form-control" placeholder="Name" required="required"
-											autofocus="autofocus" />
-										<label for="name">Name</label>
-									</div>
-								</div>
-								<div class="form-group col-md-6">
-									<div class="form-label-group">
-										<form:input path="maxPeople" type="number" min="1" max="5"
-											id="maxPeople" class="form-control" placeholder="maxPeople"
-											required="required" autofocus="autofocus" />
-										<label for="maxPeople">Max People</label>
-									</div>
-								</div>
-							</div>
+						<form:form class="form-horizontal" modelAttribute="addTour"
+							action="${addTourUrl}">
 
-							<div class="form-group">
+							<div class=" form-group">
 								<div class="form-label-group">
-									<form:input path="primeAdults" type="password"
-										id="inputPassword" class="form-control	"
-										placeholder="Password" required="required" />
-									<label for="inputPassword">Password</label>
+									<input name="name" type="text" id="name" class="form-control"
+										placeholder="Name" required="required" autofocus="autofocus" />
+									<label for="name">Name</label>
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="checkbox">
-									<label> <input type="checkbox" value="remember-me">
-										Remember Password
-									</label>
+							<div class="form-group ">
+								<div class="form-label-group">
+									<input name="maxPeople" type="number" min="1" max="100"
+										id="maxPeople" class="form-control" placeholder="maxPeople"
+										required="required" autofocus="autofocus" /> <label
+										for="maxPeople">Max People</label>
 								</div>
 							</div>
-							<button type="submit" class="btn btn-primary btn-block ">Login</button>
+<!-- 							<div class="form-group "> -->
+<!-- 								<div class="form-label-group"> -->
+<!-- 									<input name="primeAdults" type="number" value="0.00" -->
+<!-- 										id="primeAdults" min="0" step="10" class="form-control" -->
+<!-- 										placeholder="primeAdults" required="required" -->
+<!-- 										autofocus="autofocus" /> <label for="primeAdults">Prime -->
+<!-- 										Adults</label> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+
+<!-- 							<div class="form-group "> -->
+<!-- 								<div class="form-label-group"> -->
+<!-- 									<input name="primeChilden" type="number" value="0.00" -->
+<!-- 										id="primeChilden" min="0" step="10" class="form-control" -->
+<!-- 										placeholder="primeChilden" required="required" -->
+<!-- 										autofocus="autofocus" /> <label for="primeChilden">Prime -->
+<!-- 										Childen</label> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group "> -->
+<!-- 								<div class="form-label-group"> -->
+<!-- 									<select name="placeFromId"> -->
+<!-- 										<option value="-" label="--Select Place From" /> -->
+<%-- 										<c:forEach items="${places}" var="places" varStatus="count"> --%>
+<%-- 											<option value=${places.id}>${places.name}</option> --%>
+<%-- 										</c:forEach> --%>
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+
+<!-- 							<div class="form-group "> -->
+<!-- 								<div class="form-label-group"> -->
+<!-- 									<select name="placeToId"> -->
+<!-- 										<option value="-" label="--Select Place To" /> -->
+<%-- 										<c:forEach items="${places}" var="places" varStatus="count"> --%>
+<%-- 											<option value=${places.id}>${places.name}</option> --%>
+<%-- 										</c:forEach> --%>
+<!-- 									</select> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group "> -->
+<!-- 								<div class="form-label-group"> -->
+<!-- 									<input name="durationTime" type="number" value="0" min="1" -->
+<!-- 										class="form-control" placeholder="durationTime" -->
+<!-- 										required="required" id="durationTime" /> <label -->
+<!-- 										for="durationTime">Duration Time</label> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-group"> -->
+<!-- 								<div class="form-label-group"> -->
+<!-- 									<input name="dateStartConver" type="date" id="dateStartConver" -->
+<!-- 										class="form-control	" placeholder="dateStart" -->
+<!-- 										required="required" /> <label for="dateStart">Date -->
+<!-- 										Start</label> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+
+
+<!-- 							<div class="form-group"> -->
+<!-- 								<div class="form-label-group"> -->
+									
+<!-- 									<textarea id="describe" name="describe" rows="5" cols="33"> -->
+								
+<!-- 									</textarea> -->
+<!-- 									<label for="describe">Tell us your story:</label> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+
+
+
+							<button type="submit" class="btn btn-primary btn-block ">submit</button>
 						</form:form>
 					</table>
 				</div>

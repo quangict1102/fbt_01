@@ -16,16 +16,46 @@ public class TourInfo {
 	private int durationTime;
 	private Date dateStart;
 	private Rating numberRank;
-/*	private List<Booktours> booktourses;
-	private List<Toursplaces> toursplaceses;
-	private List<Ratings> ratingses;
-	private List<Comments> commentses;*/
+	/*
+	 * private List<Booktours> booktourses; private List<Toursplaces> toursplaceses;
+	 * private List<Ratings> ratingses; private List<Comments> commentses;
+	 */
 
 	public TourInfo() {
 	}
 
+	public TourInfo(String name, int maxPeople, String describe, String primeAdults, String primeChilden,
+			int placeFromId, int placeToId, int durationTime, Date dateStart) {
+		super();
+		this.name = name;
+		this.maxPeople = maxPeople;
+		this.describe = describe;
+		this.primeAdults = primeAdults;
+		this.primeChilden = primeChilden;
+		this.placeFromId = placeFromId;
+		this.placeToId = placeToId;
+		this.durationTime = durationTime;
+		this.dateStart = dateStart;
+	}
+	
+
 	public TourInfo(Integer id, String name, int maxPeople, String describe, String primeAdults, String primeChilden,
-			int placeFromId, int placeToId, int durationTime, Date dateStart,Rating numberRank) {
+			int placeFromId, int placeToId, int durationTime, Date dateStart) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.maxPeople = maxPeople;
+		this.describe = describe;
+		this.primeAdults = primeAdults;
+		this.primeChilden = primeChilden;
+		this.placeFromId = placeFromId;
+		this.placeToId = placeToId;
+		this.durationTime = durationTime;
+		this.dateStart = dateStart;
+	}
+
+	public TourInfo(Integer id, String name, int maxPeople, String describe, String primeAdults, String primeChilden,
+			int placeFromId, int placeToId, int durationTime, Date dateStart, Rating numberRank) {
 		this.id = id;
 		this.name = name;
 		this.maxPeople = maxPeople;
@@ -127,36 +157,26 @@ public class TourInfo {
 		this.numberRank = numberRank;
 	}
 
-/*	public List<Booktours> getBooktourses() {
-		return booktourses;
-	}
-
-	public void setBooktourses(List<Booktours> booktourses) {
-		this.booktourses = booktourses;
-	}
-
-	public List<Toursplaces> getToursplaceses() {
-		return toursplaceses;
-	}
-
-	public void setToursplaceses(List<Toursplaces> toursplaceses) {
-		this.toursplaceses = toursplaceses;
-	}
-
-	public List<Ratings> getRatingses() {
-		return ratingses;
-	}
-
-	public void setRatingses(List<Ratings> ratingses) {
-		this.ratingses = ratingses;
-	}
-
-	public List<Comments> getCommentses() {
-		return commentses;
-	}
-
-	public void setCommentses(List<Comments> commentses) {
-		this.commentses = commentses;
-	}*/
+	/*
+	 * public List<Booktours> getBooktourses() { return booktourses; }
+	 * 
+	 * public void setBooktourses(List<Booktours> booktourses) { this.booktourses =
+	 * booktourses; }
+	 * 
+	 * public List<Toursplaces> getToursplaceses() { return toursplaceses; }
+	 * 
+	 * public void setToursplaceses(List<Toursplaces> toursplaceses) {
+	 * this.toursplaceses = toursplaceses; }
+	 * 
+	 * public List<Ratings> getRatingses() { return ratingses; }
+	 * 
+	 * public void setRatingses(List<Ratings> ratingses) { this.ratingses =
+	 * ratingses; }
+	 * 
+	 * public List<Comments> getCommentses() { return commentses; }
+	 * 
+	 * public void setCommentses(List<Comments> commentses) { this.commentses =
+	 * commentses; }
+	 */
 
 }

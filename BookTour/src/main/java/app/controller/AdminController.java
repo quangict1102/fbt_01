@@ -24,6 +24,9 @@ public class AdminController extends BaseController {
 		ModelAndView model = new ModelAndView("homeAdmin");
 		model.addObject("user", new UserInfo());
 		model.addObject("users", userService.loadUsers());
+		/*//User user= new User(id, fullName, gender, address, email, phoneNumber, password, role)
+		//User entity= new User( 10,"hoang van quang", 0, "Nam Dinh", "quangict@gmail.com", "1432423", "12345678", "admin");
+		userService.saveOrUpdate(entity);*/
 		return model;
 	}
 
@@ -44,7 +47,7 @@ public class AdminController extends BaseController {
 	public ModelAndView showUser() {
 		logger.info("Table user page");
 		ModelAndView model = new ModelAndView("showUser");
-		model.addObject("user", new UserInfo());
+	//	model.addObject("user", new UserInfo());
 		model.addObject("users", userService.loadUsers());
 		return model;
 	}
@@ -63,7 +66,7 @@ public class AdminController extends BaseController {
 	@RequestMapping(value = "/admin/login")
 	public String doLoginAdmin(@ModelAttribute("UserLogin") UserInfo userInfo, Model model) {
 		User user = userService.findByEmailAndPassword(userInfo.getEmail(), userInfo.getPassword());
-		if (user != null && user.getRole().equals("admin")) {
+		if (user != null && user.getRole().equals("user")) {
 			model.addAttribute("logNotice",
 					messageSource.getMessage("login.valid", null, LocaleContextHolder.getLocale()));
 			return "forward:/admin";

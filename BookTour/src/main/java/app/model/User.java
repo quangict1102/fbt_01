@@ -1,10 +1,9 @@
 package app.model;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class User  {
+//		private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String fullName;
 	private int gender;
@@ -18,6 +17,18 @@ public class User implements Serializable {
 	private List<Booktour> booktourses;
 
 	public User() {
+	}
+
+	public User(String fullName, int gender, String address, String email, String phoneNumber, String password,
+			String role) {
+		super();
+		this.fullName = fullName;
+		this.gender = gender;
+		this.address = address;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.role = role;
 	}
 
 	public User(Integer id, String fullName, int gender, String address, String email, String phoneNumber,

@@ -21,23 +21,30 @@ import app.service.TourService;
 public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	private static final Logger logger = Logger.getLogger(TourDAOImpl.class);
 
-	@Override
+/*	@Override
 	public TourInfo findById(Serializable key) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public TourInfo saveOrUpdate(TourInfo entity) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Tour tour =TourConvertHelper.convertSingleTourInfoToTour(entity);
+			Tour tour1 = getTourDAO().saveOrUpdate(tour);
+			
+			return TourConvertHelper.convertSingleTourToTourInfo(tour1);
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+	
 	}
 
 	@Override
 	public boolean delete(TourInfo entity) {
 		// TODO Auto-generated method stub
 		return false;
-	}
+	}*/
 
 	@Override
 	public List<TourInfo> loadAllTour() {
@@ -69,7 +76,7 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 			for (Object[] o : arrObject) {
 				Tour tour = (Tour) o[0];
 				arrTour.add(tour);
-				String rating =  (String) o[1];
+				String rating = (String) o[1];
 				arrRating.add(rating);
 			}
 			for (int i = 0; i < arrTour.size(); i++) {
@@ -89,6 +96,47 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 			return null;
 		}
 
+	}
+
+	@Override
+	public TourInfo saveOrUpdate(String strDate, TourInfo entity) {
+
+		entity.setDateStart(ConvertDateSql.convertStringtoDate(strDate));
+		entity.setId(14);
+		try {
+			getTourDAO().saveOrUpdate(TourConvertHelper.convertSingleTourInfoToTour(entity));
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+		return null;
+	}
+
+	@Override
+	public Tour findById(Serializable key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Tour saveOrUpdate(Tour entity) {
+		try {
+			/*User user = userDAO.findByIdLock(entity.getId());
+			if (user == null) {
+				return null;
+			}*/
+			return getTourDAO().saveOrUpdate(entity);
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+		
+	}
+
+	@Override
+	public boolean delete(Tour entity) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

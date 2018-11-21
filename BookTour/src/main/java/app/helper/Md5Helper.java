@@ -4,6 +4,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Md5Helper {
+	public static void main(String[] args) {
+		System.out.println(getCodeMd5("12345678"));
+	}
 	public static String getCodeMd5(String password) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
