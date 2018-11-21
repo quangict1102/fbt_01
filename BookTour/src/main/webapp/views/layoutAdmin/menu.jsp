@@ -61,8 +61,8 @@
 						</div>
 						<div class="mr-5">User and Admin !</div>
 					</div>
-					<a class="card-footer text-white clearfix small z-1" href="tableUser">
-						<span class="float-left">View Details</span> <span
+					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/users"/>">
+						<span class="float-left">View Users</span> <span
 						class="float-right"> <i class="fas fa-angle-right"></i>
 					</span>
 					</a>
@@ -76,8 +76,8 @@
 						</div>
 						<div class="mr-5"> Tour </div>
 					</div>
-					<a class="card-footer text-white clearfix small z-1" href="#">
-						<span class="float-left">View Details</span> <span
+					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/tours"/>"">
+						<span class="float-left">View Tours</span> <span
 						class="float-right"> <i class="fas fa-angle-right"></i>
 					</span>
 					</a>

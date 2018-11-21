@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import app.bean.UserInfo;
+import app.helper.ROLES;
 import app.model.User;
 
 @Controller
@@ -27,16 +28,10 @@ public class AdminController extends BaseController {
 		return model;
 	}
 
-	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
 	public String deleteUser(@PathVariable("id") Integer id, final RedirectAttributes redirectAttributes) {
 		logger.info("delete User");
-		if (userService.deleteUser(id)) {
-			redirectAttributes.addFlashAttribute("css", "success");
-			redirectAttributes.addFlashAttribute("msg", "user is deleted!");
-		} else {
-			redirectAttributes.addFlashAttribute("css", "error");
-			redirectAttributes.addFlashAttribute("msg", "Delete user fails!!!!");
-		}
+		userService.deleteUser(id);
 		return "redirect:/admin";
 	}
 
@@ -49,12 +44,8 @@ public class AdminController extends BaseController {
 		return model;
 	}
 
-	@RequestMapping(value = "/adminRegister")
-	public String register() {
-		return "adminRegister";
-	}
-
-	@RequestMapping(value = "/adminLogin")
+	
+	@RequestMapping(value = "/login")
 	public String toLoginAdmin(Model model) {
 		model.addAttribute("userLogin", new UserInfo());
 		return "adminLogin";
@@ -63,17 +54,14 @@ public class AdminController extends BaseController {
 	@RequestMapping(value = "/admin/login")
 	public String doLoginAdmin(@ModelAttribute("UserLogin") UserInfo userInfo, Model model) {
 		User user = userService.findByEmailAndPassword(userInfo.getEmail(), userInfo.getPassword());
-		if (user != null && user.getRole().equals("admin")) {
+		if (user == null || !user.getRole().equals(ROLES.ADMIN.toString())) {
 			model.addAttribute("logNotice",
-					messageSource.getMessage("login.valid", null, LocaleContextHolder.getLocale()));
-			return "forward:/admin";
+					messageSource.getMessage("login.invalid", null, LocaleContextHolder.getLocale()));
+			return "forward:/adminLogin";
 		}
-		model.addAttribute("logNotice", messageSource.getMessage("login.invalid", null, LocaleContextHolder.getLocale()));
-		return "forward:/adminLogin";
+		model.addAttribute("logNotice", messageSource.getMessage("login.valid", null, LocaleContextHolder.getLocale()));
+		return "forward:/admin";
+
 	}
-	/*
-	 * @RequestMapping(value = "/") public String index(Model model) { return
-	 * "home"; }
-	 */
 
 }

@@ -57,8 +57,9 @@ public class UserConverHelper {
 		return userList;
 	}
 
-	public static User convertUserToUserInfo(UserInfo userInfo) {
+	public static User convertSingleUserInfoToUser(UserInfo userInfo) {
 		return userInfoToUser.apply(userInfo);
 
 	}
+	
 }

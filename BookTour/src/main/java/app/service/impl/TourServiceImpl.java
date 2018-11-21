@@ -13,31 +13,15 @@ import app.dao.impl.TourDAOImpl;
 import app.helper.ConvertDateSql;
 import app.helper.RankOfTourHelper;
 import app.helper.TourConvertHelper;
+import app.helper.TourUpdateHelper;
 import app.model.RankOfTour;
 import app.model.Rating;
 import app.model.Tour;
+import app.model.User;
 import app.service.TourService;
 
 public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	private static final Logger logger = Logger.getLogger(TourDAOImpl.class);
-
-	@Override
-	public TourInfo findById(Serializable key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public TourInfo saveOrUpdate(TourInfo entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean delete(TourInfo entity) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public List<TourInfo> loadAllTour() {
@@ -46,7 +30,6 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 
 	@Override
 	public List<TourInfo> findByPlace(String place) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -69,7 +52,7 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 			for (Object[] o : arrObject) {
 				Tour tour = (Tour) o[0];
 				arrTour.add(tour);
-				String rating =  (String) o[1];
+				String rating = (String) o[1];
 				arrRating.add(rating);
 			}
 			for (int i = 0; i < arrTour.size(); i++) {
@@ -89,6 +72,69 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 			return null;
 		}
 
+	}
+
+	@Override
+	public Tour saveOrUpdate(String strDate, Tour entity) {
+		entity.setDateStart(ConvertDateSql.convertStringtoDate(strDate));
+		try {
+			
+			if (entity.getId() == null) {
+				return getTourDAO().saveOrUpdate(entity);
+			}
+			Tour tour = tourDAO.findByIdLock(entity.getId());
+			return getTourDAO().saveOrUpdate(TourUpdateHelper.update(entity, tour));
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+
+	}
+
+	@Override
+	public boolean deleteTour(Integer id) {
+		try {
+			Tour tour = getTourDAO().findByIdLock(id);
+			if (tour == null) {
+				return false;
+			}
+			return deleteTour(tour);
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+	}
+
+	@Override
+	public TourInfo findById(Serializable key) {
+		return TourConvertHelper.convertSingleTourToTourInfo(getTourDAO().findById(key));
+	}
+
+	@Override
+	public TourInfo saveOrUpdate(TourInfo entity) {
+		return null;
+	}
+
+	@Override
+	public boolean delete(TourInfo entity) {
+		try {
+			Tour tour = TourConvertHelper.convertSingleTourInfoToTour(entity);
+			getTourDAO().delete(tour);
+			return true;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public boolean deleteTour(Tour tour) {
+		try {
+			getTourDAO().delete(tour);
+			return true;
+		} catch (Exception e) {
+			throw e;
+
+		}
 	}
 
 }

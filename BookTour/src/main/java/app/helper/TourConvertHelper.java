@@ -37,16 +37,16 @@ public class TourConvertHelper {
 
 	static Function<TourInfo, Tour> tourInfoToTour = (TourInfo info) -> {
 		Tour t = new Tour();
-		t.setId(t.getId());
-		t.setName(t.getName());
-		t.setMaxPeople(t.getMaxPeople());
-		t.setDescribe(t.getDescribe());
-		t.setPrimeAdults(t.getPrimeAdults());
-		t.setPrimeChilden(t.getPrimeChilden());
-		t.setDurationTime(t.getDurationTime());
-		t.setPlaceFromId(t.getPlaceFromId());
-		t.setPlaceToId(t.getPlaceToId());
-		t.setDateStart(t.getDateStart());
+		t.setId(info.getId());
+		t.setName(info.getName());
+		t.setMaxPeople(info.getMaxPeople());
+		t.setDescribe(info.getDescribe());
+		t.setPrimeAdults(info.getPrimeAdults());
+		t.setPrimeChilden(info.getPrimeChilden());
+		t.setDurationTime(info.getDurationTime());
+		t.setPlaceFromId(info.getPlaceFromId());
+		t.setPlaceToId(info.getPlaceToId());
+		t.setDateStart(info.getDateStart());
 		return t;
 	};
 
@@ -61,4 +61,6 @@ public class TourConvertHelper {
 	public static Tour convertSingleTourInfoToTour(TourInfo t) {
 		return tourInfoToTour.apply(t);
 	}
+	
+
 }

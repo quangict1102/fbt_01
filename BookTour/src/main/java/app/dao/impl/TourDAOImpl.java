@@ -6,11 +6,13 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
+import org.hibernate.LockMode;
 
 import app.dao.GenericDAO;
 import app.dao.TourDAO;
 import app.model.RankOfTour;
 import app.model.Tour;
+import app.model.User;
 
 public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	private static final Logger logger = Logger.getLogger(TourDAOImpl.class);
@@ -46,6 +48,12 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 			+ " (select p.id from City c,Place p where c.id=p.city.id and c.id= :idcity) "
 			+ " and t.dateStart > :date group by t.id";
 		return getSession().createQuery(sql).setParameter("idcity", idcity).setParameter("date", date).getResultList();
+	}
+
+	@Override
+	public Tour findByIdLock(Integer id) {
+		logger.info("find id lock: " + id);
+		return (Tour) getSession().load(Tour.class, id, LockMode.PESSIMISTIC_WRITE);
 	}
 
 }

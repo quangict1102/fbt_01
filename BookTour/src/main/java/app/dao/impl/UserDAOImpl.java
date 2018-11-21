@@ -56,7 +56,7 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 
 	@Override
 	public User findByIdLock(Integer id) {
-		logger.info("id: " + id);
+		logger.info(" find user id lock: " + id);
 		return (User) getSession().load(User.class, id, LockMode.PESSIMISTIC_WRITE);
 	}
 

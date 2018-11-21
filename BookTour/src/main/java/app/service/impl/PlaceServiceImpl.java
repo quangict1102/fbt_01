@@ -5,27 +5,10 @@ import java.util.List;
 
 import app.bean.PlaceInfo;
 import app.helper.PlaceConvertHelper;
+import app.model.Place;
 import app.service.PlaceService;
 
 public class PlaceServiceImpl extends BaseServiceImpl implements PlaceService {
-
-	@Override
-	public PlaceInfo findById(Serializable key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PlaceInfo saveOrUpdate(PlaceInfo entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean delete(PlaceInfo entity) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public List<PlaceInfo> getAllPlace() {
@@ -43,6 +26,21 @@ public class PlaceServiceImpl extends BaseServiceImpl implements PlaceService {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	@Override
+	public Place findById(Serializable key) {
+		return getPlaceDAO().findById(key);
+	}
+
+	@Override
+	public Place saveOrUpdate(Place entity) {
+		return null;
+	}
+
+	@Override
+	public boolean delete(Place entity) {
+		return false;
 	}
 
 }
