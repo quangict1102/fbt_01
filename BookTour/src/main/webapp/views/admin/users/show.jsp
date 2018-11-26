@@ -57,13 +57,10 @@
 								<td>${user.email}</td>
 								<td>${user.phoneNumber}</td>
 								<td>${user.role}</td>
-								<td><spring:url value="/${tour.id}" var="detailActionUrl" />
+								<td><spring:url value="/${user.id}" var="detailActionUrl" />
 									<button class="btn btn-info" data-toggle="modal"
-										data-target="#myModal">Detail</button> <spring:url
-										value="/${tour.id}/edit" var="editActionUrl" />
-									<button class="btn btn-warning"
-										onclick="location.href='${editActionUrl}'">Edit</button> <spring:url
-										value="/${tour.id}/delete" var="deleteActionUrl" />
+										data-target="#myModal">Detail</button><spring:url
+										value="/${user.id}/deleteUser" var="deleteActionUrl" />
 									<button class="btn btn-danger"
 										onclick="location.href='${deleteActionUrl}'">Delete</button></td>
 							</tr>

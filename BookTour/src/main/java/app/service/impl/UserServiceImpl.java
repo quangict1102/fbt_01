@@ -20,7 +20,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			if (user == null) {
 				return null;
 			}
-			return getUserDAO().saveOrUpdate(user);
+			return getUserDAO().saveOrUpdate(entity);
 		} catch (Exception e) {
 			logger.error(e);
 			throw e;

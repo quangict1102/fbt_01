@@ -12,12 +12,12 @@
 		<div class="card-header">Login</div>
 		<div class="card-body">
 	 
-			<form:form class="form-horizontal" method="post" 
+			<form class="form-horizontal" method="post" 
 			modelAttribute="userLogin" action="${loginUrl}">
 			
 				<div class="form-group">
 					<div class="form-label-group">
-						<form:input path="email" type="email" id="inputEmail" class="form-control"
+						<input name="email" type="email" id="inputEmail" class="form-control"
 							placeholder="Email address" required="required"
 							autofocus="autofocus"/> <label for="inputEmail">Email
 							address</label>
@@ -25,7 +25,7 @@
 				</div>
 				<div class="form-group">
 					<div class="form-label-group">
-						<form:input path="password" type="password" id="inputPassword" class="form-control"
+						<input name="password" type="password" id="inputPassword" class="form-control"
 							placeholder="Password" required="required"/> <label
 							for="inputPassword">Password</label>
 					</div>
@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary btn-block ">Login</button>
-			</form:form>
+			</form>
 			<div class="text-center">
 				<a class="d-block small mt-3" href="register.html">Register an
 					Account</a> <a class="d-block small" href="forgot-password.html">Forgot
