@@ -1,4 +1,7 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 		<!-- container -->
 		<div class="container">
 				<div class="footer-bottom-top-grids">
@@ -6,9 +9,9 @@
 						<h4>Download our mobile Apps</h4>
 						<div class="d-apps">
 							<ul>
-								<li><a href="#"><img src="assets/images/app1.png" alt="" /></a></li>
-								<li><a href="#"><img src="assets/images/app2.png" alt="" /></a></a></li>
-								<li><a href="#"><img src="assets/images/app3.png" alt="" /></a></a></li>
+								<li><a href="#"><img src="<c:url value="/assets/images/app1.png"/>" alt="" /></a></li>
+								<li><a href="#"><img src="<c:url value="/assets/images/app2.png"/>" alt="" /></a></a></li>
+								<li><a href="#"><img src="<c:url value="/assets/images/app3.png"/>" alt="" /></a></a></li>
 							</ul>
 						</div>
 					</div>
@@ -16,9 +19,9 @@
 						<h4>We Accept</h4>
 						<div class="a-cards">
 							<ul>
-								<li><a href="#"><img src="assets/images/c1.png" alt="" /></a></li>
-								<li><a href="#"><img src="assets/images/c2.png" alt="" /></a></a></li>
-								<li><a href="#"><img src="assets/images/c3.png" alt="" /></a></a></li>
+								<li><a href="#"><img src="<c:url value="/assets/images/c1.png"/>" alt="" /></a></li>
+								<li><a href="#"><img src="<c:url value="/assets/images/c2.png"/>" alt="" /></a></a></li>
+								<li><a href="#"><img src="<c:url value="/assets/images/c3.png"/>" alt="" /></a></a></li>
 							</ul>
 						</div>
 					</div>
@@ -35,7 +38,7 @@
 					</div>
 					<div class="clearfix"> </div>
 					<div class="copyright">
-						<p>Copyrights © 2015 Govihar . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+						<p>Copyrights Â© 2015 Govihar . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
 					</div>
 				</div>
 		</div>

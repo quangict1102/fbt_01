@@ -1,5 +1,8 @@
 package app.controller;
 
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -16,18 +23,29 @@ import app.bean.TourInfo;
 import app.helper.ConvertDateSql;
 import app.model.Place;
 import app.model.Tour;
+import app.model.User;
+import app.service.CityService;
+import app.service.TourService;
 
 @Controller
 @RequestMapping(value = { "/", "home" })
-public class TourController extends BaseController {
+@SessionAttributes({ "userSession", "fullName" })
+public class TourController extends BaseController{
+
 	private static final Logger logger = Logger.getLogger(TourController.class);
 
 	@GetMapping
-	public ModelAndView index(Model model) {
+
+	public ModelAndView index(Model model, HttpSession httpSession) {
+
 		logger.info("home page");
 		ModelAndView view = new ModelAndView("home");
 		view.addObject("cities", cityService.getAllCity());
 		model.addAttribute("tourToday", tourService.getTourToday(ConvertDateSql.getDateNowSQL()));
+
+		User u = (User) httpSession.getAttribute("userSession");
+		model.addAttribute("user", u);
+
 		return view;
 	}
 
@@ -51,7 +69,7 @@ public class TourController extends BaseController {
 
 	@RequestMapping(value = "/tours/{id}")
 	public String detailTour(Model model, @PathVariable("id") Integer id) {
-		TourInfo tourInfo = tourService.findById(id);
+		Tour tourInfo = tourService.findById(id);
 		model.addAttribute("tourDetail", tourInfo);
 		model.addAttribute("planceTo", placeService.findById(tourInfo.getPlaceToId()));
 		model.addAttribute("planceFrom", placeService.findById(tourInfo.getPlaceFromId()));

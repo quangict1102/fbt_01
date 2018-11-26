@@ -13,6 +13,6 @@ public interface UserDAO extends BaseDAO<Integer, User> {
 	
 	User findByIdLock(Integer id);
 	
-	User findByEmailAndPassword(String email,String password) throws Exception;
+	User findByEmailAndPassword(String email,String password);
 	 
 }

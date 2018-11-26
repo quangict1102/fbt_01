@@ -40,7 +40,6 @@
 	var="easyResponsiveTabsJs" />
 <spring:url value="/assets/js/jquery-ui.js" var="jqueryUiJs" />
 <spring:url value="/assets/js/script.js" var="scriptJs" />
-<spring:url value="/assets/js/jquery-client-ajax.js" var="jquery_client_ajax" />
 <spring:url value="/assets/js/load-img.js" var="load_img" />
 <spring:url value="/assets/js/horizontalTab.js" var="horizontalTab" />
 <spring:url value="/assets/js/isotope.pkgd.min.js" var="isotope_pkgd" />
@@ -50,6 +49,7 @@
 <spring:url value="/assets/js/datepickerjs.js" var="datepickerjs" />
 <spring:url value="/assets/js/cyclejs.js" var="cyclejs" />
 <spring:url value="/assets/js/tooltipjs.js" var="tooltipjs" />
+<spring:url value="/assets/js/jquery-client-ajax.js" var="jquery_client_ajax" />
 <!-- //Custom Theme files -->
 <link href="${bootstrapCss }" type="text/css" rel="stylesheet"
 	media="all">

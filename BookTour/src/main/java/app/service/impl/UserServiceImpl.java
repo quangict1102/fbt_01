@@ -53,7 +53,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Override
 	public List<UserInfo> searchUser(String name, int gender) {
 		try {
-			return UserConverHelper.convertUserTouserInfo(getUserDAO().searchUserUsingCretial(name));
+			return UserConverHelper.convertUserToUserInfo(getUserDAO().searchUserUsingCretial(name));
 		} catch (Exception e) {
 			return null;
 		}
@@ -62,7 +62,7 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Override
 	public List<UserInfo> loadUsers() {
 		try {
-			return UserConverHelper.convertUserTouserInfo(getUserDAO().loadUsers());
+			return UserConverHelper.convertUserToUserInfo(getUserDAO().loadUsers());
 		} catch (Exception e) {
 			return null;
 		}
@@ -89,14 +89,13 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
 	@Override
 	public User findByEmailAndPassword(String email, String password) {
-		User user = null;
 		try {
-			user = getUserDAO().findByEmailAndPassword(email, password);
-			return user;
+			return getUserDAO().findByEmailAndPassword(email, password);
 		} catch (Exception e) {
-			logger.error(e);
+			logger.error("Error: "+e);
+			return null;
 		}
-		return user;
+	
 
 	}
 

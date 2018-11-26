@@ -4,6 +4,15 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.persistence.criteria.Subquery;
 
 import org.apache.log4j.Logger;
 import org.hibernate.LockMode;
@@ -13,10 +22,16 @@ import app.dao.TourDAO;
 import app.model.RankOfTour;
 import app.model.Tour;
 import app.model.User;
+import app.model.City;
+import app.model.Place;
+import app.model.Rating;
+import app.model.Tour;
+import app.model.Toursplace;
+
 
 public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	private static final Logger logger = Logger.getLogger(TourDAOImpl.class);
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tour> loadAllTour() {
@@ -41,19 +56,40 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	public List<Object[]> getAllTourByDateAndCity(int idcity, Date date) {
 		logger.info("date: " + date);
 		logger.info("idcity: " + idcity);
-		String sql=
-			"select t,max(r.numberRank) from  Toursplace tp join Place p "
-			+ " on tp.place.id = p.id join Tour t on t.id = tp.tour.id join Rating r"
-			+ " on r.tour.id=t.id where tp.place.id in "
-			+ " (select p.id from City c,Place p where c.id=p.city.id and c.id= :idcity) "
-			+ " and t.dateStart > :date group by t.id";
-		return getSession().createQuery(sql).setParameter("idcity", idcity).setParameter("date", date).getResultList();
+
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+		CriteriaQuery query = builder.createQuery();
+		Root<Toursplace> root = query.from(Toursplace.class);
+
+		Subquery<Integer> subquery = query.subquery(Integer.class);
+		Root<Place> subroot = subquery.from(Place.class);
+		Join<Place, City> subjoinCity = subroot.join("city", JoinType.INNER);
+		subquery.select(subroot.get("id")).where(builder.equal(subjoinCity.get("id"), idcity));
+
+		Join<Toursplace, Tour> joinTour = root.join("tour", JoinType.INNER);
+		Join<Toursplace, Place> joinPlace = root.join("place", JoinType.INNER);
+		Root<Rating> ratingRoot = query.from(Rating.class);
+		Join<Rating, Tour> joinRating = ratingRoot.join("tour", JoinType.INNER);
+		query.multiselect(joinTour, builder.max(ratingRoot.get("numberRank"))).groupBy(joinTour.get("id"));
+
+		Predicate getByDate = builder.and(builder.greaterThan(joinTour.<Date> get("dateStart"), date));
+
+		Predicate getByIdPlace = builder.and(builder.in(joinPlace.get("id")).value(subquery));
+
+		query.where(getByDate, getByIdPlace);
+		return getSession().createQuery(query).getResultList();
+	}
+
+	@Override
+	public Tour getAllById(Integer id) {
+		return getSession().load(Tour.class, id);
+
 	}
 
 	@Override
 	public Tour findByIdLock(Integer id) {
-		logger.info("find id lock: " + id);
-		return (Tour) getSession().load(Tour.class, id, LockMode.PESSIMISTIC_WRITE);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

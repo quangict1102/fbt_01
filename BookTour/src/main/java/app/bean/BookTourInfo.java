@@ -1,25 +1,27 @@
-package app.model;
+package app.bean;
 
 import java.util.List;
 
-public class Booktour implements java.io.Serializable {
+import app.model.Bill;
+import app.model.Tour;
+import app.model.User;
 
-	private static final long serialVersionUID = 1L;
+public class BookTourInfo {
 	private Integer id;
-
-	private Tour tour;
-	private User user;
+	private TourInfo tour;
+	private UserInfo user;
 	private String primeTour;
 	private int adults;
 	private int children;
 	private String status;
 	private String notel;
 	private List<Bill> bills;
-	public Booktour() {
+
+	public BookTourInfo() {
 	}
 
-	public Booktour(Integer id, Tour tour, User user, String primeTour, int adults, int children,
-			String status, String notel,List<Bill> bills) {
+	public BookTourInfo(Integer id, TourInfo tour, UserInfo user, String primeTour, int adults, int children, String status,
+			String notel, List<Bill> bills) {
 		this.id = id;
 		this.tour = tour;
 		this.user = user;
@@ -39,19 +41,19 @@ public class Booktour implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Tour getTour() {
+	public TourInfo getTour() {
 		return tour;
 	}
 
-	public void setTour(Tour tour) {
+	public void setTour(TourInfo tour) {
 		this.tour = tour;
 	}
 
-	public User getUser() {
+	public UserInfo getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserInfo user) {
 		this.user = user;
 	}
 
@@ -101,10 +103,6 @@ public class Booktour implements java.io.Serializable {
 
 	public void setBills(List<Bill> bills) {
 		this.bills = bills;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }

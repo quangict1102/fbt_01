@@ -5,24 +5,25 @@ import java.util.List;
 
 import app.bean.CityInfo;
 import app.helper.CityCovertHelper;
+import app.model.City;
 import app.service.CityService;
 
 public class CityServiceImpl extends BaseServiceImpl implements CityService {
 
 	@Override
-	public CityInfo findById(Serializable key) {
+	public City findById(Serializable key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CityInfo saveOrUpdate(CityInfo entity) {
+	public City saveOrUpdate(City entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean delete(CityInfo entity) {
+	public boolean delete(City entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}

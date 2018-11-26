@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 import app.service.CityService;
+import app.service.CommentService;
 import app.service.PlaceService;
 import app.service.TourService;
 import app.service.UserService;
@@ -23,4 +24,7 @@ public class BaseController {
 	
 	@Autowired
 	protected CityService cityService;
+	@Autowired
+	protected CommentService commentService;
+
 }

@@ -10,10 +10,12 @@ import app.model.User;
 public interface TourDAO extends BaseDAO<Integer, Tour> {
 	List<Tour> loadAllTour();
 
+	Tour getAllById(Integer id);
+
 	List<Tour> findByPlace(String place);
 
 	List<Tour> getTourToday(Date date);
-	
+
 	Tour findByIdLock(Integer id);
 
 	List<Object[]> getAllTourByDateAndCity(int city, Date date);

@@ -11,14 +11,14 @@ public class Bill implements java.io.Serializable {
 	private String phoneNumber;
 	private Date time;
 	private String totailMoney;
+	private Booktour booktour;
 	private List<Typepayment> typepaymentses;
-	private List<Booktour> booktourses;
 
 	public Bill() {
 	}
 
 	public Bill(Integer id, String fullName, String email, String phoneNumber, Date time, String totailMoney,
-			List<Typepayment> typepaymentses, List<Booktour> booktourses) {
+			Booktour booktour,List<Typepayment> typepaymentses) {
 		this.id = id;
 		this.fullName = fullName;
 		this.email = email;
@@ -26,7 +26,6 @@ public class Bill implements java.io.Serializable {
 		this.time = time;
 		this.totailMoney = totailMoney;
 		this.typepaymentses = typepaymentses;
-		this.booktourses = booktourses;
 	}
 
 	public Bill(Integer id, String fullName, String email, String phoneNumber, Date time, String totailMoney) {
@@ -94,12 +93,12 @@ public class Bill implements java.io.Serializable {
 		this.typepaymentses = typepaymentses;
 	}
 
-	public List<Booktour> getBooktourses() {
-		return booktourses;
+	public Booktour getBooktour() {
+		return booktour;
 	}
 
-	public void setBooktourses(List<Booktour> booktourses) {
-		this.booktourses = booktourses;
+	public void setBooktour(Booktour booktour) {
+		this.booktour = booktour;
 	}
 
 	public static long getSerialversionuid() {

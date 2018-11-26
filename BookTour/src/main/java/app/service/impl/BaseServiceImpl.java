@@ -1,6 +1,8 @@
 package app.service.impl;
 
+import app.dao.BookTourDAO;
 import app.dao.CityDAO;
+import app.dao.CommentDAO;
 import app.dao.PlaceDAO;
 import app.dao.RatingDAO;
 import app.dao.TourDAO;
@@ -13,14 +15,8 @@ public class BaseServiceImpl {
 	protected CityDAO cityDAO;
 	protected PlaceDAO placeDAO;
 	protected RatingDAO ratingDAO;
-
-	public UserDAO getUserDAO() {
-		return userDAO;
-	}
-
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
+	protected CommentDAO commentDAO;
+	protected BookTourDAO booktourDAO;
 
 	public BaseServiceImpl(TourDAO tourDAO) {
 		this.tourDAO = tourDAO;
@@ -59,6 +55,30 @@ public class BaseServiceImpl {
 
 	public void setRatingDAO(RatingDAO ratingDAO) {
 		this.ratingDAO = ratingDAO;
+	}
+
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
+	public CommentDAO getCommentDAO() {
+		return commentDAO;
+	}
+
+	public void setCommentDAO(CommentDAO commentDAO) {
+		this.commentDAO = commentDAO;
+	}
+
+	public BookTourDAO getBooktourDAO() {
+		return booktourDAO;
+	}
+
+	public void setBooktourDAO(BookTourDAO booktourDAO) {
+		this.booktourDAO = booktourDAO;
 	}
 
 }
