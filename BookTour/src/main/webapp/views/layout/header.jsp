@@ -87,9 +87,9 @@
 						<button id="logout_user">
 							<span>Logout</span>
 						</button>
-						<a href="#" class="notification_cart"> <img
-							src="<c:url value='assets/images/cart.png'/> " width="50px"> 
-							<span id="soluong_giahang" class="badge">5</span>
+						<a href="#" class="notification_cart">
+							<img src="<c:url value='/assets/images/cart.png'/> " width="50px">
+							<span id="soluong_giahang" class="badge">${cart}</span>
 						</a>
 					</div>	
 					</c:otherwise>

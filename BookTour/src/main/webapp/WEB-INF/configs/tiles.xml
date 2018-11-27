@@ -37,12 +37,11 @@
 	</definition>
 	<!-- Booking -->
 	<definition name="booking" extends="baseLayout">
-
+		<put-attribute name="title" value="BookTour" />
 		<put-attribute name="body" value="/views/tours/booking.jsp" />
 	</definition>
-	<!-- Admin -->
-	<definition name="LayoutAdminLogInRegister"
-		template="/views/layoutAdmin/layoutLoginRegister.jsp">
+	<!--  Admin -->
+	<definition name="LayoutAdminLogInRegister" template="/views/layoutAdmin/layoutLoginRegister.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/views/layoutAdmin/header.jsp" />
 		<!-- <put-attribute name="menu" value="/views/layoutAdmin/menu.jsp" /> -->

@@ -1,6 +1,5 @@
 package app.controller;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -17,35 +16,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import app.bean.TourInfo;
 import app.helper.ConvertDateSql;
 import app.model.Place;
 import app.model.Tour;
 import app.model.User;
-import app.service.CityService;
-import app.service.TourService;
 
 @Controller
 @RequestMapping(value = { "/", "home" })
-@SessionAttributes({ "userSession", "fullName" })
-public class TourController extends BaseController{
-
+@SessionAttributes({ "userSession", "fullName", "cart" })
+public class TourController extends BaseController {
 	private static final Logger logger = Logger.getLogger(TourController.class);
 
 	@GetMapping
-
 	public ModelAndView index(Model model, HttpSession httpSession) {
 
 		logger.info("home page");
 		ModelAndView view = new ModelAndView("home");
 		view.addObject("cities", cityService.getAllCity());
 		model.addAttribute("tourToday", tourService.getTourToday(ConvertDateSql.getDateNowSQL()));
-
 		User u = (User) httpSession.getAttribute("userSession");
 		model.addAttribute("user", u);
-
 		return view;
 	}
 
@@ -78,14 +70,14 @@ public class TourController extends BaseController{
 
 	@RequestMapping(value = "/tours/{id}/edit")
 	public String toEditTour(Model model, @PathVariable("id") Integer id) {
-		
+
 		model.addAttribute("tourEdit", tourService.findById(id));
 		model.addAttribute("place", new Place());
 		model.addAttribute("places", placeService.getAllPlace());
 		return "editTour";
 	}
 
-	@RequestMapping(value = "/{id}" )
+	@RequestMapping(value = "/{id}")
 	public String update(@ModelAttribute("editTour") Tour tour, Model model,
 			@RequestParam("dateStartConver") String strDate) {
 		tourService.saveOrUpdate(strDate, tour);
@@ -95,7 +87,7 @@ public class TourController extends BaseController{
 	@RequestMapping(value = "/tours/{id}", method = RequestMethod.DELETE)
 	public String delete(@PathVariable("id") Integer id) {
 		logger.info("delete Tour");
-		 tourService.deleteTour(id);
+		tourService.deleteTour(id);
 		return "redirect:/tours";
 	}
 

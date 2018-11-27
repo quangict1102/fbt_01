@@ -15,9 +15,7 @@ import app.helper.RankOfTourHelper;
 import app.helper.TourConvertHelper;
 import app.helper.TourUpdateHelper;
 import app.model.RankOfTour;
-import app.model.Rating;
 import app.model.Tour;
-import app.model.User;
 import app.service.TourService;
 
 public class TourServiceImpl extends BaseServiceImpl implements TourService {
@@ -33,16 +31,13 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	@Override
 	public Tour saveOrUpdate(Tour entity) {
 		// TODO Auto-generated method stub
-
 		return null;
 	}
 
 	@Override
-
 	public boolean delete(Tour entity) {
 		// TODO Auto-generated method stub
 		return false;
-
 	}
 
 	@Override
@@ -77,11 +72,10 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 
 	}
 
-	@Override
 	public Tour saveOrUpdate(String strDate, Tour entity) {
 		entity.setDateStart(ConvertDateSql.convertStringtoDate(strDate));
 		try {
-			
+
 			if (entity.getId() == null) {
 				return getTourDAO().saveOrUpdate(entity);
 			}
@@ -134,8 +128,13 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 
 	@Override
 	public boolean deleteTour(Tour tour) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			getTourDAO().delete(tour);
+			return true;
+		} catch (Exception e) {
+			throw e;
+
+		}
 	}
 
 }

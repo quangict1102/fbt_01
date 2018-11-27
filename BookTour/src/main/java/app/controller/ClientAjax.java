@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import app.bean.CommentInfo;
 import app.bean.PlaceInfo;
 import app.helper.ConvertDateSql;
+import app.bean.CartInfo;
+import app.bean.CommentInfo;
+import app.bean.PlaceInfo;
+import app.helper.ConvertDateSql;
+import app.model.Booktour;
 import app.model.Comment;
 import app.model.Tour;
 import app.model.User;
@@ -42,19 +47,20 @@ public class ClientAjax extends BaseController {
 		if (user == null || !user.getRole().equals("user")) {
 			return "";
 		}
-			model.addAttribute("fullName", user.getFullName());
-			httpSession.setAttribute("userSession", user);
-			return user.getFullName();
-		}
-
+		model.addAttribute("fullName", user.getFullName());
+		CartInfo cartInfo = new CartInfo();
+		cartInfo.setCountCart(bookingtourService.countCart(user.getId()));
+		httpSession.setAttribute("cart", cartInfo.getCountCart());
+		httpSession.setAttribute("userSession", user);
+		return user.getFullName();
+	}
 
 	@GetMapping(value = "user/logout")
 	@ResponseBody
 	public String doLogout(HttpSession httpSession) {
-		if (httpSession.getAttribute("userSession") == null) {
-			return "";
+		if (httpSession.getAttribute("userSession") != null) {
+			httpSession.invalidate();
 		}
-		httpSession.invalidate();
 		return "";
 	}
 
@@ -86,5 +92,7 @@ public class ClientAjax extends BaseController {
 	@ResponseBody
 	public List<CommentInfo> loadComment(@RequestParam("idTour") int idTour, Model model) {
 		return commentService.getAllCommentByIdTour(idTour);
+
 	}
+
 }

@@ -10,7 +10,9 @@ import app.service.PlaceService;
 
 public class PlaceServiceImpl extends BaseServiceImpl implements PlaceService {
 
+
 	@Override
+
 	public List<PlaceInfo> getAllPlace() {
 		try {
 			return PlaceConvertHelper.convertPlaceToPlaceInfo(getPlaceDAO().getAllPlace());

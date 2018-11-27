@@ -22,6 +22,5 @@ public interface TourService extends BaseService<Integer, Tour> {
 	
 	boolean deleteTour(Integer id);
 
-
 	TourInfo getAllById(Integer id);
 }
