@@ -86,7 +86,7 @@ $(document).ready(function() {
 				
 			},
 			success: function(value){
-				if(value == "tc"){
+				if(value == "success"){
 					var datetimemss = currentdate.getDate()+ "-"
 					+ (currentdate.getMonth() + 1)+ "-"
 					+ currentdate.getFullYear();	
@@ -188,8 +188,10 @@ $(document).ready(function() {
 	$('.book_tour').click(function(){
 		if($('.user_id').val() == ''){
 			alert('Ban can dang nhap');
+			return false;
 		}
 	});
+	
 	$('#search-tour').click(function(){
 		var date_js = $('#date_js').val();
 		var idCity_js = $('#idCity_js').val();
@@ -199,6 +201,104 @@ $(document).ready(function() {
 		}
 		
 	})
+	
+		// format date
+	formatDate = function date2str(x, y) {
+	    var z = {
+	        M: x.getMonth() + 1,
+	        d: x.getDate(),
+	        h: x.getHours(),
+	        m: x.getMinutes(),
+	        s: x.getSeconds()
+	    };
+	    y = y.replace(/(M+|d+|h+|m+|s+)/g, function(v) {
+	        return ((v.length > 1 ? "0" : "") + eval('z.' + v.slice(-1))).slice(-2)
+	    });
+
+	    return y.replace(/(y+)/g, function(v) {
+	        return x.getFullYear().toString().slice(-v.length)
+	    });
+	}
+	
+	var primeA = parseInt($('.count-adults').text())*parseFloat($('.prime-adults').text());
+	var primeC = parseInt($('.count-children').text())*parseFloat($('.prime-children').text());
+	var primeT = $('.prime-tour').text();
+	if(primeT == '1.200.000'){
+		printTour = parseFloat(1200);
+	}else if(primeT == '3.200.000'){
+		printTour = parseFloat(3200);
+	}else{
+		printTour = parseFloat(5200);
+	}
+	$('.totailTour').html(formatMoney(primeA+primeC+printTour));
+	$('.totailMoneyBill').val(formatMoney(primeA+primeC+printTour));
+	$('#create_bill').click(function(){
+		var fullNameBill = $('.fullNameBill').val();
+		var emailBill = $('.emailBill').val();
+		var phoneBill = $('.phoneBill').val();
+		var dateBill = $('.dateBill').val();
+		var totailMoneyBill = $('.totailMoneyBill').val();
+		var idTourBill = parseInt($('#create_bill').attr('data-idTour'));
+		$.ajax({
+			url: "/BookTour1/bills/create",
+			type:"post",
+			data:{
+				fullNameBill:fullNameBill,
+				emailBill:emailBill,
+				phoneBill:phoneBill,
+				dateBill:dateBill,
+				totailMoneyBill:totailMoneyBill,
+				idTourBill:idTourBill
+			},
+			success:function(value){
+				if(value=="success"){
+					alert("Đã đặt tour")
+					location.reload();
+				}
+			}
+		})
+		return false;
+	});
+	
+	$('.edit_tour_update').click(function(){
+		var idBt =parseInt($(this).attr('data-idBookTour'));
+		$.ajax({
+			url : "/BookTour1/booktours/edit",
+			type: "get",
+			data : {
+				idBt:idBt
+			},
+			success: function(tour){
+				
+				html='';
+				html+='<p>'+tour.name+'</p>';
+				html+='<form action="" method="post">';
+				html+='	<p>Số lương người lớn</p>';
+				html+='	<input type="number" name="adults" value="1" class="slnl" min="1" max="20" ">';
+				html+='	<p >Giá tiền người lớn: <span id="giatien-nl" data-primeAdults="'+tour.primeAdults+'">'+tour.primeAdults+'</span> </p>';	
+				html+='	<p>Số lượng trẻ con</p>';
+				html+='	<input type="number" name="children" value="1" class="sltc" min="1" max="20">';
+				html+='	<p >Giá tiền trẻ nhỏ: <span id="giatien-tn" data-primeChilden="'+tour.primeChilden+'">'+tour.primeChilden+'</span> </p>';	
+				html+='	<p>Ghi chú</p>';
+				html+='	<textarea type="text" class="notel" name="notel"></textarea>';
+				html+='	<p>Giá tour</p>';
+				html+='	<p><input type="radio" value="1" checked="checked"  name="primeTour">Standard package 2*  1.200.000 VND</p>';
+				html+='	<p><input type="radio" value="2"  name="primeTour">Superior package 3* 3.200.000 VND</p>';
+				html+='	<p><input type="radio" value="3"  name="primeTour">Deluxe package 4* 5.200.000 VND</p>';
+				html+='	<p>Bạn chọn: <span id="gia_tour_radio">1.200.000</span></p>';
+				html+='	<input type="hidden" id="input-tour" value="1200">';
+				html+='	<p>Book</p>';
+				html+='	<input type="submit" data-idBTourEdit="'+tour.id+'" class="book_tour" name="Book" value="Update">';
+				html+='</form>';
+				html+='<p >Giá toàn bộ Tour: <span id="giatien-tour">1.200.000</span> VND</p>';
+				html+='<script src="/BookTour1/assets/js/change-oney.js" type="text/javascript"></script>';
+				$('#edit_book_tour').html(html);
+				
+			}
+		});
+		return false;
+	});
+	
 /*	$('#search-tour').click(function() {
 		var date_tour = $('#date-tour').val();
 		var idCity = parseInt($('#city').val());

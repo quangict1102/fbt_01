@@ -56,4 +56,11 @@
 			</bean>
 		</property>
 	</bean>
+	<bean id="BillService" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="app.service.impl.BillServiceImpl">
+				<property name="billDAO" ref="BillDAO" />
+			</bean>
+		</property>
+	</bean>
 </beans>

@@ -88,4 +88,5 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		return (Tour) getSession().createQuery("FROM Tour WHERE id IN( SELECT Max(id) FROM Tour)").getSingleResult();
 	}
 
+
 }

@@ -29,7 +29,7 @@
 		<div class="top-nav">
 			<span class="menu"><img src="assets/images/menu.png" alt="" /></span>
 			<ul class="nav1">
-				<li class="active"><a href="index.html">HOME</a></li>
+				<li class="active"> <a href='<c:url value="/"></c:url>'>HOME</a></li>
 				<li><a href="weekend.html">Weekend Getaways</a></li>
 			</ul>
 			<div class="clearfix"></div>
@@ -87,7 +87,7 @@
 						<button id="logout_user">
 							<span>Logout</span>
 						</button>
-						<a href="#" class="notification_cart">
+						<a href="<c:url value="/booktours/${userSession.id }"/> " class="notification_cart">
 							<img src="<c:url value='/assets/images/cart.png'/> " width="50px">
 							<span id="soluong_giahang" class="badge">${cart}</span>
 						</a>

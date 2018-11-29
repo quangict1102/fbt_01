@@ -39,4 +39,9 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="BillDAO" class="app.dao.impl.BillDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 </beans>
