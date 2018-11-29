@@ -96,6 +96,7 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 				listTourPlace.add(tourPlaceTo);
 
 				entity.setToursplaceses(listTourPlace);
+
 				return getTourDAO().saveOrUpdate(entity);
 			}
 			Tour tour = tourDAO.findByIdLock(entity.getId());

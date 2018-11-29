@@ -29,7 +29,7 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tour> loadAllTour() {
-		return getSession().createQuery("from Tour").getResultList();
+		return getSession().createQuery("from Tour ORDER BY id DESC").getResultList();
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		logger.info("find id lock: " + id);
 		return (Tour) getSession().load(Tour.class, id, LockMode.PESSIMISTIC_WRITE);
 	}
-
+	
 	@Override
 	public Tour findTourLast() {
 		return (Tour) getSession().createQuery("FROM Tour WHERE id IN( SELECT Max(id) FROM Tour)").getSingleResult();

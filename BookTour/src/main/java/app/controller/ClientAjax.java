@@ -82,12 +82,12 @@ public class ClientAjax extends BaseController {
 		User currentUser = new User();
 		currentUser.setId(idUser);
 		cmt.setUser(currentUser);
+
 		Tour tour = new Tour();
 		tour.setId(idTour);
 		cmt.setTour(tour);
 		cmt.setStatus(status);
 		commentService.saveOrUpdate(cmt);
-		
 	}
 
 	@GetMapping(value = "loadComment", produces = "application/json;charset=utf-8")

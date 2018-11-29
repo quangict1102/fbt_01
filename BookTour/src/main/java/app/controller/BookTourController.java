@@ -2,12 +2,14 @@ package app.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -25,7 +27,8 @@ import app.model.User;
 @RequestMapping(path = "/booktours")
 @SessionAttributes({ "userSession", "cart", "idtour", "ibBookTour" })
 public class BookTourController extends BaseController {
-
+	
+	private static final Logger logger = Logger.getLogger(BookTourController.class);
 	@GetMapping(path = "/{id}")
 	public ModelAndView listbt(@PathVariable("id") int id, HttpSession httpSession) {
 		ModelAndView view = new ModelAndView("listBookTour");
@@ -56,14 +59,14 @@ public class BookTourController extends BaseController {
 
 	@GetMapping(path = "/edit", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public TourInfo editBookTour(@RequestParam("idBt") int idBt, HttpSession httpSession) {
+	public TourInfo edit(@RequestParam("idBt") int idBt, HttpSession httpSession) {
 		httpSession.setAttribute("ibBookTour", idBt);
 		return tourService.getAllById(bookingtourService.getAllById(idBt).get(0).getTour().getId());
 	}
 
 	@PostMapping(path = "/update")
 	@ResponseBody
-	public String doEditBookTour(@RequestParam("idTour") int idTour, @RequestParam("slnl") int slnl,
+	public String update(@RequestParam("idTour") int idTour, @RequestParam("slnl") int slnl,
 			@RequestParam("sltc") int sltc, @RequestParam("primeTour") String primeTour,
 			@RequestParam("notel") String notel, HttpSession httpSession) {
 		User currentUser = (User) httpSession.getAttribute("userSession");
@@ -95,4 +98,28 @@ public class BookTourController extends BaseController {
 		bt.setNotel(notel);
 		return bookingtourService.updateBt(bt);
 	}
+	
+	@RequestMapping()
+	public String IndexBookTours(Model model) {
+		logger.info("Table BookTour page");
+		model.addAttribute("bookTour", new Booktour());
+		model.addAttribute("bookTours", bookingtourService.getAll());
+		return "showBookTour";
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody String deleteBookTour(@PathVariable("id") Integer id) {
+		logger.info("delete bookTour");
+		bookingtourService.deleteBookTour(id);
+		return "redirect:/bookTours";
+	}
+	@RequestMapping(value = "/searchEmail",method=RequestMethod.POST)
+	public String searchBookTourByEmail(Model model,@RequestParam("emailSearch")String email) {
+		logger.info("search BookTour by email page");
+		model.addAttribute("bookTour", new Booktour());
+		model.addAttribute("bookTours", bookingtourService.searchAllByEmail(email));
+		return "showBookTour";
+	}
+	
+
 }

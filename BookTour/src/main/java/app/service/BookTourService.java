@@ -17,4 +17,9 @@ public interface BookTourService extends BaseService<Integer, Booktour> {
 	boolean deleteBTbtId(Integer id);
 	
 	Booktour updateBt(BookTourInfo bt);
+	List<Booktour> searchAllByEmail(String email);
+	
+	List<Booktour> searchAllByTourName(String tourName);
+	
+	public boolean deleteBookTour(Integer id);
 }

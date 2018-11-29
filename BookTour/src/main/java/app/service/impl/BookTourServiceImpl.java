@@ -8,14 +8,19 @@ import app.helper.BookTourConvertHelper;
 import app.helper.PRIME_TOUR;
 import app.model.Booktour;
 import app.model.Tour;
+import org.apache.log4j.Logger;
+
+import app.controller.AdminController;
+import app.model.Booktour;
 import app.model.User;
 import app.service.BookTourService;
+import net.bytebuddy.jar.asm.commons.TryCatchBlockSorter;
 
 public class BookTourServiceImpl extends BaseServiceImpl implements BookTourService {
+	private static final Logger logger = Logger.getLogger(BookTourServiceImpl.class);
 
 	@Override
 	public Booktour findById(Serializable key) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -26,12 +31,13 @@ public class BookTourServiceImpl extends BaseServiceImpl implements BookTourServ
 		}
 		Booktour bt = booktourDAO.findByIdLock(entity.getId(), true);
 		return getBooktourDAO().saveOrUpdate(bt);
+
 	}
 
 	@Override
 	public boolean delete(Booktour entity) {
 		try {
-			booktourDAO.delete(entity);
+			getBooktourDAO().delete(entity);
 			return true;
 		} catch (Exception e) {
 			throw e;
@@ -91,8 +97,7 @@ public class BookTourServiceImpl extends BaseServiceImpl implements BookTourServ
 
 	@Override
 	public List<Booktour> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return getBooktourDAO().getAll();
 	}
 
 	@Override
@@ -114,6 +119,29 @@ public class BookTourServiceImpl extends BaseServiceImpl implements BookTourServ
 	@Override
 	public List<BookTourInfo> getAllById(Integer id) {
 		return BookTourConvertHelper.convertBtToBtInfo(getBooktourDAO().getAllById(id));
+	}
+	
+	public List<Booktour> searchAllByEmail(String email) {
+		return getBooktourDAO().searchAllByEmail(email);
+	}
+
+	@Override
+	public List<Booktour> searchAllByTourName(String tourName) {
+		return getBooktourDAO().searchAllByNameTour(tourName);
+	}
+
+	@Override
+	public boolean deleteBookTour(Integer id) {
+		try {
+			Booktour booktour = getBooktourDAO().findByIdLock(id);
+			if (booktour == null) {
+				return false;
+			}
+			return delete(booktour);
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
 	}
 
 }

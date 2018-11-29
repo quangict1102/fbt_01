@@ -7,10 +7,10 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="tour" class="Tour" fetch="select">
+        <many-to-one name="tour" class="Tour" fetch="select"  lazy="false">
             <column name="tourId" not-null="true" />
         </many-to-one>
-        <many-to-one name="user" class="User" fetch="select">
+        <many-to-one name="user" class="User" fetch="select"  lazy="false">
             <column name="userId" not-null="true" />
         </many-to-one>
         <property name="primeTour" type="string">
@@ -28,7 +28,7 @@
         <property name="notel" type="string">
             <column name="notel" length="65535" />
         </property>
-        <list name="bills" table="bill" inverse="true"  fetch="select">
+        <list name="bills" table="bill" cascade="save-update, delete" inverse="true"  fetch="select">
               <key column="booktour_id" />
              <list-index column="id" />           
             <one-to-many class="Bill" />

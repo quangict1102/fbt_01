@@ -10,4 +10,5 @@ public interface PlaceDAO extends BaseDAO<Integer, Place> {
 	List<Place> getAllPlaceByIdCity(int id);
 	
 	Place findByIdLock(Integer id);
+	
 }

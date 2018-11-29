@@ -89,10 +89,10 @@
 						<div class="card-body-icon">
 							<i class="fas fa-fw fa-shopping-cart"></i>
 						</div>
-						<div class="mr-5">Place</div>
+						<div class="mr-5">BookTour</div>
 					</div>
-					<a class="card-footer text-white clearfix small z-1" href="#">
-						<span class="float-left">View Details</span> <span
+					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/booktours"/>"">
+						<span class="float-left">View BookTour</span> <span
 						class="float-right"> <i class="fas fa-angle-right"></i>
 					</span>
 					</a>
@@ -105,10 +105,10 @@
 						<div class="card-body-icon">
 							<i class="fas fa-fw fa-life-ring"></i>
 						</div>
-						<div class="mr-5">13 New Tickets!</div>
+						<div class="mr-5">Places</div>
 					</div>
-					<a class="card-footer text-white clearfix small z-1" href="#">
-						<span class="float-left">View Details</span> <span
+					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/places"/>"">
+						<span class="float-left">View Places</span> <span
 						class="float-right"> <i class="fas fa-angle-right"></i>
 					</span>
 					</a>

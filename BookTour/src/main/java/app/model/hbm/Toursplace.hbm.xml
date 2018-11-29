@@ -11,7 +11,7 @@
         <many-to-one name="place" class="Place" fetch="select">
             <column name="places_id" not-null="true" />
         </many-to-one>
-        <many-to-one name="tour" class="Tour" fetch="select">
+        <many-to-one name="tour" class="Tour" fetch="select" >
             <column name="tours_id" not-null="true" />
         </many-to-one>
         <property name="typeFromTo" type="java.lang.Byte">

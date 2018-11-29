@@ -9,4 +9,6 @@ public interface PlaceService extends BaseService<Integer,Place>{
 	List<PlaceInfo> getAllPlace();
 
 	List<PlaceInfo> getAllPlaceByIdCity(int id);
+	
+	boolean deletePlace(Integer id);
 }

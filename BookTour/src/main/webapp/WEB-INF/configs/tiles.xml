@@ -105,7 +105,21 @@
 		<put-attribute name="title" value="TOURS" />
 		<put-attribute name="body" value="/views/admin/tours/edit.jsp" />
 	</definition>
-
+	
+		<!-- BookTourAdmin -->
+	<definition name="showBookTour" extends="baseLayoutAdmin">
+		<put-attribute name="title" value="BOOKTOURS" />
+		<put-attribute name="body" value="/views/admin/bookTour/show.jsp" />
+	</definition>
+	
+		<!-- PlaceAdmin -->
+	<definition name="showPlace" extends="baseLayoutAdmin">
+		<put-attribute name="title" value="PLACES" />
+		<put-attribute name="body" value="/views/admin/places/show.jsp" />
+	</definition>
+	
+	<definition name="error" template="/views/error/error.jsp"></definition>
+	
 	<definition name="demo" template="/views/admin/demo.jsp">
 
 	</definition>

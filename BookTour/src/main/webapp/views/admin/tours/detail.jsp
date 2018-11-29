@@ -26,10 +26,12 @@
 			<tr>
 				<td>Place From</td>
 				<td>${planceFrom.name}</td>
+				<td>${planceFrom.city.name}</td>
 			</tr>
 			<tr>
 				<td>Place To</td>
 				<td>${planceTo.name}</td>
+				<td>${planceTo.city.name}</td>
 			</tr>
 
 			<tr>

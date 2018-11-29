@@ -12,7 +12,7 @@ public class PlaceDAOImpl extends GenericDAO<Integer, Place> implements PlaceDAO
 
 	@Override
 	public List<Place> getAllPlace() {
-		return getSession().createQuery("from Place", Place.class).getResultList();
+		return getSession().createQuery("from Place ORDER BY id DESC", Place.class).getResultList();
 	}
 	@Override
 	public List<Place> getAllPlaceByIdCity(int id) {
@@ -24,5 +24,6 @@ public class PlaceDAOImpl extends GenericDAO<Integer, Place> implements PlaceDAO
 		logger.info("find id lock: " + id);
 		return (Place) getSession().load(Place.class, id, LockMode.PESSIMISTIC_WRITE);
 	}
+	
 
 }

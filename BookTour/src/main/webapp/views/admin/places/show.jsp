@@ -5,14 +5,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
-
+<spring:url value="places/add" var="addPlaceUrl" />
 <div id="wrapper">
-
-
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
 			<i class="fas fa-table"></i> Data Table Place
+			<div class="col-md-12 text-right">
+				<button type="button" data-toggle="modal" data-target="#addPlace"
+					class="btn btn-primary custom-button-width .navbar-right">Add
+					Place</button>
+			</div>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -23,8 +26,8 @@
 							<th>#</th>
 							<th>Name</th>
 							<th>Name City</th>
-							<th>Address</th>
 							<th>Action</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -32,36 +35,25 @@
 							<th>#</th>
 							<th>Name</th>
 							<th>Name City</th>
-							<th>Address</th>
 							<th>Action</th>
+							<th></th>
 						</tr>
 					</tfoot>
 
 					<tbody>
-						<c:forEach items="${users}" var="user" varStatus="count">
+						<c:forEach items="${places}" var="place" varStatus="count">
 							<tr>
 								<th scope="row">${count.index + 1}</th>
-								<td>${user.fullName}</td>
-								<td><c:if test="${user.gender == 1}">
-										     Fmale
-										 </c:if> <c:if test="${user.gender == 0}">
-										     Male
-										 </c:if> <c:if test="${user.gender != 0 && user.gender != 1}">
-										 	N/A
-										 </c:if></td>
-								<td>${user.address}</td>
-								<td>${user.email}</td>
-								<td>${user.phoneNumber}</td>
-								<td>${user.role}</td>
-								<td><spring:url value="/${tour.id}" var="detailActionUrl" />
+								<td>${place.name}</td>
+								<td>${place.cityInfo.name }</td>
+								<td><spring:url value="places/${place.id}" var="detailActionUrl" />
 									<button class="btn btn-info" data-toggle="modal"
 										data-target="#myModal">Detail</button> <spring:url
-										value="/${tour.id}/edit" var="editActionUrl" />
+										value="places/${place.id}/edit" var="editActionUrl" />
 									<button class="btn btn-warning"
-										onclick="location.href='${editActionUrl}'">Edit</button> <spring:url
-										value="/${tour.id}/delete" var="deleteActionUrl" />
-									<button class="btn btn-danger"
-										onclick="location.href='${deleteActionUrl}'">Delete</button></td>
+										onclick="location.href='${editActionUrl}'">Edit</button> 
+									<button class="btn btn-danger btnPlaceDelete">Delete</button></td>
+									<td class="idPlace" hidden>${place.id}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -71,6 +63,49 @@
 		</div>
 		<div class="card-footer small text-muted">Updated yesterday at
 			11:59 PM</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="modal fade" id="addPlace" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Add Tour</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<table class="table table-user-information">
+						<form:form class="form-horizontal" modelAttribute="addPlace"
+							action="${addPlaceUrl}">
+							<div class=" form-group">
+								<div class="form-label-group">
+									<input name="name" type="text" id="name" class="form-control"
+										placeholder="Name" required="required" autofocus="autofocus" />
+									<label for="name">Name</label>
+								</div>
+							</div>
+							
+							<div class="form-group ">
+								<div class="form-label-group">
+									<select name="idCity">
+										<option value="-" label="--Select City " />
+										<c:forEach items="${cityInfos}" var="cityInfo" varStatus="count">
+											<option value=${cityInfo.id }>${cityInfo.name}</option>
+										</c:forEach>
+									</select>
+								</div>
+							</div>
+							
+							<button type="submit" class="btn btn-primary btn-block ">submit</button>
+						</form:form>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <footer class="sticky-footer">

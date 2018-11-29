@@ -42,7 +42,7 @@ public class AdminController extends BaseController {
 	}
 
 	@RequestMapping(value = "/users")
-	public ModelAndView showUser() {
+	public ModelAndView index() {
 		logger.info("Table user page");
 		ModelAndView model = new ModelAndView("showUser");
 		model.addObject("user", new UserInfo());
@@ -52,7 +52,7 @@ public class AdminController extends BaseController {
 
 
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-	public String detailUser(Model model, @PathVariable("id") Integer id) {
+	public String show(Model model, @PathVariable("id") Integer id) {
 		model.addAttribute("userDetail", userService.findById(id));
 		return "detailUser";
 	}
@@ -77,6 +77,7 @@ public class AdminController extends BaseController {
 			return "forward:/login";
 		}
 		httpSession.setAttribute("emailLoginSession", userInfo.getEmail());
+		httpSession.setAttribute("idUserSession", user.getId());
 		model.addAttribute("logNotice", messageSource.getMessage("login.valid", null, LocaleContextHolder.getLocale()));
 		return "forward:/admin";
 	}

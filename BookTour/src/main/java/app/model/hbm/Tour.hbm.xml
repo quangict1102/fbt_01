@@ -25,31 +25,31 @@
         <property name="durationTime" type="java.lang.Integer">
             <column name="durationTime" />
         </property>
-        <property name="placeToId" type="int">
+        <property name="placeToId" type="int" lazy="false">
             <column name="placeToId" not-null="true" />
         </property>
         <property name="dateStart" type="date">
             <column name="dateStart" length="10" />
         </property>
-        <property name="placeFromId" type="int">
+        <property name="placeFromId" type="int" lazy="false" >
             <column name="placeFromId" not-null="true" />
         </property>
-        <list name="booktourses" table="booktours" inverse="true" fetch="select">
+        <list name="booktourses" table="booktours" cascade="save-update, delete" inverse="true" fetch="select">
             <key column="tourId" />
             <list-index column="id" />
             <one-to-many class="Booktour" />
         </list>
-        <list name="toursplaceses" table="toursplaces" inverse="true"  fetch="select">
+        <list name="toursplaceses" table="toursplaces" cascade="save-update, delete" inverse="true"  fetch="select">
              <key column="tours_id" />
              <list-index column="id" />
             <one-to-many class="Toursplace" />
         </list>
-        <list name="ratingses" table="ratings" inverse="true"  fetch="select">
-             <key column="tours_id" />
+        <list name="ratingses" table="ratings" cascade="save-update, delete" inverse="true"  fetch="select">
+             <key column="tour_id" />
              <list-index column="id" />
             <one-to-many class="Rating" />
         </list>
-        <list name="commentses" table="comments" inverse="true"  fetch="select">
+        <list name="commentses" table="comments" cascade="save-update, delete" inverse="true"  fetch="select">
              <key column="tourId" />
              <list-index column="id" />
             <one-to-many class="Comment" />
