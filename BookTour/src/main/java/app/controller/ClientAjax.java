@@ -14,14 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import app.bean.CommentInfo;
-import app.bean.PlaceInfo;
-import app.helper.ConvertDateSql;
 import app.bean.CartInfo;
 import app.bean.CommentInfo;
 import app.bean.PlaceInfo;
 import app.helper.ConvertDateSql;
-import app.model.Booktour;
 import app.model.Comment;
 import app.model.Tour;
 import app.model.User;
@@ -74,19 +70,19 @@ public class ClientAjax extends BaseController {
 		if (httpSession.getAttribute("userSession") == null) {
 			return "";
 		}
-			Comment cmt = new Comment();
-			cmt.setContext(message);
-			cmt.setTime(ConvertDateSql.convertStringtoDateSQL(date));
-			User u = new User();
-			u.setId(idUser);
-			cmt.setUser(u);
-			Tour tour = new Tour();
-			tour.setId(idTour);
-			cmt.setTour(tour);
-			cmt.setStatus(status);
-			commentService.saveOrUpdate(cmt);
-			return "tc";
-		}
+		Comment cmt = new Comment();
+		cmt.setContext(message);
+		cmt.setTime(ConvertDateSql.convertStringtoDateSQL(date));
+		User u = new User();
+		u.setId(idUser);
+		cmt.setUser(u);
+		Tour tour = new Tour();
+		tour.setId(idTour);
+		cmt.setTour(tour);
+		cmt.setStatus(status);
+		commentService.saveOrUpdate(cmt);
+		return "tc";
+	}
 
 	@GetMapping(value = "loadComment", produces = "application/json;charset=utf-8")
 	@ResponseBody

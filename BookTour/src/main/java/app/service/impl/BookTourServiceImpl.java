@@ -1,7 +1,6 @@
 package app.service.impl;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import app.model.Booktour;
@@ -39,7 +38,7 @@ public class BookTourServiceImpl extends BaseServiceImpl implements BookTourServ
 		Long countCart = null;
 		for (Object[] o : arrObject) {
 			Long count = (Long) o[1];
-			countCart = new Long(count); 
+			countCart = new Long(count);
 		}
 		return countCart;
 	}

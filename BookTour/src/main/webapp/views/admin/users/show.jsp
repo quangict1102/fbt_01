@@ -6,11 +6,21 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
 
+<spring:url value="admin/import" var="urlImportAdmin" />
 <div id="wrapper">
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
 			<i class="fas fa-table"></i> Data Table User
+			<div class="col-md-12 text-right">
+				<div class="col-md-12 text-right">
+					<form action=" ${urlImportAdmin}" enctype="multipart/form-data"
+						method="post">
+						<input type="file" name="file"> <input type="submit"
+							class="btn btn-danger" value="Import">
+					</form>
+				</div>
+			</div>
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
@@ -26,6 +36,7 @@
 							<th>Phone Number</th>
 							<th>Role</th>
 							<th>Action</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -38,6 +49,7 @@
 							<th>Phone Number</th>
 							<th>Role</th>
 							<th>Action</th>
+							<th></th>
 						</tr>
 					</tfoot>
 
@@ -57,12 +69,12 @@
 								<td>${user.email}</td>
 								<td>${user.phoneNumber}</td>
 								<td>${user.role}</td>
-								<td><spring:url value="/${user.id}" var="detailActionUrl" />
-									<button class="btn btn-info" data-toggle="modal"
-										data-target="#myModal">Detail</button><spring:url
-										value="/${user.id}/deleteUser" var="deleteActionUrl" />
-									<button class="btn btn-danger"
-										onclick="location.href='${deleteActionUrl}'">Delete</button></td>
+								<td><spring:url value="users/${user.id}"
+										var="detailActionUrl" />
+									<button class="btn btn-info"
+										onclick="location.href='${detailActionUrl}'">Detail</button> 
+									<button class="btn btn-danger btnDeleteUser">Delete</button></td>
+								<td class="idUser" hidden>${user.id}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

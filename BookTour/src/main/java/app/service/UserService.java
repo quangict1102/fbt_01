@@ -15,5 +15,7 @@ public interface UserService extends BaseService<Integer, User> {
 	List<UserInfo> loadUsers();
 	
 	User findByEmailAndPassword(String email,String password);
+	
+	List<UserInfo> saveOrUpdate(List<UserInfo> userInfos);
 
 }

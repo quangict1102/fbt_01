@@ -92,11 +92,22 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		try {
 			return getUserDAO().findByEmailAndPassword(email, password);
 		} catch (Exception e) {
-			logger.error("Error: "+e);
+			logger.error("Error: " + e);
 			return null;
 		}
-	
+	}
 
+	@Override
+	public List<UserInfo> saveOrUpdate(List<UserInfo> userInfos) {
+		try {
+			for (UserInfo userInfo : userInfos) {
+				getUserDAO().saveOrUpdate(UserConverHelper.convertSingleUserInfoToUser(userInfo));
+			}
+			return userInfos;
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
 	}
 
 }

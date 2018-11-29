@@ -3,8 +3,8 @@ package app.helper;
 import app.model.Tour;
 
 public class TourUpdateHelper {
-	
-	public static Tour update(Tour tour ,Tour tourUpdate) {
+
+	public static Tour update(Tour tour, Tour tourUpdate) {
 		tourUpdate.setId(tour.getId());
 		tourUpdate.setName(tour.getName());
 		tourUpdate.setMaxPeople(tour.getMaxPeople());
