@@ -14,30 +14,32 @@ import app.helper.ConvertDateSql;
 import app.helper.RankOfTourHelper;
 import app.helper.TourConvertHelper;
 import app.helper.TourUpdateHelper;
+import app.model.Place;
 import app.model.RankOfTour;
 import app.model.Tour;
+import app.model.Toursplace;
 import app.service.TourService;
 
 public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	private static final Logger logger = Logger.getLogger(TourDAOImpl.class);
 
 	@Override
+	public List<TourInfo> loadAllTour() {
+		return TourConvertHelper.convertTourToTourInfo(getTourDAO().loadAllTour());
+	}
 
-	public Tour findById(Serializable key) {
-		// TODO Auto-generated method stub
+	@Override
+	public List<TourInfo> findByPlace(String place) {
 		return null;
 	}
 
 	@Override
-	public Tour saveOrUpdate(Tour entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean delete(Tour entity) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<TourInfo> getTourToday(Date date) {
+		try {
+			return TourConvertHelper.convertTourToTourInfo(getTourDAO().getTourToday(date));
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
@@ -72,11 +74,28 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 
 	}
 
+	@Override
 	public Tour saveOrUpdate(String strDate, Tour entity) {
 		entity.setDateStart(ConvertDateSql.convertStringtoDate(strDate));
 		try {
-
 			if (entity.getId() == null) {
+
+				Place placeFrom = getPlaceDAO().findById(entity.getPlaceFromId());
+				Place tourTo = getPlaceDAO().findById(entity.getPlaceToId());
+
+				Toursplace tourPlaceFrom = new Toursplace();
+				tourPlaceFrom.setPlace(placeFrom);
+				tourPlaceFrom.setTour(getTourDAO().findTourLast());
+
+				Toursplace tourPlaceTo = new Toursplace();
+				tourPlaceTo.setPlace(tourTo);
+				tourPlaceTo.setTour(getTourDAO().findTourLast());
+
+				List<Toursplace> listTourPlace = new ArrayList<>();
+				listTourPlace.add(tourPlaceFrom);
+				listTourPlace.add(tourPlaceTo);
+
+				entity.setToursplaceses(listTourPlace);
 				return getTourDAO().saveOrUpdate(entity);
 			}
 			Tour tour = tourDAO.findByIdLock(entity.getId());
@@ -88,10 +107,10 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 
 	}
 
+
 	@Override
 	public boolean deleteTour(Integer id) {
 		try {
-
 			Tour tour = getTourDAO().findByIdLock(id);
 			if (tour == null) {
 				return false;
@@ -104,26 +123,24 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	}
 
 	@Override
-	public TourInfo getAllById(Integer id) {
-		return TourConvertHelper.convertSingleTourToTourInfo(getTourDAO().findById(id));
+	public TourInfo findById(Serializable key) {
+		return TourConvertHelper.convertSingleTourToTourInfo(getTourDAO().findById(key));
 	}
 
 	@Override
-	public List<TourInfo> loadAllTour() {
-		// TODO Auto-generated method stub
+	public TourInfo saveOrUpdate(TourInfo entity) {
 		return null;
 	}
 
 	@Override
-	public List<TourInfo> findByPlace(String place) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TourInfo> getTourToday(Date date) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(TourInfo entity) {
+		try {
+			Tour tour = TourConvertHelper.convertSingleTourInfoToTour(entity);
+			getTourDAO().delete(tour);
+			return true;
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	@Override
@@ -137,4 +154,15 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 		}
 	}
 
+	@Override
+	public Tour findTourLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public TourInfo getAllById(Integer id) {
+		return TourConvertHelper.convertSingleTourToTourInfo(getTourDAO().findById(id));
+	}
+
 }
+

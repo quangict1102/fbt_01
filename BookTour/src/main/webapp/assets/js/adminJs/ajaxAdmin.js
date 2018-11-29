@@ -49,3 +49,118 @@ function fire_ajax_submit() {
     });
 
 }
+
+$("#btnUserDeleteDetail").on('click', function() {
+	var $row = $('#idUser').html();
+	alertify.set({
+		buttonFocus : "cancel"
+	});
+	alertify.confirm("Want To Delete?", function(e) {
+		if (e) {
+			$.ajax({
+				type : "DELETE",
+				url :  $row,
+				success : function(response) {
+					window.location.replace("/BookTour1/users");
+				}
+			});
+			alertify.success("Delete");
+		} else {
+			alertify.error("Cancel Delete ");
+		} 
+	});
+	return false;
+});
+
+
+$(".btnTourDelete").on('click', function() {
+	var $row = $(this).closest("tr");
+	var $text = $row.find(".idtour").text();
+	alertify.set({
+		buttonFocus : "cancel"
+	});
+	alertify.confirm("Want To Delete?", function(e) {
+		if (e) {
+			$.ajax({
+				type : "DELETE",
+				url : "tours/" + $text,
+				success : function(response) {
+					window.location.replace("tours");
+				}
+			});
+			alertify.success("Delete");
+		} else {
+			alertify.error("Cancel Delete ");
+		}
+	});
+	return false;
+});
+
+$("#btnDeleteTourDetail").on('click', function() {
+	var $text = $("#idTour").html();
+	alertify.set({
+		buttonFocus : "cancel"
+	});
+	alertify.confirm("Want To Delete?", function(e) {
+		if (e) {
+			$.ajax({
+				type : "DELETE",
+				url :   $text,
+				success : function(response) {
+					window.location.replace("/BookTour1/tours");
+				}
+			});
+			alertify.success("Delete");
+		} else {
+			alertify.error("Cancel Delete ");
+		}
+	});
+	return false;
+});
+
+/*user*/
+$(".btnDeleteUser").on('click', function() {
+	var $row = $(this).closest("tr");
+	var $text = $row.find(".idUser").text();
+	alertify.set({
+		buttonFocus : "cancel"
+	});
+	alertify.confirm("Want To Delete?", function(e) {
+		if (e) {
+			$.ajax({
+				type : "DELETE",
+				url : "users/" + $text,
+				success : function(response) {
+					window.location.replace("users");
+				}
+			});
+			alertify.success("Delete");
+		} else {
+			alertify.error("Cancel Delete ");
+		}
+	});
+	return false;
+});
+
+$("#btnDeleteUserDetail").on('click', function() {
+	var $text = $("#idUser").html();
+	alertify.set({
+		buttonFocus : "cancel"
+	});
+	alertify.confirm("Want To Delete?", function(e) {
+		if (e) {
+			$.ajax({
+				type : "DELETE",
+				url :   $text,
+				success : function(response) {
+					window.location.replace("/BookTour1/users");
+				}
+			});
+			alertify.success("Delete");
+		} else {
+			alertify.error("Cancel Delete ");
+		}
+	});
+	return false;
+});
+

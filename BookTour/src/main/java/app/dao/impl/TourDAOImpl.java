@@ -13,6 +13,7 @@ import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
 
 import org.apache.log4j.Logger;
+import org.hibernate.LockMode;
 
 import app.dao.GenericDAO;
 import app.dao.TourDAO;
@@ -33,7 +34,6 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 
 	@Override
 	public List<Tour> findByPlace(String place) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -64,7 +64,7 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		Join<Rating, Tour> joinRating = ratingRoot.join("tour", JoinType.INNER);
 		query.multiselect(joinTour, builder.max(ratingRoot.get("numberRank"))).groupBy(joinTour.get("id"));
 
-		Predicate getByDate = builder.and(builder.greaterThan(joinTour.<Date> get("dateStart"), date));
+		Predicate getByDate = builder.and(builder.greaterThan(joinTour.<Date>get("dateStart"), date));
 
 		Predicate getByIdPlace = builder.and(builder.in(joinPlace.get("id")).value(subquery));
 
@@ -79,8 +79,13 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 
 	@Override
 	public Tour findByIdLock(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		logger.info("find id lock: " + id);
+		return (Tour) getSession().load(Tour.class, id, LockMode.PESSIMISTIC_WRITE);
+	}
+
+	@Override
+	public Tour findTourLast() {
+		return (Tour) getSession().createQuery("FROM Tour WHERE id IN( SELECT Max(id) FROM Tour)").getSingleResult();
 	}
 
 }

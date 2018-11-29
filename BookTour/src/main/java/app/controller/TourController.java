@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import org.springframework.web.servlet.ModelAndView;
 
 import app.bean.TourInfo;
@@ -49,19 +47,20 @@ public class TourController extends BaseController {
 		model.addAttribute("tours", tourService.loadAllTour());
 		model.addAttribute("place", new Place());
 		model.addAttribute("places", placeService.getAllPlace());
+
 		return "showTour";
 	}
 
-	@RequestMapping(value = "/addTour")
+	@RequestMapping(value = "/tours/add")
 	public String addTour(@ModelAttribute("addTour") Tour tour, Model model,
 			@RequestParam("dateStartConver") String strDate) {
 		tourService.saveOrUpdate(strDate, tour);
 		return "redirect:/tours";
 	}
 
-	@RequestMapping(value = "/tours/{id}")
+	@RequestMapping(value = "/tours/{id}", method = RequestMethod.GET)
 	public String detailTour(Model model, @PathVariable("id") Integer id) {
-		Tour tourInfo = tourService.findById(id);
+		TourInfo tourInfo = tourService.findById(id);
 		model.addAttribute("tourDetail", tourInfo);
 		model.addAttribute("planceTo", placeService.findById(tourInfo.getPlaceToId()));
 		model.addAttribute("planceFrom", placeService.findById(tourInfo.getPlaceFromId()));
@@ -80,13 +79,14 @@ public class TourController extends BaseController {
 	@RequestMapping(value = "/{id}")
 	public String update(@ModelAttribute("editTour") Tour tour, Model model,
 			@RequestParam("dateStartConver") String strDate) {
+		System.out.println(tour.getId());
 		tourService.saveOrUpdate(strDate, tour);
-		return "redirect:/tours";
+		return "redirect:/tours/{id}";
 	}
 
 	@RequestMapping(value = "/tours/{id}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("id") Integer id) {
-		logger.info("delete Tour");
+	public @ResponseBody String delete(@PathVariable("id") int id, Model model) {
+		logger.info("delete Tour ");
 		tourService.deleteTour(id);
 		return "redirect:/tours";
 	}

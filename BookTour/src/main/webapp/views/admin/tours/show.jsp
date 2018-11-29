@@ -6,7 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
-<spring:url value="/addTour" var="addTourUrl" />
+<spring:url value="tours/add" var="addTourUrl" />
 <div id="wrapper">
 	<!-- DataTables Example -->
 	<div class="card mb-3">
@@ -35,6 +35,7 @@
 							<th>Duration Time</th>
 							<th>Date Start</th>
 							<th>Action</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -47,6 +48,7 @@
 							<th>Duration Time</th>
 							<th>Date Start</th>
 							<th>Action</th>
+							<th></th>
 						</tr>
 					</tfoot>
 
@@ -66,12 +68,10 @@
 										onclick="location.href='${detailActionUrl}'">Detail</button> <spring:url
 										value="tours/${tour.id}/edit" var="editActionUrl" />
 									<button class="btn btn-warning"
-										onclick="location.href='${editActionUrl}'">Edit</button> <form method="post"
-										action=" <spring:url
-										value="tours/${tour.id}" var="deleteActionUrl" />"  >
-										<button class="btn btn-danger" value="delete" type="submit"
-											onclick="location.href='${deleteActionUrl}'">Delete</button>
-									</form></td>
+										onclick="location.href='${editActionUrl}'">Edit</button>
+									<button class="btn btn-danger btnTourDelete">Delete</button></td>
+								<td class="idtour" hidden>${tour.id}</td>
+								</tr>
 						</c:forEach>
 					</tbody>
 
@@ -133,8 +133,8 @@
 								<div class="form-label-group">
 									<select name="placeFromId">
 										<option value="-" label="--Select Place From" />
-										<c:forEach items="${places}" var="places" varStatus="count">
-											<option value=${places.id}>${places.name}</option>
+										<c:forEach items="${places}" var="place" varStatus="count">
+											<option value=${place.id }>${place.name}</option>
 										</c:forEach>
 									</select>
 								</div>
@@ -144,8 +144,8 @@
 								<div class="form-label-group">
 									<select name="placeToId">
 										<option value="-" label="--Select Place To" />
-										<c:forEach items="${places}" var="places" varStatus="count">
-											<option value=${places.id}>${places.name}</option>
+										<c:forEach items="${places}" var="place" varStatus="count">
+											<option value=${place.id }>${place.name}</option>
 										</c:forEach>
 									</select>
 								</div>
@@ -213,6 +213,4 @@
 		</div>
 	</div>
 </footer>
-
-
 

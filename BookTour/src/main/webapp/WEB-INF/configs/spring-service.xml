@@ -15,6 +15,8 @@
 		<property name="target">
 			<bean class="app.service.impl.TourServiceImpl">
 				<property name="tourDAO" ref="TourDAO" />
+				<property name="placeDAO" ref="PlaceDAO" />
+				
 			</bean>
 		</property>
 	</bean>
@@ -29,6 +31,7 @@
 		<property name="target">
 			<bean class="app.service.impl.PlaceServiceImpl">
 				<property name="placeDAO" ref="PlaceDAO" />
+				<property name="cityDAO" ref="CityDAO" />
 			</bean>
 		</property>
 	</bean>

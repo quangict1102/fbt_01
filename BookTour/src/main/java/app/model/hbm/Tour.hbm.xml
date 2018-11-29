@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="app.model">
-    <class name="Tour" table="tours" catalog="bookingtour" optimistic-lock="version">
+    <class name="Tour" table="tours" catalog="db_bookingtour" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="identity" />
@@ -14,7 +14,7 @@
             <column name="maxPeople" not-null="true" />
         </property>
         <property name="describe" type="string">
-            <column name="describe" length="65535" not-null="true" />
+            <column name="describe_tour" length="65535" not-null="true" />
         </property>
         <property name="primeAdults" type="string">
             <column name="primeAdults" length="225" />

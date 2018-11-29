@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<spring:url value="/editTourDo" var="editTourUrl" />
+<spring:url value="/${ tourEdit.id} " var="editTourUrl" />
 <div class="modal-body col-md-9">
 	<table class="table table-user-information">
 		<form:form class="form-horizontal" modelAttribute="editTour"

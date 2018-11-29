@@ -7,13 +7,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import app.bean.CommentInfo;
-import app.bean.TourInfo;
-import app.bean.UserInfo;
-import app.helper.CommentHelper;
 import app.model.Comment;
-import app.model.Tour;
 import app.model.User;
-import app.service.BaseService;
 import app.service.CommentService;
 
 public class CommentServiceImpl extends BaseServiceImpl implements CommentService {

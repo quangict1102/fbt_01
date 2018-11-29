@@ -7,7 +7,7 @@ import app.bean.RankOfTourInfo;
 import app.bean.TourInfo;
 import app.model.Tour;
 
-public interface TourService extends BaseService<Integer, Tour> {
+public interface TourService extends BaseService<Integer, TourInfo> {
 	List<TourInfo> loadAllTour();
 
 	List<TourInfo> findByPlace(String place);
@@ -23,4 +23,6 @@ public interface TourService extends BaseService<Integer, Tour> {
 	boolean deleteTour(Integer id);
 
 	TourInfo getAllById(Integer id);
+
+	Tour findTourLast();
 }

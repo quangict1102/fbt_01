@@ -3,8 +3,6 @@ package app.bean;
 import java.util.List;
 
 import app.model.Bill;
-import app.model.Tour;
-import app.model.User;
 
 public class BookTourInfo {
 	private Integer id;

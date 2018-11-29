@@ -1,10 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" session="false"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
+
+
 
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -27,6 +30,19 @@
 			</div>
 		</div>
 	</form>
+	<%
+		HttpSession sessionsa = request.getSession(false);
+		String email = (String) sessionsa.getAttribute("emailLoginSession");
+		if (email != null) {
+	%>
+	<div class="form-control col-md-2">
+		<%=email%>
+	</div>
+	<%
+		}
+	%>
+
+
 
 	<!-- Navbar -->
 	<ul class="navbar-nav ml-auto ml-md-0">
@@ -85,14 +101,15 @@
 				<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
 				<button class="close" type="button" data-dismiss="modal"
 					aria-label="Close">
-					<span aria-hidden="true">Ã—</span>
+					<span aria-hidden="true">×</span>
 				</button>
 			</div>
 			<div class="modal-body">Select "Logout" below if you are ready
 				to end your current session.</div>
 			<div class="modal-footer">
 				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-				<a class="btn btn-primary" href="login.html">Logout</a>
+				<a class="btn btn-primary" href="<c:url value="/admin/logout"/>">
+					Logout</a>
 			</div>
 		</div>
 	</div>
