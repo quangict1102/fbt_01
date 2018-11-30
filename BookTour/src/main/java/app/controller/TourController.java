@@ -90,5 +90,7 @@ public class TourController extends BaseController {
 		tourService.deleteTour(id);
 		return "redirect:/tours";
 	}
+	
+	
 
 }

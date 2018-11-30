@@ -37,12 +37,40 @@ public class PlaceServiceImpl extends BaseServiceImpl implements PlaceService {
 
 	@Override
 	public Place saveOrUpdate(Place entity) {
-		return null;
+		try {
+			if(entity.getId()==null) {
+				return getPlaceDAO().saveOrUpdate(entity);
+			} 
+			getPlaceDAO().findByIdLock(entity.getId());
+			return getPlaceDAO().saveOrUpdate(entity);
+		} catch (Exception e) {
+			throw e;
+		}
+		
+		
 	}
 
 	@Override
 	public boolean delete(Place entity) {
-		return false;
+		try {
+			getPlaceDAO().delete(entity);
+			return true;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public boolean deletePlace(Integer id) {
+		try {
+			Place place=getPlaceDAO().findByIdLock(id);
+			if(place==null) {
+				return false;
+			}
+			return delete(place);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 }

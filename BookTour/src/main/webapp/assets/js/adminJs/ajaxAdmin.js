@@ -72,7 +72,7 @@ $("#btnUserDeleteDetail").on('click', function() {
 	return false;
 });
 
-
+/*Tour*/
 $(".btnTourDelete").on('click', function() {
 	var $row = $(this).closest("tr");
 	var $text = $row.find(".idtour").text();
@@ -164,3 +164,50 @@ $("#btnDeleteUserDetail").on('click', function() {
 	return false;
 });
 
+/*booking*/
+$(".btnBookTourDelete").on('click', function() {
+	var $row = $(this).closest("tr");
+	var $text = $row.find(".idBookTour").text();
+	alertify.set({
+		buttonFocus : "cancel"
+	});
+	alertify.confirm("Want To Delete?", function(e) {
+		if (e) {
+			$.ajax({
+				type : "DELETE",
+				url :  "booktours/"+$text,
+				success : function(response) {
+					window.location.replace("/BookTour1/booktours");
+				}
+			});
+			alertify.success("Delete");
+		} else {
+			alertify.error("Cancel Delete ");
+		}
+	});
+	return false;
+});
+
+
+$(".btnPlaceDelete").on('click', function() {
+	var $row = $(this).closest("tr");
+	var $text = $row.find(".idPlace").text();
+	alertify.set({
+		buttonFocus : "cancel"
+	});
+	alertify.confirm("Want To Delete?", function(e) {
+		if (e) {
+			$.ajax({
+				type : "DELETE",
+				url :  "places/"+$text,
+				success : function(response) {
+					window.location.replace("/BookTour1/places");
+				}
+			});
+			alertify.success("Delete");
+		} else {
+			alertify.error("Cancel Delete ");
+		}
+	});
+	return false;
+});

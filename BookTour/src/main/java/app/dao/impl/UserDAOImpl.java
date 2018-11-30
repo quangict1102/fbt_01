@@ -51,7 +51,7 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> loadUsers() {
-		return getSession().createQuery("from User").getResultList();
+		return getSession().createQuery("from User BY id DESC").getResultList();
 	}
 
 	@Override

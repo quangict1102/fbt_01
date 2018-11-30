@@ -10,10 +10,17 @@ public class City implements Serializable {
 	private String name;
 	private List<Place> placeses;
 
+	
 	public City(Integer id, String name) {
 		this.id = id;
 		this.name = name;
 	}
+
+	public City(Integer id) {
+		super();
+		this.id = id;
+	}
+
 
 	public City(Integer id, String name, List<Place> placeses) {
 		super();

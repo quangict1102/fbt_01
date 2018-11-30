@@ -15,6 +15,8 @@ public class PlaceConvertHelper {
 		placeInfo.setId(place.getId());
 		placeInfo.setName(place.getName());
 		CityInfo cityInfo = new CityInfo();
+		cityInfo.setId(place.getCity().getId());
+		cityInfo.setName(place.getCity().getName());
 		placeInfo.setCityInfo(cityInfo);
 		return placeInfo;
 	};
@@ -36,6 +38,8 @@ public class PlaceConvertHelper {
 		place.setId(placeInfo.getId());
 		place.setName(placeInfo.getName());
 		City city = new City();
+		city.setId(placeInfo.getCityInfo().getId());
+		city.setName(placeInfo.getCityInfo().getName());
 		place.setCity(city);
 		return place;
 	};

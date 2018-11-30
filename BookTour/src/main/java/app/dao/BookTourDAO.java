@@ -14,4 +14,10 @@ public interface BookTourDAO extends BaseDAO<Integer, Booktour> {
 	List<Booktour> getAllById(Integer id);
 	
 	Booktour findByIdLock(Integer id,boolean lock);
+	
+	List<Booktour> searchAllByEmail(String email);
+	
+	List<Booktour> searchAllByNameTour(String tourName);
+	
+	Booktour findByIdLock(Integer id);
 }
