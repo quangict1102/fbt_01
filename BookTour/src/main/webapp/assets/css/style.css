@@ -2945,3 +2945,13 @@ span.fix-fontsize{
   background-color: #080807;
   color: white;
 }
+#search-list{
+	position: absolute; z-index: 1; background-color: aliceblue;
+	cursor: pointer;
+}
+.li-search:hover{
+	 background-color: #080807;
+}
+.li-search{
+	 border-bottom: 1px solid #000000;display:block;
+}

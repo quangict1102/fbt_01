@@ -10,6 +10,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<jdk>1.8</jdk>
+		<spring.security.version>5.0.2.RELEASE</spring.security.version>
 		<spring.version>4.3.18.RELEASE</spring.version>
 		<mysql-connector-java>6.0.6</mysql-connector-java>
 		<hibernate.version>5.3.0.Final</hibernate.version>
@@ -37,7 +38,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- org.apache.httpcomponents -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>fluent-hc</artifactId>
+			<version>4.5.5</version>
+		</dependency>
 		<!-- Hiberante -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -70,7 +76,17 @@
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -100,7 +116,6 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
 		<!-- Database Pool -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>

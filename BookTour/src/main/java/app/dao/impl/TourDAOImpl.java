@@ -64,7 +64,7 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		Join<Rating, Tour> joinRating = ratingRoot.join("tour", JoinType.INNER);
 		query.multiselect(joinTour, builder.max(ratingRoot.get("numberRank"))).groupBy(joinTour.get("id"));
 
-		Predicate getByDate = builder.and(builder.greaterThan(joinTour.<Date> get("dateStart"), date));
+		Predicate getByDate = builder.and(builder.greaterThan(joinTour.<Date>get("dateStart"), date));
 
 		Predicate getByIdPlace = builder.and(builder.in(joinPlace.get("id")).value(subquery));
 
@@ -74,7 +74,7 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 
 	@Override
 	public Tour getAllById(Integer id) {
-		return getSession().load(Tour.class, id);
+		return getSession().get(Tour.class, id);
 	}
 
 	@Override
@@ -82,10 +82,22 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		logger.info("find id lock: " + id);
 		return (Tour) getSession().load(Tour.class, id, LockMode.PESSIMISTIC_WRITE);
 	}
-	
+
 	@Override
 	public Tour findTourLast() {
 		return (Tour) getSession().createQuery("FROM Tour WHERE id IN( SELECT Max(id) FROM Tour)").getSingleResult();
+	}
+
+	@Override
+	public List<Tour> searchTourAndPlace(String keyword) {
+		/* String query = " select t from Tour t where t.name like :keyword"; */
+		CriteriaBuilder builder = getSession().getCriteriaBuilder();
+		CriteriaQuery query = builder.createQuery();
+		Root<Tour> root = query.from(Tour.class);
+		query.select(root);
+		Predicate search = builder.and(builder.like(root.get("name").as(String.class), "%" + keyword + "%"));
+		query.where(search);
+		return getSession().createQuery(query).getResultList();
 	}
 
 }

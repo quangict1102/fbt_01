@@ -32,6 +32,8 @@
 				<li class="active"> <a href='<c:url value="/"></c:url>'><spring:message code="page.main" /></a></li>
 				<li><a href="weekend.html">Weekend Getaways</a></li>
 			</ul>
+			<input type="text" name="search" id="search"  class="form-control" placeholder="Search City Name, Place,..." />
+			  <div id="search-list"></div>  
 			<div class="clearfix"></div>
 		</div>
 		<div class="dropdown-grids">
@@ -66,7 +68,9 @@
 												<a href="#"><spring:message code="page.fb" /></a>
 											</div>
 											<div class="chrome-button">
-												<a href="#"><spring:message code="page.gmail" /></a>
+											<a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8083/BookTour1/login-google&response_type=code
+											&client_id=650605713330-9s9j72fd23vgfqdlc380mh0re75mj7cm.apps.googleusercontent.com&approval_prompt=force"><spring:message code="page.gmail" /></a>	
+												
 											</div>
 											<div class="button-bottom">
 												<p>
@@ -100,3 +104,7 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+<div hidden id="logError">
+	${logLogin }
+</div>
+

@@ -302,6 +302,44 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	$('#search').keyup(function(){ 
+		var search = $(this).val();
+		if(search != ''){
+			$.ajax({
+				url:"/BookTour1/clientAjax/searchTourAndPlace",
+				type:"get",
+				data:{
+					search:search
+					},
+				success:function(value){
+					var html ='';
+					html += '<ul>';
+					if(value.length>0){
+					for(var i =0;i<value.length;i++){
+						html +='<li data-idTour="'+value[i].id+'" style="border-bottom: 1px solid #000000;display:block;padding:5px"> Name Tour: '+value[i].name+'</li>';
+					}
+					}else{
+						html +='<li>Not Found</li>';
+					}
+					html += '</ul>';
+					$('#search-list').fadeIn(); 
+					$('#search-list').html(html);
+				}
+			})
+		}else{
+			  $('#search-list').fadeOut();  
+			
+		}
+	});
+
+	 $('#search-list').on('click', 'li', function(){  
+		$('#search').val($(this).text());
+		var id = $(this).attr('data-idTour');
+		var idTour = parseInt(id);
+        $('#search-list').fadeOut(); 
+        window.location.href = '/BookTour1/detailtours/'+idTour+'';
+	});
+	
 /*	$('#search-tour').click(function() {
 		var date_tour = $('#date-tour').val();
 		var idCity = parseInt($('#city').val());

@@ -6,6 +6,9 @@
 <spring:url value="/assets/js/load-cmt.js" var="load_cmt" />
 <spring:url value="/assets/js/load-img.js" var="load_img" />
 <spring:url value="/assets/js/jquery.flexslider.js" var="flexsliderJs" />
+<spring:url value="/assets/css/google-map.css" var="google_mapcss" />
+<spring:url value="/assets/js/google-map.js" var="google_mapjs" />
+<link type="text/css" rel="stylesheet" href="${google_mapcss }" />
 <div class="banner-bottom">
 	<!-- container -->
 	<div class="container">
@@ -81,42 +84,11 @@
 							<a class="best-btn" href="<c:url value="/bookings/${idTour}" />"><spring:message code="detailTour.book" /></a>
 						</div>
 					</div>
-					<div class="map-gd">
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63718.72916803739!2d102.31975295000002!3d3.489618449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ceba2007355f81%3A0xd2ff1ad6a3ca801!2sMentakab%2C+Pahang%2C+Malaysia!5e0!3m2!1sen!2sin!4v1439535856431"></iframe>
-					</div>
-					<div class="other-comments">
-						<div class="comments-head">
-							<h3>Excellent</h3>
-							<p>4.5/5</p>
-							<div class="clearfix"></div>
-						</div>
-						<div class="comments-bot">
-							<p>"Vestibulum ullamcorper condimentum luctus. Ut ullamcorper
-								elit eu auctor commodo."</p>
-							<h4>
-								<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								John Doe
-							</h4>
-						</div>
-						<div class="comments-bot">
-							<p>"Aliquam non purus quis tellus varius egestas ut vitae
-								tellus. Pellentesque non est ac tortor maximus imperdiet at id
-								quam."</p>
-							<h4>
-								<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								Luther
-							</h4>
-						</div>
-						<div class="comments-bot">
-							<p>"Vestibulum sapien quam, interdum quis bibendum quis,
-								malesuada a nisi. Proin at blandit justo."</p>
-							<h4>
-								<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-								Patrick
-							</h4>
-						</div>
-					</div>
+					
+					 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+   					 <div id="map"></div>
+				
+			
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -278,3 +250,6 @@
 	<!-- //container -->
 </div>
 <script type="text/javascript" src="${load_cmt }"></script>
+<script type="text/javascript" src="${google_mapjs }"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVwQyE1e90XiLhltYdPQen_d27CdspVU8&libraries=places&callback=initAutocomplete"
+         async defer></script>

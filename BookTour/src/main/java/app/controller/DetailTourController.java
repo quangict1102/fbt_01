@@ -25,7 +25,7 @@ public class DetailTourController extends BaseController{
 	private static final Logger logger = Logger.getLogger(DetailTourController.class);
 
 	@GetMapping(path = "/{id}")
-	public ModelAndView detailTour(@PathVariable int id, HttpSession httpSession) {
+	public ModelAndView show(@PathVariable("id") int id, HttpSession httpSession) {
 
 		ModelAndView view = new ModelAndView("detailTours");
 		view.addObject("idTour", id);
