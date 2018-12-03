@@ -14,17 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import app.bean.BookTourInfo;
 import app.bean.CartInfo;
 import app.bean.CommentInfo;
 import app.bean.PlaceInfo;
+import app.bean.TourInfo;
+import app.bean.UserInfo;
 import app.helper.ConvertDateSql;
+import app.model.Bill;
+import app.model.Booktour;
 import app.model.Comment;
 import app.model.Tour;
 import app.model.User;
 
 @Controller
 @RequestMapping(value = "/clientAjax")
-@SessionAttributes({ "userSession", "fullName" })
+@SessionAttributes({ "userSession", "fullName","ibBookTour" })
 public class ClientAjax extends BaseController {
 
 	@GetMapping(path = "getAllPlaceByCity", produces = "application/json;charset=utf-8")
@@ -40,8 +45,8 @@ public class ClientAjax extends BaseController {
 	public String doLogin(Model model, @RequestParam("email") String email, @RequestParam("password") String password,
 			HttpSession httpSession) {
 		User user = userService.findByEmailAndPassword(email, password);
-		if (user == null || !user.getRole().equals("user")) {
-			return "";
+		if ( null == user || !user.getRole().equals("user")) {
+			return "error";
 		}
 		model.addAttribute("fullName", user.getFullName());
 		CartInfo cartInfo = new CartInfo();
@@ -95,5 +100,5 @@ public class ClientAjax extends BaseController {
 	public List<CommentInfo> loadComment(@RequestParam("idTour") int idTour, Model model) {
 		return commentService.getAllCommentByIdTour(idTour);
 	}
-
+	
 }

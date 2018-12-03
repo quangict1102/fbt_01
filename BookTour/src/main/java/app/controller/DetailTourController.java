@@ -18,17 +18,18 @@ import app.service.CommentService;
 @RequestMapping(value = "detailtours")
 
 @SessionAttributes({ "userSession", "cart" })
-public class DetailTourController {
+public class DetailTourController extends BaseController{
 
 	@Autowired
 	CommentService cmtService;
 	private static final Logger logger = Logger.getLogger(DetailTourController.class);
 
-	@GetMapping(value = "/{id}")
+	@GetMapping(path = "/{id}")
 	public ModelAndView detailTour(@PathVariable int id, HttpSession httpSession) {
 
 		ModelAndView view = new ModelAndView("detailTours");
 		view.addObject("idTour", id);
+		view.addObject("tours", tourService.getAllById(id));
 		if (httpSession.getAttribute("userSession") != null) {
 			User user = (User) httpSession.getAttribute("userSession");
 			view.addObject("idUser", user.getId());

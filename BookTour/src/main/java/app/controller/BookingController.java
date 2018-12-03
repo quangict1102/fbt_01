@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import app.bean.CartInfo;
 import app.bean.TourInfo;
@@ -42,13 +43,13 @@ public class BookingController extends BaseController {
 	}
 
 	@PostMapping(value = "/{idTour}/add")
-	public String addBookTour(@ModelAttribute("formBook") Booktour booktour, @PathVariable int id_tour,
+	public String addBookTour(@ModelAttribute("formBook") Booktour booktour, @PathVariable int idTour,
 			HttpSession httpSession, Model model) {
 		User currentUser = (User) httpSession.getAttribute("userSession");
 		if (null == currentUser) {
 			return "redirect:/bookings/{idTour}";
 		}
-		addBookTour(booktour, id_tour, currentUser, httpSession);
+		addBookTour(booktour, idTour, currentUser, httpSession);
 		Long cart = (Long) httpSession.getAttribute("cart");
 		CartInfo cartInfo = new CartInfo();
 		if (cartInfo != null) {
@@ -58,12 +59,12 @@ public class BookingController extends BaseController {
 		return "redirect:/bookings/{idTour}";
 	}
 
-	private void addBookTour(Booktour booktour, int id_tour, User currentUser, HttpSession httpSession) {
+	private void addBookTour(Booktour booktour, int idTour, User currentUser, HttpSession httpSession) {
 		Booktour btInfo = new Booktour();
 		btInfo.setChildren(booktour.getChildren());
 		btInfo.setAdults(booktour.getAdults());
 		Tour tour = new Tour();
-		tour.setId(id_tour);
+		tour.setId(idTour);
 		btInfo.setTour(tour);
 		User user = new User();
 		user.setId(currentUser.getId());

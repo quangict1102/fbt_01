@@ -55,17 +55,20 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 	}
 
 	@Override
-	public User findByIdLock(Integer id) {
+	public User findByIdLock(Integer id, boolean lock) {
 		logger.info(" find user id lock: " + id);
-		return (User) getSession().load(User.class, id, LockMode.PESSIMISTIC_WRITE);
+		if (lock) {
+			return getSession().get(User.class, id, LockMode.PESSIMISTIC_WRITE);
+		}
+		return getSession().get(User.class, id);
+
 	}
 
 	@Override
 	public User findByEmailAndPassword(String email, String password) {
 		logger.info("email password " + email + password);
 		return (User) getSession().createQuery("FROM User where email = :email AND password=:password")
-				.setParameter("email", email).setParameter("password", Md5Helper.getCodeMd5(password))
-				.uniqueResult();
+				.setParameter("email", email).setParameter("password", Md5Helper.getCodeMd5(password)).uniqueResult();
 	}
 
 }

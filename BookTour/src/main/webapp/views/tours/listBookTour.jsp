@@ -10,7 +10,7 @@
 			<div class="book-grids">
 				<div class="col-md-6 book-left">
 					<div class="book-left-info">
-						<h3>Danh sách Tour đã đăng ký</h3>
+						<h3><spring:message code="booktour.list" /></h3>
 					</div>
 					<div class="book-left-form">
 						<div id="find-idBookTour">
@@ -25,20 +25,20 @@
 													<span>${lBookTour.tour.name }</span>
 												</p>
 											<p>
-												Giá tour<span>${lBookTour.primeTour } VND</span>
+
+												<spring:message code="booktour.pricetour" /><span>${lBookTour.primeTour } VND</span>
 											</p>
 											<p>
-												<a class="idBookTour" href="<c:url value='/bills/${lBookTour.id }'/> ">Thanh
-													toán Tour này</a>
+												<a class="idBookTour" href="<c:url value='/bills/${lBookTour.id }'/> ">
+												<spring:message code="booktour.pay" /></a>
 											</p>
 											<form
 												action="<c:url value="/booktours/${lBookTour.id }/del"/> "
 												method="post">
-												<button type="submit" onclick="if(!(confirm('Ban chan chan xoa?'))) return false" id="del_tour">Xóa Tour</button>
+												<button type="submit" onclick="if(!(confirm('You want to update?'))) return false" class="btn btn-success" id="del_tour"><spring:message code="booktour.deltour" /></button>
 											</form>
 											<button data-idBookTour="${lBookTour.id }"
-												class="edit_tour_update" id="edit_tour">Cập nhật
-												Tour</button>
+												class="edit_tour_update btn btn-primary" id="edit_tour"><spring:message code="booktour.updatetour" /></button>
 										</div></a>
 								</div>
 							</c:forEach>
@@ -50,7 +50,7 @@
 				<div id="bill-display"
 					class="col-md-6 book-left book-right bill-display-none">
 					<div class="book-left-info">
-						<h3>Chi tiết tour</h3>
+						<h3><spring:message code="booktour.detailtour" /></h3>
 					</div>
 					<div id="edit_book_tour" class="book-left-form"></div>
 				</div>

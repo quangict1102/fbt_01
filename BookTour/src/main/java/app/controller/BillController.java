@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,6 +41,7 @@ public class BillController extends BaseController {
 		view.addObject("id_bills", id);
 		return view;
 	}
+
 	@PostMapping(path = "create")
 	@ResponseBody
 	public String addBill(@RequestParam("fullNameBill") String fullNameBill,
@@ -52,7 +56,7 @@ public class BillController extends BaseController {
 	}
 
 	private void setValueBill(String fullNameBill, String emailBill, String phoneBill, String dateBill,
-			String totailMoneyBill,int idTourBill,HttpSession httpSession) {
+			String totailMoneyBill, int idTourBill, HttpSession httpSession) {
 		Bill billCurrent = new Bill();
 		billCurrent.setFullName(fullNameBill);
 		billCurrent.setEmail(emailBill);
