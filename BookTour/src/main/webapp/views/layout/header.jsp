@@ -59,7 +59,7 @@
 												for="checkbox"><input type="checkbox" id="checkbox">
 												<i><spring:message code="page.remenber" /></i></label>
 										</fieldset>
-										<span><a href="#"><spring:message code="page.forgot" /></a></span>
+										<span><a href='<c:url value="/sendPassword"></c:url>'><spring:message code="page.forgot" /></a></span>
 										<div class="or-grid">
 											<p><spring:message code="page.or" /></p>
 										</div>
@@ -104,7 +104,8 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
-<div hidden id="logError">
-	${logLogin }
+<div hidden id="messageLogin">
+	${sendLog }
 </div>
-
+<script src="${alertifyJs}" type="text/javascript"></script>
+<script src="${alertifyLogJs}" type="text/javascript"></script>

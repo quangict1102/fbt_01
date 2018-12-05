@@ -2,6 +2,7 @@ package app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import app.helper.GoogleUtils;
 import app.service.BillService;
@@ -40,4 +41,7 @@ public class BaseController {
 	
 	@Autowired
 	protected GoogleUtils googleUtils;
+	
+	@Autowired
+	protected JavaMailSender mailSender;
 }

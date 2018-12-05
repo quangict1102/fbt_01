@@ -49,10 +49,15 @@
 	</definition>
 	<!-- Page Error -->
 		<definition name="pageError" template="/views/error/error500.jsp"></definition>
-			<!-- profile -->
+	<!-- profile -->
 	<definition name="profileUser" extends="baseLayout">
 		<put-attribute name="title" value="Profile User" />
 		<put-attribute name="body" value="/views/users/profile.jsp" />
+	</definition>
+	<!-- Send Password -->
+	<definition name="sendPassword" extends="baseLayout">
+		<put-attribute name="title" value="Send Password" />
+		<put-attribute name="body" value="/views/users/sendPassword.jsp" />
 	</definition>
 	<!-- Admin -->
 	<definition name="LayoutAdminLogInRegister"
