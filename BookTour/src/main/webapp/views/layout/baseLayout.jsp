@@ -61,6 +61,21 @@
 <script src="${jquery }"></script>
 <script src="${modernizrJs }"></script>
 <!-- //js -->
+
+<!-- aler -->
+<spring:url value="/assets/alertify/themes/alertify.core.css"
+	var="coreCss" />
+<spring:url value="/assets/alertify/themes/alertify.bootstrap.css"
+	var="bootstrapCss" />
+<spring:url value="/assets/alertify/themes/alertify.default.css"
+	var="defaultCss" />
+<link rel="stylesheet" href="${coreCss}" />
+<link rel="stylesheet" href="${defaultCss}" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<spring:url value="/assets/alertify/js/alertify.min.js" var="alertifyJs" />
+<script src="${alertifyJs}" type="text/javascript"></script>
+<!-- aler -->
+
 <!-- fonts -->
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,700italic,900,900italic'

@@ -17,5 +17,5 @@ public class CartInfo {
 	public void setCountCart(Long countCart) {
 		this.countCart = countCart;
 	}
-	
+
 }

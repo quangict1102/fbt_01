@@ -108,7 +108,6 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 
 	}
 
-
 	@Override
 	public boolean deleteTour(Integer id) {
 		try {
@@ -161,10 +160,25 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public TourInfo getAllById(Integer id) {
-		return TourConvertHelper.convertSingleTourToTourInfo(getTourDAO().findById(id));
+		try {
+			return TourConvertHelper.convertSingleTourToTourInfo(getTourDAO().findById(id));
+		} catch (Exception e) {
+			throw e;
+
+		}
+	}
+
+	@Override
+	public List<TourInfo> searchTourAndPlace(String search) {
+		try {
+			return TourConvertHelper.convertTourToTourInfo(getTourDAO().searchTourAndPlace(search));
+		} catch (Exception e) {
+			throw e;
+
+		}
 	}
 
 }
-

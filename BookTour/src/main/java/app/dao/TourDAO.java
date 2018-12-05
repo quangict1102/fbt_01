@@ -19,4 +19,7 @@ public interface TourDAO extends BaseDAO<Integer, Tour> {
 	List<Object[]> getAllTourByDateAndCity(int city, Date date);
 	
 	Tour findTourLast();
+	
+	List<Tour> searchTourAndPlace(String search);
+	
 }
