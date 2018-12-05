@@ -52,13 +52,13 @@ public class BookingController extends BaseController {
 		addBookTour(booktour, idTour, currentUser, httpSession);
 		Long cart = (Long) httpSession.getAttribute("cart");
 		CartInfo cartInfo = new CartInfo();
-		if (cartInfo != null) {
+		cartInfo.setCountCart(cart + 1);
+		
 			if (cart == 0) {
 				cartInfo.setCountCart((long) 1);
 			} 
-				cartInfo.setCountCart(cart + 1);
+				
 			model.addAttribute("cart", cartInfo.getCountCart());
-		}
 		return "redirect:/bookings/{idTour}";
 	}
 

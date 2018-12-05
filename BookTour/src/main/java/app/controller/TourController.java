@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import app.bean.CartInfo;
 import app.bean.GoogleInfo;
 import app.bean.TourInfo;
-import app.bean.UserInfo;
 import app.helper.ConvertDateSql;
-import app.helper.GoogleUtils;
 import app.helper.Md5Helper;
-import app.helper.UserConverHelper;
 import app.model.Place;
 import app.model.Tour;
 import app.model.User;
@@ -64,38 +60,6 @@ public class TourController extends BaseController {
 		GoogleInfo googleInfo = googleUtils.getUserInfo(accessToken);
 		checkEmailAndPasswordByGoogle(googleInfo, model, httpSession);
 		return "redirect:/";
-	}
-
-	private void checkEmailAndPasswordByGoogle(GoogleInfo googleInfo, Model model, HttpSession httpSession) {
-		User userCurrent = userService.findByEmailAndPassword(googleInfo.getEmail(), googleInfo.getId());
-		if (userCurrent == null) {
-			User userAdd = userService.saveOrUpdate(setValueUser(googleInfo));
-			if (userAdd == null) {
-				model.addAttribute("messageLogin", "err");
-			} else {
-				httpSession.setAttribute("userSession", userAdd);
-				CartInfo cartInfo = new CartInfo();
-				cartInfo.setCountCart(bookingtourService.countCart(userAdd.getId()));
-				httpSession.setAttribute("cart", cartInfo.getCountCart());
-			}
-		} else {
-			httpSession.setAttribute("userSession", userCurrent);
-			CartInfo cartInfo = new CartInfo();
-			cartInfo.setCountCart(bookingtourService.countCart(userCurrent.getId()));
-			httpSession.setAttribute("cart", cartInfo.getCountCart());
-		}
-	}
-
-	private User setValueUser(GoogleInfo googleInfo) {
-		User user = new User();
-		user.setEmail(googleInfo.getEmail());
-		user.setPassword(Md5Helper.getCodeMd5(googleInfo.getId()));
-		user.setFullName(googleInfo.getEmail());
-		user.setRole("user");
-		user.setAddress("");
-		user.setPhoneNumber("");
-		user.setGender(0);
-		return user;
 	}
 
 	@RequestMapping(value = "/tours")
@@ -148,6 +112,38 @@ public class TourController extends BaseController {
 		logger.info("delete Tour ");
 		tourService.deleteTour(id);
 		return "redirect:/tours";
+	}
+
+	private void checkEmailAndPasswordByGoogle(GoogleInfo googleInfo, Model model, HttpSession httpSession) {
+		User userCurrent = userService.findByEmailAndPassword(googleInfo.getEmail(), googleInfo.getId());
+		if (userCurrent == null) {
+			User userAdd = userService.saveOrUpdate(setValueUser(googleInfo));
+			if (userAdd == null) {
+				model.addAttribute("messageLogin", "err");
+			} else {
+				httpSession.setAttribute("userSession", userAdd);
+				CartInfo cartInfo = new CartInfo();
+				cartInfo.setCountCart(bookingtourService.countCart(userAdd.getId()));
+				httpSession.setAttribute("cart", cartInfo.getCountCart());
+			}
+		} else {
+			httpSession.setAttribute("userSession", userCurrent);
+			CartInfo cartInfo = new CartInfo();
+			cartInfo.setCountCart(bookingtourService.countCart(userCurrent.getId()));
+			httpSession.setAttribute("cart", cartInfo.getCountCart());
+		}
+	}
+
+	private User setValueUser(GoogleInfo googleInfo) {
+		User user = new User();
+		user.setEmail(googleInfo.getEmail());
+		user.setPassword(Md5Helper.getCodeMd5(googleInfo.getId()));
+		user.setFullName(googleInfo.getEmail());
+		user.setRole("user");
+		user.setAddress("");
+		user.setPhoneNumber("");
+		user.setGender(0);
+		return user;
 	}
 
 }
