@@ -126,6 +126,17 @@
 		<put-attribute name="title" value="PLACES" />
 		<put-attribute name="body" value="/views/admin/places/show.jsp" />
 	</definition>
+	<definition name="insertPlace" extends="baseLayoutAdmin">
+		<put-attribute name="title" value="PLACES" />
+		<put-attribute name="body" value="/views/admin/places/insert.jsp" />
+	</definition>
+	
+	
+		<!-- account -->
+	<definition name="detailAcc" extends="baseLayoutAdmin">
+		<put-attribute name="title" value="Account" />
+		<put-attribute name="body" value="/views/admin/account/detail.jsp" />
+	</definition>
 	
 	<definition name="error" template="/views/error/error.jsp"></definition>
 	

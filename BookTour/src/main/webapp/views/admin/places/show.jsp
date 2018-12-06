@@ -46,14 +46,15 @@
 								<th scope="row">${count.index + 1}</th>
 								<td>${place.name}</td>
 								<td>${place.cityInfo.name }</td>
-								<td><spring:url value="places/${place.id}" var="detailActionUrl" />
+								<td><spring:url value="places/${place.id}"
+										var="detailActionUrl" />
 									<button class="btn btn-info" data-toggle="modal"
 										data-target="#myModal">Detail</button> <spring:url
 										value="places/${place.id}/edit" var="editActionUrl" />
 									<button class="btn btn-warning"
-										onclick="location.href='${editActionUrl}'">Edit</button> 
+										onclick="location.href='${editActionUrl}'">Edit</button>
 									<button class="btn btn-danger btnPlaceDelete">Delete</button></td>
-									<td class="idPlace" hidden>${place.id}</td>
+								<td class="idPlace" hidden>${place.id}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -75,31 +76,44 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<table class="table table-user-information">
-						<form:form class="form-horizontal" modelAttribute="addPlace"
-							action="${addPlaceUrl}">
-							<div class=" form-group">
-								<div class="form-label-group">
-									<input name="name" type="text" id="name" class="form-control"
-										placeholder="Name" required="required" autofocus="autofocus" />
-									<label for="name">Name</label>
+
+					<form class="file-uploader" modelAttribute="addPlace" enctype="multipart/form-data"
+						action="${addPlaceUrl}" method="post">
+						<div class=" form-group">
+							<div class="form-label-group">
+								<input name="name" type="text" id="name" class="form-control"
+									placeholder="Name" required="required" autofocus="autofocus" />
+								<label for="name">Name</label>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<div class="form-label-group">
+								<select name="idCity">
+									<option value="-" label="--Select City " />
+									<c:forEach items="${cityInfos}" var="cityInfo"
+										varStatus="count">
+										<option value=${cityInfo.id }>${cityInfo.name}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+
+						<div class=" form-group">
+							<div class="form-label-group">
+								<div class="file-uploader__message-area">
+									<p>Select a file to upload</p>
+								</div>
+								<div class="file-chooser">
+									<input class="file-chooser__input" name="files" type="file"
+										>
 								</div>
 							</div>
-							
-							<div class="form-group ">
-								<div class="form-label-group">
-									<select name="idCity">
-										<option value="-" label="--Select City " />
-										<c:forEach items="${cityInfos}" var="cityInfo" varStatus="count">
-											<option value=${cityInfo.id }>${cityInfo.name}</option>
-										</c:forEach>
-									</select>
-								</div>
-							</div>
-							
-							<button type="submit" class="btn btn-primary btn-block ">submit</button>
-						</form:form>
-					</table>
+						</div>
+
+						<button type="submit" class="btn btn-primary btn-block file-uploader__submit-button">submit</button>
+					</form>
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -115,6 +129,4 @@
 		</div>
 	</div>
 </footer>
-
-
 

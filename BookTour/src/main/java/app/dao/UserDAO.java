@@ -10,9 +10,11 @@ public interface UserDAO extends BaseDAO<Integer, User> {
 	List<User> searchUserUsingCretial(String name);
 
 	List<User> loadUsers();
-
+	
 	User findByIdLock(Integer id, boolean lock);
-
-	User findByEmailAndPassword(String email, String password);
-
+	
+	User findByEmailAndPassword(String email,String password);
+	
+	User findByIdAndPassword(Integer id,String password);
+	 
 }

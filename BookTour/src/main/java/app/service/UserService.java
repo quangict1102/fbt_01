@@ -17,6 +17,8 @@ public interface UserService extends BaseService<Integer, User> {
 	User findByEmailAndPassword(String email,String password);
 	
 	List<UserInfo> saveOrUpdate(List<UserInfo> userInfos);
+	
+	User findByIdAndPassword(Integer id,String password);
 
 	User updateUser(UserInfo userInfo);
 	

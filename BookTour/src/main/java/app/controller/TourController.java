@@ -29,7 +29,7 @@ import app.model.Tour;
 import app.model.User;
 
 @Controller
-@RequestMapping(value = { "/", "home" })
+@RequestMapping(value = { "/", "home", "admin" })
 @SessionAttributes({ "userSession", "fullName", "cart" })
 public class TourController extends BaseController {
 	private static final Logger logger = Logger.getLogger(TourController.class);

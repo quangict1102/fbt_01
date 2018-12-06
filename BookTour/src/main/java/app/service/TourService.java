@@ -5,7 +5,6 @@ import java.util.List;
 
 import app.bean.RankOfTourInfo;
 import app.bean.TourInfo;
-import app.bean.TourSearchInfo;
 import app.model.Tour;
 
 public interface TourService extends BaseService<Integer, TourInfo> {

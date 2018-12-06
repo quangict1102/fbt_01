@@ -24,6 +24,10 @@ public class PlaceDAOImpl extends GenericDAO<Integer, Place> implements PlaceDAO
 		logger.info("find id lock: " + id);
 		return (Place) getSession().load(Place.class, id, LockMode.PESSIMISTIC_WRITE);
 	}
+	@Override
+	public Place findPlaceLast() {
+		return (Place) getSession().createQuery("FROM Place WHERE id IN( SELECT Max(id) FROM Place)").getSingleResult();
+	}
 	
 
 }
