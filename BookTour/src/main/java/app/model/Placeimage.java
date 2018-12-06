@@ -10,6 +10,11 @@ public class Placeimage implements java.io.Serializable {
 	public Placeimage() {
 	}
 
+	public Placeimage(String urlImage) {
+		super();
+		this.urlImage = urlImage;
+	}
+
 	public Placeimage(Integer id, Place place, String urlImage) {
 		this.id = id;
 		this.place = place;

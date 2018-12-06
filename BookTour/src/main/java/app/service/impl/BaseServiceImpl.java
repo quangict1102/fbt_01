@@ -5,6 +5,7 @@ import app.dao.BookTourDAO;
 import app.dao.CityDAO;
 import app.dao.CommentDAO;
 import app.dao.PlaceDAO;
+import app.dao.PlaceimageDAO;
 import app.dao.RatingDAO;
 import app.dao.TourDAO;
 import app.dao.UserDAO;
@@ -19,6 +20,15 @@ public class BaseServiceImpl {
 	protected CommentDAO commentDAO;
 	protected BookTourDAO booktourDAO;
 	protected BillDAO billDAO;
+	protected PlaceimageDAO placeimageDAO;
+
+	public PlaceimageDAO getPlaceimageDAO() {
+		return placeimageDAO;
+	}
+
+	public void setPlaceimageDAO(PlaceimageDAO placeimageDAO) {
+		this.placeimageDAO = placeimageDAO;
+	}
 
 	public BaseServiceImpl(TourDAO tourDAO) {
 		this.tourDAO = tourDAO;

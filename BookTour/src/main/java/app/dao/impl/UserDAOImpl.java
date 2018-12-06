@@ -31,7 +31,8 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 	@Override
 	public User findByEmail(String email) {
 		logger.info("email: " + email);
-		return (User) getSession().createQuery("FROM User where email = :email").setParameter("email", email).uniqueResult();
+		return (User) getSession().createQuery("FROM User where email = :email").setParameter("email", email)
+				.uniqueResult();
 	}
 
 	@Override
@@ -50,7 +51,8 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> loadUsers() {
-		return getSession().createQuery("from User BY id DESC").getResultList();
+
+		return getSession().createQuery("from User ORDER BY id DESC").getResultList();
 	}
 
 	@Override
@@ -68,6 +70,13 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 		logger.info("email password " + email + password);
 		return (User) getSession().createQuery("FROM User where email = :email AND password=:password")
 				.setParameter("email", email).setParameter("password", Md5Helper.getCodeMd5(password)).uniqueResult();
+	}
+
+	@Override
+	public User findByIdAndPassword(Integer id, String password) {
+		logger.info("id password " + id + password);
+		return (User) getSession().createQuery("FROM User where id = :id AND password=:password").setParameter("id", id)
+				.setParameter("password", Md5Helper.getCodeMd5(password)).uniqueResult();
 	}
 
 }

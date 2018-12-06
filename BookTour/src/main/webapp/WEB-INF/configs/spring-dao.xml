@@ -44,4 +44,9 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="PlaceimageDAO" class="app.dao.impl.PlaceimageDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 </beans>

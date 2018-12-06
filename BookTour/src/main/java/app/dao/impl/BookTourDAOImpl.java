@@ -7,7 +7,6 @@ import org.hibernate.LockMode;
 import app.dao.BookTourDAO;
 import app.dao.GenericDAO;
 import app.model.Booktour;
-import app.model.Tour;
 
 public class BookTourDAOImpl extends GenericDAO<Integer, Booktour> implements BookTourDAO {
 

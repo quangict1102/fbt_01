@@ -7,12 +7,12 @@
 	prefix="tilesx"%>
  <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
+        <!-- <li class="nav-item active">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>
@@ -29,7 +29,7 @@
             <a class="dropdown-item" href="blank.html">Blank Page</a>
           </div>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Charts</span></a>
@@ -38,7 +38,7 @@
           <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-        </li>
+        </li> -->
       </ul>
       
       <div id="content-wrapper">
@@ -61,7 +61,7 @@
 						</div>
 						<div class="mr-5">User and Admin !</div>
 					</div>
-					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/users"/>">
+					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/admin/users"/>">
 						<span class="float-left">View Users</span> <span
 						class="float-right"> <i class="fas fa-angle-right"></i>
 					</span>
@@ -76,7 +76,7 @@
 						</div>
 						<div class="mr-5"> Tour </div>
 					</div>
-					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/tours"/>"">
+					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/admin/tours"/>"">
 						<span class="float-left">View Tours</span> <span
 						class="float-right"> <i class="fas fa-angle-right"></i>
 					</span>
@@ -91,7 +91,8 @@
 						</div>
 						<div class="mr-5">BookTour</div>
 					</div>
-					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/booktours"/>"">
+
+					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/admin/booktours"/>"">
 						<span class="float-left">View BookTour</span> <span
 						class="float-right"> <i class="fas fa-angle-right"></i>
 					</span>
@@ -107,7 +108,8 @@
 						</div>
 						<div class="mr-5">Places</div>
 					</div>
-					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/places"/>"">
+
+					<a class="card-footer text-white clearfix small z-1" href="<c:url value="/admin/places"/>"">
 						<span class="float-left">View Places</span> <span
 						class="float-right"> <i class="fas fa-angle-right"></i>
 					</span>

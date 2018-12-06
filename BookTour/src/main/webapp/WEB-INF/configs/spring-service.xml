@@ -32,6 +32,7 @@
 			<bean class="app.service.impl.PlaceServiceImpl">
 				<property name="placeDAO" ref="PlaceDAO" />
 				<property name="cityDAO" ref="CityDAO" />
+				<property name="placeimageDAO" ref="PlaceimageDAO" />
 			</bean>
 		</property>
 	</bean>

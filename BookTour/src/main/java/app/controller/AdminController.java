@@ -22,20 +22,22 @@ import app.helper.ROLES;
 import app.model.User;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class AdminController extends BaseController {
 	private static final Logger logger = Logger.getLogger(AdminController.class);
 
-	@RequestMapping(value = "/admin")
+	@RequestMapping()
 	public String home(HttpSession httpSession) {
 		logger.info("home page");
-		if(httpSession.getAttribute("emailLoginSession")==null) {
-			return "redirect:/login";
+		if (httpSession.getAttribute("emailLoginSession") == null) {
+			return "redirect:/admin/login";
 		}
 		return "homeAdmin";
 	}
 
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody String deleteUser(@PathVariable("id") Integer id, final RedirectAttributes redirectAttributes) {
+	public @ResponseBody String deleteUser(@PathVariable("id") Integer id,
+			final RedirectAttributes redirectAttributes) {
 		logger.info("delete User");
 		userService.deleteUser(id);
 		return "redirect:/admin";
@@ -50,30 +52,28 @@ public class AdminController extends BaseController {
 		return model;
 	}
 
-
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
 	public String show(Model model, @PathVariable("id") Integer id) {
 		model.addAttribute("userDetail", userService.findById(id));
 		return "detailUser";
 	}
 
-	@RequestMapping(value = "/login" )
-	public String toLoginAdmin(Model model,HttpSession httpSession) {
-		
-		if(httpSession.getAttribute("emailLoginSession")!=null) {
+	@RequestMapping(value = "/login")
+	public String toLoginAdmin(Model model, HttpSession httpSession) {
+
+		if (httpSession.getAttribute("emailLoginSession") != null) {
 			return "redirect:/admin";
 		}
-		System.out.println((httpSession.getAttribute("emailLoginSession")));
 		return "adminLogin";
 	}
 
 	@RequestMapping(value = "/admin/login")
-	public String doLoginAdmin(@ModelAttribute("UserLogin") UserInfo userInfo, Model model,HttpSession httpSession) {
+	public String doLoginAdmin(@ModelAttribute("UserLogin") UserInfo userInfo, Model model, HttpSession httpSession) {
 		User user = userService.findByEmailAndPassword(userInfo.getEmail(), userInfo.getPassword());
 		if (user == null || !user.getRole().equals(ROLES.ADMIN.toString())) {
 			model.addAttribute("logNotice",
 					messageSource.getMessage("login.invalid", null, LocaleContextHolder.getLocale()));
-			
+
 			return "forward:/login";
 		}
 		httpSession.setAttribute("emailLoginSession", userInfo.getEmail());
@@ -81,18 +81,37 @@ public class AdminController extends BaseController {
 		model.addAttribute("logNotice", messageSource.getMessage("login.valid", null, LocaleContextHolder.getLocale()));
 		return "forward:/admin";
 	}
-	
+
 	@RequestMapping(value = "/admin/logout")
-	public String logoutUser(Model model,HttpSession httppSession) {
+	public String logoutUser(Model model, HttpSession httppSession) {
 		httppSession.setAttribute("emailLoginSession", null);
 		return "redirect:/login";
 	}
-	
-	@RequestMapping(value = "/admin/import" ,method=RequestMethod.POST)
+
+	@RequestMapping(value = "/admin/import", method = RequestMethod.POST)
 	public String importExcel(@RequestParam("file") MultipartFile file) {
 		userService.saveOrUpdate(ExcelHelper.readExcel(file));
-		return "forward:/users";	
+		return "forward:/users";
 
 	}
+
+	@RequestMapping(value = "/account", method = RequestMethod.GET)
+	public String showAcc(Model model, HttpSession httpSession) {
+		model.addAttribute("AccDetail", userService.findById((Integer) httpSession.getAttribute("idUserSession")));
+		return "detailAcc";
+	}
+
+	@RequestMapping(value = "/password", method = RequestMethod.POST)
+	public String changePassword(HttpSession httpSession, @RequestParam("password") String password,
+			@RequestParam("passwordRepeat") String passwordRepeat, @RequestParam("newPassword") String newPassword) {
+		User user= userService.findByIdAndPassword((Integer)httpSession.getAttribute("idUserSession"), password);
+		if(user==null) {
+			return "detailAcc";
+		}
+			userService.saveOrUpdate(user);
+			return "detailAcc";
+		
+	}
+	
 
 }

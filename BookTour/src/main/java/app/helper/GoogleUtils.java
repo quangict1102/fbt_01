@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import app.bean.GoogleInfo;
-import app.bean.UserInfo;
 
 @Component
 public class GoogleUtils {

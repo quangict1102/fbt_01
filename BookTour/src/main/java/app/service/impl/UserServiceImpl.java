@@ -45,7 +45,8 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 		try {
 			return UserConverHelper.convertSingleUserToUserInfo(getUserDAO().findByEmail(email));
 		} catch (Exception e) {
-			return null;
+			logger.error(e);
+			throw e;
 		}
 	}
 
@@ -123,15 +124,26 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 			user.setEmail(userInfo.getEmail());
 			user.setPhoneNumber(userInfo.getPhoneNumber());
 			return getUserDAO().saveOrUpdate(user);
+			
 		} catch (Exception e) {
 			logger.error(e);
 			throw e;
 		}
+	}
+	public User findByIdAndPassword(Integer id, String password) {
+		try {
+			return	getUserDAO().findByIdAndPassword(id, password);
+		} catch (Exception e) {
+			logger.error(e);
+			throw e;
+		}
+		
 	}
 
 	@Override
 	public UserInfo findByIdUser(Integer id) {
 		return UserConverHelper.convertSingleUserToUserInfo(getUserDAO().findByIdLock(id, false));
 	}
-
 }
+	
+	

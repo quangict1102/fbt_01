@@ -11,4 +11,6 @@ public interface PlaceDAO extends BaseDAO<Integer, Place> {
 	
 	Place findByIdLock(Integer id);
 	
+	Place findPlaceLast();
+	
 }

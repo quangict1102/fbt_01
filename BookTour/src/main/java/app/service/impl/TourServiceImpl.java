@@ -157,7 +157,6 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 
 	@Override
 	public Tour findTourLast() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

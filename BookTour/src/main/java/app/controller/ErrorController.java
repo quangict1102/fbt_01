@@ -21,6 +21,7 @@ public class ErrorController {
 		ModelAndView errorPage = new ModelAndView("error");
 		int httpErrorCode = getErrorCode(httpRequest);
 		String	errorMsg = messageSource.getMessage("error."+httpErrorCode, null, LocaleContextHolder.getLocale());
+
 		errorPage.addObject("errorMsg", errorMsg);
 		return errorPage;
 	}

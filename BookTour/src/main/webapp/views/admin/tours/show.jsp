@@ -7,6 +7,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
 <spring:url value="tours/add" var="addTourUrl" />
+<script src="http://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 <div id="wrapper">
 	<!-- DataTables Example -->
 	<div class="card mb-3">
@@ -170,11 +171,12 @@
 
 							<div class="form-group">
 								<div class="form-label-group">
-
-									<textarea id="describe" name="describe" rows="5" cols="33">
+										<textarea name="describe" id="editor1" rows="10" cols="80">
+          							  </textarea>
+									<!-- <textarea id="describe" name="describe" rows="5" cols="33">
 								
-									</textarea>
-									<label for="describe">Tell us your story:</label>
+									</textarea> -->
+									<!-- <label for="describe">Tell us your story:</label> -->
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary btn-block ">submit</button>
@@ -213,4 +215,6 @@
 		</div>
 	</div>
 </footer>
+
+
 

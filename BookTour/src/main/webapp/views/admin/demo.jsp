@@ -1,64 +1,49 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
+	prefix="tilesx"%>
+
+<spring:url value="/assets/multiple-file-uploader/css/normalize.min.css"
+	var="normalizeCss" />
+<spring:url value="/assets/multiple-file-uploader/css/style.css" var="styleCss" />
+
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
-<title>Spring Boot ajax example</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<spring:url value="/assets/vendor/bootstrap/css/bootstrap.min.css" var="bootstrapCss" />
-		<link rel="stylesheet" href="${bootstrapCss}" />
+<meta charset="UTF-8">
+<title>Multiple File Uploader</title>
+<link href="${normalizeCss }" type="text/css" rel="stylesheet">
+<link href="${styleCss }" type="text/css" rel="stylesheet">
+
 
 </head>
+
 <body>
 
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Mkyong.com</a>
-			</div>
+	<form method="post" class="file-uploader" action="/BookTour1/admin/demo/demo"
+		enctype="multipart/form-data">
+		<div class="file-uploader__message-area">
+			<p>Select a file to upload</p>
 		</div>
-	</nav>
-
-	<div class="container" style="min-height: 500px">
-
-		<div class="starter-template">
-			<h1>Spring Boot AJAX Example</h1>
-
-			<div id="feedback"></div>
-
-			<form class="form-horizontal" id="search-form">
-				<div class="form-group form-group-lg">
-					<label class="col-sm-2 control-label">Username</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="username" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" id="bth-search"
-							class="btn btn-primary btn-lg">Search</button>
-					</div>
-				</div>
-			</form>
-
+		<div class="file-chooser">
+			<input class="file-chooser__input" name="file" type="file" multiple>
 		</div>
-
-	</div>
-
-	<div class="container">
-		<footer>
-			<p>
-				© <a href="http://www.mkyong.com">Mkyong.com</a> 2017
-			</p>
-		</footer>
-	</div>
-	<spring:url value="/assets/js/adminJs/ajaxAdmin.js" var="ajaxAdmin" />
+		<input class="file-uploader__submit-button" type="submit"
+			value="Upload">
+	</form>
 	<spring:url value="/assets/vendor/jquery/jquery.min.js" var="jqueryJs" />
+	
+	<spring:url value="/assets/multiple-file-uploader/js/index.js"
+		var="indexJs" />
+		
 		<script src="${jqueryJs}" type="text/javascript"></script>
-	<script src="${ajaxAdmin}" type="text/javascript"></script>
+	<script src="${indexJs}" type="text/javascript"></script>
 
 
 </body>
+
 </html>

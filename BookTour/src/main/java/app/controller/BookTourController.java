@@ -27,8 +27,9 @@ import app.model.User;
 @RequestMapping(path = "/booktours")
 @SessionAttributes({ "userSession", "cart", "idtour", "ibBookTour" })
 public class BookTourController extends BaseController {
-	
+
 	private static final Logger logger = Logger.getLogger(BookTourController.class);
+
 	@GetMapping(path = "/{id}")
 	public ModelAndView listbt(@PathVariable("id") int id, HttpSession httpSession) {
 		ModelAndView view = new ModelAndView("listBookTour");
@@ -77,8 +78,40 @@ public class BookTourController extends BaseController {
 		return "success";
 	}
 
-	private void setValueBookTour(int idTour, int slnl, int sltc, String primeTour, String notel,
-			User currentUser, HttpSession httpSession) {
+
+	@RequestMapping()
+	public String IndexBookTours(Model model) {
+		logger.info("Table BookTour page");
+		model.addAttribute("bookTour", new Booktour());
+		model.addAttribute("bookTours", bookingtourService.getAll());
+		return "showBookTour";
+	}
+
+	@RequestMapping(value = "/booktours")
+	public String index(Model model) {
+		logger.info("Table BookTour page");
+		model.addAttribute("bookTour", new Booktour());
+		model.addAttribute("bookTours", bookingtourService.getAll());
+		return "showBookTour";
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody String delete(@PathVariable("id") Integer id) {
+		logger.info("delete bookTour");
+		bookingtourService.deleteBookTour(id);
+		return "redirect:/bookTours";
+	}
+
+	@RequestMapping(value = "/searchEmail")
+	public String searchBookTourByEmail(Model model, @RequestParam("emailSearch") String email) {
+		logger.info("search BookTour by email page");
+		model.addAttribute("bookTour", new Booktour());
+		model.addAttribute("bookTours", bookingtourService.searchAllByEmail(email));
+		return "showBookTour";
+	}
+	
+	private void setValueBookTour(int idTour, int slnl, int sltc, String primeTour, String notel, User currentUser,
+			HttpSession httpSession) {
 		BookTourInfo bt = new BookTourInfo();
 		Integer idBookTour = (Integer) httpSession.getAttribute("ibBookTour");
 		bt.setId(idBookTour);
@@ -93,30 +126,7 @@ public class BookTourController extends BaseController {
 		user.setId(currentUser.getId());
 		bt.setUser(user);
 		bt.setNotel(notel);
-		 bookingtourService.updateBt(bt);
+		bookingtourService.updateBt(bt);
 	}
-	
-	@RequestMapping()
-	public String IndexBookTours(Model model) {
-		logger.info("Table BookTour page");
-		model.addAttribute("bookTour", new Booktour());
-		model.addAttribute("bookTours", bookingtourService.getAll());
-		return "showBookTour";
-	}
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public @ResponseBody String deleteBookTour(@PathVariable("id") Integer id) {
-		logger.info("delete bookTour");
-		bookingtourService.deleteBookTour(id);
-		return "redirect:/bookTours";
-	}
-	@RequestMapping(value = "/searchEmail",method=RequestMethod.POST)
-	public String searchBookTourByEmail(Model model,@RequestParam("emailSearch")String email) {
-		logger.info("search BookTour by email page");
-		model.addAttribute("bookTour", new Booktour());
-		model.addAttribute("bookTours", bookingtourService.searchAllByEmail(email));
-		return "showBookTour";
-	}
-	
 
 }
