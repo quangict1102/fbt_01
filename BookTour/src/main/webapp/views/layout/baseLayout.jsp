@@ -73,7 +73,8 @@
 <link rel="stylesheet" href="${defaultCss}" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <spring:url value="/assets/alertify/js/alertify.min.js" var="alertifyJs" />
-<script src="${alertifyJs}" type="text/javascript"></script>
+<spring:url value="/assets/alertify/js/alertifyLog.js" var="alertifyLogJs" />
+
 <!-- aler -->
 
 <!-- fonts -->

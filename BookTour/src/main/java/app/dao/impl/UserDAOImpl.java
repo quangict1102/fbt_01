@@ -31,8 +31,7 @@ public class UserDAOImpl extends GenericDAO<Integer, User> implements UserDAO {
 	@Override
 	public User findByEmail(String email) {
 		logger.info("email: " + email);
-
-		return (User) getSession().createQuery("FROM User where email = ?").setParameter(0, email).getSingleResult();
+		return (User) getSession().createQuery("FROM User where email = :email").setParameter("email", email).uniqueResult();
 	}
 
 	@Override
