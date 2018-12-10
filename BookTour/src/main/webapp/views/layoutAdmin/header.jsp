@@ -7,14 +7,17 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
 
-<%HttpSession sessionsa = request.getSession(false);
-String email = (String) sessionsa.getAttribute("emailLoginSession");
-int  id = (Integer) sessionsa.getAttribute("idUserSession"); %>
+<%
+	HttpSession sessionsa = request.getSession(false);
+	String email = (String) sessionsa.getAttribute("emailLoginSession");
+	int id = (Integer) sessionsa.getAttribute("idUserSession");
+%>
 
 <spring:url value="/account" var="userLoginUer" />
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-	<a class="navbar-brand mr-1" href="<c:url value="/admin"/> ">Admin Bootour</a>
+	<a class="navbar-brand mr-1" href="<c:url value="/admin"/> ">Admin
+		Bootour</a>
 	<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
 		id="sidebarToggle" href="#">
 		<i class="fas fa-bars"></i>
@@ -31,10 +34,10 @@ int  id = (Integer) sessionsa.getAttribute("idUserSession"); %>
 					<i class="fas fa-search"></i>
 				</button>
 			</div>
-		</div> --> -->
+		</div> -->
+		-->
 	</form>
 	<%
-		
 		if (email != null) {
 	%>
 	<div class="form-control col-md-2">
@@ -116,3 +119,5 @@ int  id = (Integer) sessionsa.getAttribute("idUserSession"); %>
 		</div>
 	</div>
 </div>
+
+

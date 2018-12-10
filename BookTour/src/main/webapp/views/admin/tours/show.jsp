@@ -6,6 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
+
 <spring:url value="tours/add" var="addTourUrl" />
 <script src="http://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 <div id="wrapper">
@@ -72,7 +73,7 @@
 										onclick="location.href='${editActionUrl}'">Edit</button>
 									<button class="btn btn-danger btnTourDelete">Delete</button></td>
 								<td class="idtour" hidden>${tour.id}</td>
-								</tr>
+							</tr>
 						</c:forEach>
 					</tbody>
 
@@ -167,11 +168,9 @@
 										Start</label>
 								</div>
 							</div>
-
-
 							<div class="form-group">
 								<div class="form-label-group">
-										<textarea name="describe" id="editor1" rows="10" cols="80">
+									<textarea name="describe" id="editor1" rows="10" cols="80">
           							  </textarea>
 									<!-- <textarea id="describe" name="describe" rows="5" cols="33">
 								
@@ -207,14 +206,7 @@
 		</div>
 	</div>
 </div>
-
-<footer class="sticky-footer">
-	<div class="container my-auto">
-		<div class="copyright text-center my-auto">
-			<span>Copyright © Your Website 2018</span>
-		</div>
-	</div>
-</footer>
+<%@include file="socket.jsp"%>
 
 
 

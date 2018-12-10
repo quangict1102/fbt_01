@@ -28,7 +28,7 @@ public class UserController extends BaseController {
 		if (null != userCurrent) {
 			view.addObject("user", userService.findByIdUser(idUser));
 		}
-		return view;
+		return view ;
 	}
 
 	@PostMapping(path = "/update")

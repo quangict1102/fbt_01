@@ -19,7 +19,5 @@ public class Md5Helper {
 		}
 		return password;
 	}
-	public static void main(String[] args) {
-		System.out.println(getCodeMd5("123"));
-	}
+
 }
