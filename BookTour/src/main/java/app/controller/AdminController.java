@@ -33,7 +33,7 @@ import app.model.User;
 public class AdminController extends BaseController {
 	private static final Logger logger = Logger.getLogger(AdminController.class);
 
-	@RequestMapping()
+	@RequestMapping(value="/home")
 	public String home(HttpSession httpSession) {
 		logger.info("home page");
 		if (httpSession.getAttribute("emailLoginSession") == null) {

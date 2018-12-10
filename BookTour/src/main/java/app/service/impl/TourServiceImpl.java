@@ -80,7 +80,7 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 		try {
 			if (entity.getId() == null) {
 
-				Place placeFrom = getPlaceDAO().findById(entity.getPlaceFromId());
+		/*		Place placeFrom = getPlaceDAO().findById(entity.getPlaceFromId());
 				Place tourTo = getPlaceDAO().findById(entity.getPlaceToId());
 
 				Toursplace tourPlaceFrom = new Toursplace();
@@ -95,7 +95,7 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 				listTourPlace.add(tourPlaceFrom);
 				listTourPlace.add(tourPlaceTo);
 
-				entity.setToursplaceses(listTourPlace);
+				entity.setToursplaceses(listTourPlace);*/
 
 				return getTourDAO().saveOrUpdate(entity);
 			}

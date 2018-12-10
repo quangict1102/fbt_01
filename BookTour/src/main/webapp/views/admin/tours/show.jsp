@@ -7,18 +7,30 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
 
-<spring:url value="tours/add" var="addTourUrl" />
+<spring:url value="/admin/tours/searchName" var="searchTourByNameurl"/>
+<spring:url value="/admin/tours/add" var="addTourUrl" />
+<spring:url value="/assets/js/adminJs/search.js" var="searchJs" />
+<spring:url value="/assets/css/style.css" var="styleCsss" />
+<link href="${styleCsss }" type="text/css" rel="stylesheet" media="all">
 <script src="http://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 <div id="wrapper">
 	<!-- DataTables Example -->
 	<div class="card mb-3">
 		<div class="card-header">
-			<i class="fas fa-table"></i> Data Table Tour
+			<i class="fas fa-table"></i> Data Table Tour <br>
+			<form action="${searchTourByNameurl }" method="get">
+				Search:<input name="searchTour" id="searchTour" type="text"
+					hidefocus="true" placeholder="Search..">
+			</form>
+			<div id="search-list"></div>
 			<div class="col-md-12 text-right">
+
 				<div class="col-md-12 text-right">
+
 					<button type="button" data-toggle="modal" data-target="#addTour"
 						class="btn btn-primary custom-button-width .navbar-right">Add
 						Tour</button>
+
 				</div>
 			</div>
 		</div>
@@ -206,6 +218,7 @@
 		</div>
 	</div>
 </div>
+<script src="${searchJs }" type="text/javascript"></script>
 <%@include file="socket.jsp"%>
 
 

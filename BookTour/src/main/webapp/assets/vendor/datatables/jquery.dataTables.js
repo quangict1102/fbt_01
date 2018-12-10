@@ -4178,18 +4178,18 @@
 		var language = settings.oLanguage;
 		var previousSearch = settings.oPreviousSearch;
 		var features = settings.aanFeatures;
-		var input = '<input type="search" class="'+classes.sFilterInput+'"/>';
+		var input = '<input hidden type="search" class="'+classes.sFilterInput+'"/>';
 	
 		var str = language.sSearch;
 		str = str.match(/_INPUT_/) ?
 			str.replace('_INPUT_', input) :
 			str+input;
 	
-		var filter = $('<div/>', {
+		var filter = $('<div hidden/>', {
 				'id': ! features.f ? tableId+'_filter' : null,
 				'class': classes.sFilter
 			} )
-			.append( $('<label/>' ).append( str ) );
+			.append( $('<label hidden />' ).append( str ) );
 	
 		var searchFn = function() {
 			/* Update all other filter input elements for the new display */
