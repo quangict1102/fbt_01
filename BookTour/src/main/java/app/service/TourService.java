@@ -9,6 +9,8 @@ import app.model.Tour;
 
 public interface TourService extends BaseService<Integer, TourInfo> {
 	List<TourInfo> loadAllTour();
+	
+	List<TourInfo> loadAllTourPagination(int start);
 
 	List<TourInfo> findByPlace(String place);
 

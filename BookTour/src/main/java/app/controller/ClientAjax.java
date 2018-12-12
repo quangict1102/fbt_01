@@ -106,5 +106,11 @@ public class ClientAjax extends BaseController {
 	public List<TourInfo> tourSearchInfo(@RequestParam("search") String search) {
 		return tourService.searchTourAndPlace(search);
 	}
+	
+	@GetMapping(value = "showTours", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<TourInfo> showTours(@RequestParam("pageStart") int pageStart) {
+		return tourService.loadAllTourPagination(pageStart);
+	}
 
 }

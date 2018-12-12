@@ -29,6 +29,11 @@ public class TourServiceImpl extends BaseServiceImpl implements TourService {
 	}
 
 	@Override
+	public List<TourInfo> loadAllTourPagination(int start) {
+		return TourConvertHelper.convertTourToTourInfo(getTourDAO().loadAllTourPagination(start));
+	}
+	
+	@Override
 	public List<TourInfo> findByPlace(String place) {
 		return null;
 	}

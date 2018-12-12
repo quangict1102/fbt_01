@@ -339,6 +339,89 @@ $(document).ready(function() {
         $('#search-list').fadeOut(); 
         window.location.href = '/BookTour1/detailtours/'+idTour+'';
 	});
+	 
+	 function page_pagination(value){
+		 html="<div>";
+		 for(var i=0;i<value.length;i++){
+				 html +='<div class="col-md-5 banner-bottom-grid" style="padding-top: 10px">';
+					 html +='<div class="banner-bottom-middle">';
+					html +='<a href="/BookTour1/detailtours/"'+value[i].id+'"> <img src="assets/images/a2.jpg" alt="" />';
+					html +='<div class="destinations-grid-info tours">';
+					html +='<h5>'+value[i].name+'</h5>';
+					html +='<p>'+value[i].dateStart+'</p>';
+					html +='<p class="b-period">Adluts: '+value[i].primeAdults +' | ';
+				    html +='Chidren: '+value[i].primeChilden+' </p></div></a></div></div>';
+				   
+		 		}   
+		 html+="</div>";
+		 return html;
+	 }
+	 
+	 $('body').on("click",".page-pargin",function(){
+		 var sotrang = parseInt($(this).text());
+		 var pageStart = (sotrang-1)*4;
+		 ($('a.page-pargin').removeClass('active'));
+		
+		 $(this).addClass('active');
+		 $.ajax({
+			 url:"/BookTour1/clientAjax/showTours",
+			 type:"get",
+			 data:{
+				 pageStart:pageStart
+			 },
+		 success:function(value){
+			 $('#pagination-page').html(page_pagination(value));
+			}
+		 	
+		 })
+		 return false;
+	 })
+	 
+	 $('body').on("click",".pre",function(){
+		 var pre = parseInt($("a.active").text())-1;
+		 if(pre > 0){
+			 var pageStart = (pre-1)*4;
+			 ($('a.page-pargin').removeClass('active'));
+				
+			 $('#page'+pre+'').addClass('active');
+			 $.ajax({
+				 url:"/BookTour1/clientAjax/showTours",
+				 type:"get",
+				 data:{
+					 pageStart:pageStart
+				 },
+			 success:function(value){
+				 $('#pagination-page').html(page_pagination(value));
+				}
+			 	
+			 })
+		 }
+		 return false;
+	 })
+	 
+	 	 $('body').on("click",".next",function(){
+		 var pre = parseInt($("a.active").text())+1;
+		 var sumPage = parseInt($('input[name=sumPage]').val());
+		 if(pre <= sumPage){
+			 
+			 var pageStart = (pre-1)*4;
+			 ($('a.page-pargin').removeClass('active'));
+				
+			 $('#page'+pre+'').addClass('active');
+			 $.ajax({
+				 url:"/BookTour1/clientAjax/showTours",
+				 type:"get",
+				 data:{
+					 pageStart:pageStart
+				 },
+			 success:function(value){
+				 $('#pagination-page').html(page_pagination(value));
+				}
+			 	
+			 })
+		 }
+		 return false;
+	 })
 	
 /*	$('#search-tour').click(function() {
 		var date_tour = $('#date-tour').val();

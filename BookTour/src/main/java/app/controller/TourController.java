@@ -41,8 +41,12 @@ public class TourController extends BaseController {
 		logger.info("home page");
 		ModelAndView view = new ModelAndView("home");
 		view.addObject("cities", cityService.getAllCity());
-		model.addAttribute("tourToday", tourService.getTourToday(ConvertDateSql.getDateNowSQL()));
 		User userCurrent = (User) httpSession.getAttribute("userSession");
+		double sumPage  = Math.ceil((double)tourService.loadAllTourPagination(-1).size()/4);
+		
+		model.addAttribute("tourPagination", tourService.loadAllTourPagination(0));
+		model.addAttribute("sumPage", sumPage);
+		model.addAttribute("tourToday", tourService.getTourToday(ConvertDateSql.getDateNowSQL()));
 		model.addAttribute("user", userCurrent);
 		return view;
 	}
