@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -144,6 +145,23 @@ public class TourController extends BaseController {
 		user.setPhoneNumber("");
 		user.setGender(0);
 		return user;
+	}
+	
+	@GetMapping(value = "/tours/search", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<TourInfo> tourSearch(@RequestParam("searchTour") String search){
+		return tourService.searchTourAndPlace(search);
+		
+	}
+	@RequestMapping(value = "/tours/searchName")
+	public String searchTourByName(Model model, @RequestParam("searchTour") String name) {
+		logger.info("search Tour by name page");
+		model.addAttribute("addTour", new TourInfo());
+		model.addAttribute("tour", new TourInfo());
+		model.addAttribute("tours", tourService.searchTourAndPlace(name));
+		model.addAttribute("place", new Place());
+		model.addAttribute("places", placeService.getAllPlace());
+		return "showTour";
 	}
 
 }
