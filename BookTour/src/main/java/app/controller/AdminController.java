@@ -1,9 +1,14 @@
 package app.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import app.bean.UserInfo;
 import app.helper.ExcelHelper;
 import app.helper.ROLES;
+import app.model.Message;
+import app.model.OutputMessage;
 import app.model.User;
 
 @Controller
@@ -104,14 +111,14 @@ public class AdminController extends BaseController {
 	@RequestMapping(value = "/password", method = RequestMethod.POST)
 	public String changePassword(HttpSession httpSession, @RequestParam("password") String password,
 			@RequestParam("passwordRepeat") String passwordRepeat, @RequestParam("newPassword") String newPassword) {
-		User user= userService.findByIdAndPassword((Integer)httpSession.getAttribute("idUserSession"), password);
-		if(user==null) {
+		User user = userService.findByIdAndPassword((Integer) httpSession.getAttribute("idUserSession"), password);
+		if (user == null) {
 			return "detailAcc";
 		}
-			userService.saveOrUpdate(user);
-			return "detailAcc";
-		
+		userService.saveOrUpdate(user);
+		return "detailAcc";
+
 	}
-	
+
 
 }

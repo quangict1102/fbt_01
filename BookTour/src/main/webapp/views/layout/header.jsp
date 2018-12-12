@@ -30,7 +30,7 @@
 			<span class="menu"><img src="assets/images/menu.png" alt="" /></span>
 			<ul class="nav1">
 				<li class="active"> <a href='<c:url value="/"></c:url>'><spring:message code="page.main" /></a></li>
-				<li><a href="weekend.html">Weekend Getaways</a></li>
+				<!-- <li><a href="weekend.html">Weekend Getaways</a></li> -->
 			</ul>
 			<input type="text" name="search" id="search"  class="form-control" placeholder="Search City Name, Place,..." />
 			  <div id="search-list"></div>  

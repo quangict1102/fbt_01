@@ -8,6 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>BookTour1 Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
 	<properties>
 		<jdk>1.8</jdk>
 		<spring.security.version>5.0.2.RELEASE</spring.security.version>
@@ -171,7 +172,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
@@ -273,8 +273,8 @@
 			<artifactId>google-cloud-storage</artifactId>
 			<version>1.53.0</version>
 		</dependency>
-		
-				<!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
+
+		<!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
 		<dependency>
 			<groupId>com.cloudinary</groupId>
 			<artifactId>cloudinary-http44</artifactId>
@@ -286,6 +286,18 @@
 			<version>1.1.3</version>
 		</dependency>
 
+		<!-- socket -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>${spring.version}</version>
+		</dependency> 
 	</dependencies>
 	<build>
 		<finalName>BookTour1</finalName>

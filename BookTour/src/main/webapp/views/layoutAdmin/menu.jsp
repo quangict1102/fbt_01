@@ -118,7 +118,9 @@
 			</div>
 			
 		</div>
-
-	
-
 </div>
+
+
+<spring:url value="/assets/socket/js/form.js" var="formChatJs" />
+<script src="${formChatJs}" type="text/javascript"></script>
+

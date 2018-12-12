@@ -131,7 +131,6 @@
 		<put-attribute name="body" value="/views/admin/places/insert.jsp" />
 	</definition>
 	
-	
 		<!-- account -->
 	<definition name="detailAcc" extends="baseLayoutAdmin">
 		<put-attribute name="title" value="Account" />
@@ -140,7 +139,4 @@
 	
 	<definition name="error" template="/views/error/error.jsp"></definition>
 	
-	<definition name="demo" template="/views/admin/demo.jsp">
-
-	</definition>
 </tiles-definitions>
