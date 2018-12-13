@@ -1,6 +1,7 @@
 package app.dao.impl;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -32,6 +33,14 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		return getSession().createQuery("from Tour ORDER BY id DESC").getResultList();
 	}
 
+	@Override
+	public List<Tour> loadAllTourPagination(int start) {
+		if(start >= 0) {
+			return getSession().createQuery("from Tour").setFirstResult(start).setMaxResults(4).getResultList();
+		}
+		return getSession().createQuery("from Tour").getResultList();
+	}
+	
 	@Override
 	public List<Tour> findByPlace(String place) {
 		return null;
@@ -99,5 +108,6 @@ public class TourDAOImpl extends GenericDAO<Integer, Tour> implements TourDAO {
 		query.where(search);
 		return getSession().createQuery(query).getResultList();
 	}
+
 
 }

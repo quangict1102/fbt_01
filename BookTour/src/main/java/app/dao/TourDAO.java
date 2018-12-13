@@ -7,6 +7,8 @@ import app.model.Tour;
 
 public interface TourDAO extends BaseDAO<Integer, Tour> {
 	List<Tour> loadAllTour();
+	
+	List<Tour> loadAllTourPagination(int start);
 
 	Tour getAllById(Integer id);
 

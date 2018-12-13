@@ -10,40 +10,22 @@
 			<div class="book-grids">
 				<div class="col-md-8 book-left">
 					<div class="book-left-info">
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>FullName</th>
-										<th>Gender</th>
-										<th>Address</th>
-										<th>Email</th>
-										<th>Phone</th>
-										<th>Role</th>
-										<th>Edit</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>${user.fullName}</td>
-										<c:choose>
-											<c:when test="${user.gender == 1}">
-												<td>Nam</td>
-											</c:when>
-											<c:otherwise>
-												<td>Nữ</td>
-											</c:otherwise>
-										</c:choose>
-
-										<td>${user.address}</td>
-										<td>${user.email}</td>
-										<td>${user.phoneNumber}</td>
-										<td>${user.role}</td>
-										<td><button class="btn btn-success">Edit</button></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+					
+					<p>FullName: <span>${user.fullName}</span></p> 
+					<p>Gender: <span>	
+					<c:choose>
+						<c:when test="${user.gender == 1}">
+							<c:out value="Nam"/>
+						</c:when>
+					<c:otherwise>
+							<c:out value="Nu"/>
+					</c:otherwise>
+					</c:choose></span></p> 
+					<p>Address: <span>${user.address}</span></p> 
+					<p>Email: <span>${user.email}</span></p> 
+					<p>Phone: <span>${user.phoneNumber}</span></p> 
+					<p>Role: <span>${user.role}</span></p> 
+				
 					</div>
 				</div>
 				<div class="col-md-4 book-left book-right">
