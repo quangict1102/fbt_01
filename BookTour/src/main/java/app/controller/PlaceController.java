@@ -16,6 +16,7 @@ import app.model.City;
 import app.model.Place;
 
 @Controller
+@RequestMapping(value ="/admin")
 public class PlaceController extends BaseController {
 
 	private static final Logger logger = Logger.getLogger(TourController.class);
@@ -36,14 +37,14 @@ public class PlaceController extends BaseController {
 			@RequestParam("files") MultipartFile[] files) {
 		place.setCity(new City(idCity));
 		placeService.saveOrUpdate(place,files);
-		return "redirect:/places";
+		return "redirect:/admin/places";
 	}
 
 	@RequestMapping(value = "/places/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody String delete(@PathVariable("id") int id, Model model) {
 		logger.info("delete Tour ");
 		placeService.deletePlace(id);
-		return "redirect:/tours";
+		return "redirect:/admin/places";
 	}
 
 }

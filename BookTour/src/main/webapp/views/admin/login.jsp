@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
-<spring:url value="/admin/login" var="loginUrl" />
+<spring:url value="/admin/admin/login" var="loginUrl" />
 
 <div class="container">
 	<div class="card card-login mx-auto mt-5">

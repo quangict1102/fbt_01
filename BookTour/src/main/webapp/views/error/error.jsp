@@ -6,6 +6,6 @@
 </head>
 <body>
     <h1>${errorMsg}</h1>
-     <h1><a href="/BookTour1/admin">home</a></h1>
+     <h1><a href="/BookTour1/admin/home">home</a></h1>
 </body>
 </html>

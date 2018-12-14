@@ -24,7 +24,7 @@ import app.model.Booktour;
 import app.model.User;
 
 @Controller
-@RequestMapping(path = "/booktours")
+@RequestMapping(path = {"/booktours", "/admin"})
 @SessionAttributes({ "userSession", "cart", "idtour", "ibBookTour" })
 public class BookTourController extends BaseController {
 
@@ -95,21 +95,13 @@ public class BookTourController extends BaseController {
 		return "showBookTour";
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/booktours/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody String delete(@PathVariable("id") Integer id) {
 		logger.info("delete bookTour");
 		bookingtourService.deleteBookTour(id);
 		return "redirect:/bookTours";
 	}
 
-	@RequestMapping(value = "/searchEmail")
-	public String searchBookTourByEmail(Model model, @RequestParam("emailSearch") String email) {
-		logger.info("search BookTour by email page");
-		model.addAttribute("bookTour", new Booktour());
-		model.addAttribute("bookTours", bookingtourService.searchAllByEmail(email));
-		return "showBookTour";
-	}
-	
 	private void setValueBookTour(int idTour, int slnl, int sltc, String primeTour, String notel, User currentUser,
 			HttpSession httpSession) {
 		BookTourInfo bt = new BookTourInfo();

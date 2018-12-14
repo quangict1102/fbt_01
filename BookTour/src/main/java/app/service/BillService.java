@@ -7,4 +7,6 @@ import app.model.Bill;
 
 public interface BillService extends BaseService<Integer, Bill>{
 	List<BillInfo> loadAll();
+	
+	List<Object []> loadAllbyTime();
 }

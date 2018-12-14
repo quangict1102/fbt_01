@@ -61,7 +61,7 @@ $("#btnUserDeleteDetail").on('click', function() {
 				type : "DELETE",
 				url :  $row,
 				success : function(response) {
-					window.location.replace("/BookTour1/users");
+					window.location.replace("/BookTour1/admin/users");
 				}
 			});
 			alertify.success("Delete");
@@ -107,7 +107,7 @@ $("#btnDeleteTourDetail").on('click', function() {
 				type : "DELETE",
 				url :   $text,
 				success : function(response) {
-					window.location.replace("/BookTour1/tours");
+					window.location.replace("/BookTour1/admin/tours");
 				}
 			});
 			alertify.success("Delete");
@@ -201,7 +201,7 @@ $(".btnPlaceDelete").on('click', function() {
 				type : "DELETE",
 				url :  "places/"+$text,
 				success : function(response) {
-					window.location.replace("/BookTour1/places");
+					window.location.replace("/BookTour1/admin/places");
 				}
 			});
 			alertify.success("Delete");

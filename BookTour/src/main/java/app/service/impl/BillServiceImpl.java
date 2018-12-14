@@ -33,4 +33,9 @@ public class BillServiceImpl extends BaseServiceImpl implements BillService{
 		return null;
 	}
 
+	@Override
+	public List<Object []> loadAllbyTime() {
+		return getBillDAO().loadAllbyTime();
+	}
+
 }

@@ -22,7 +22,7 @@ public class BookTourDAOImpl extends GenericDAO<Integer, Booktour> implements Bo
 				.createQuery("select bt,count(*) as countCar from "
 						+ "Booktour bt where bt.user.id = :id group by bt.user.id")
 				.setParameter("id", id).getResultList();
-	}
+}
 
 	@Override
 	public List<Booktour> getAllByIdUser(Integer id) {

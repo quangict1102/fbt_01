@@ -6,7 +6,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
 
-<spring:url value="admin/import" var="urlImportAdmin" />
+<spring:url value="/admin/import" var="urlImportAdmin" />
 <div id="wrapper">
 	<!-- DataTables Example -->
 	<div class="card mb-3">
@@ -69,7 +69,7 @@
 								<td>${user.email}</td>
 								<td>${user.phoneNumber}</td>
 								<td>${user.role}</td>
-								<td><spring:url value="admin/users/${user.id}"
+								<td><spring:url value="users/${user.id}"
 										var="detailActionUrl" />
 									<button class="btn btn-info"
 										onclick="location.href='${detailActionUrl}'">Detail</button> 
