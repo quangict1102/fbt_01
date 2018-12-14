@@ -13,20 +13,6 @@
 	<div class="card mb-3">
 		<div class="card-header">
 			<i class="fas fa-table"></i> Data Table Tour
-
-
-			<div class="col-md-12 text-right">
-				<div class="col-md-12 text-right">
-					<form action="${searchBookTourByEmailurl }" method="post">
-						<input name="emailSearch" type="text" id="emailSearch"
-							placeholder="Email" required="required" hidefocus="true"/> 
-					</form>
-					<form action="${searchBookTourByTourNameurl }" method="post">
-						<input name="nameTourSearch" type="text" id="nameTourSearch"
-							placeholder="Name" required="required" hidefocus="true"/> 
-					</form>
-				</div>
-			</div>
 		</div>
 
 		<div class="card-body">

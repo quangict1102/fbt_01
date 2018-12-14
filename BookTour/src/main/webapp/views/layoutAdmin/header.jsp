@@ -16,7 +16,7 @@
 <spring:url value="/account" var="userLoginUer" />
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-	<a class="navbar-brand mr-1" href="<c:url value="/admin"/> ">Admin
+	<a class="navbar-brand mr-1" href="<c:url value="/admin/home"/> ">Admin
 		Bootour</a>
 	<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
 		id="sidebarToggle" href="#">
@@ -119,5 +119,6 @@
 		</div>
 	</div>
 </div>
+
 
 

@@ -10,9 +10,24 @@
 <a class="scroll-to-top rounded" href="#page-top"> <i
 	class="fas fa-angle-up"></i>
 </a>
-
-
 <div id="messageLogin" hidden>${logNotice}</div>
-		<!-- aler -->
-		<spring:url value="/assets/alertify/js/alertifyLog.js" var="alertifyJsLog" />
-			<script src="${alertifyJsLog}" type="text/javascript"></script>  
+
+<c:forEach items="${bills}" varStatus="count">
+	<div hidden id="${count.index }">${bills[count.index]}</div>
+</c:forEach>
+
+<!-- aler -->
+<spring:url value="/assets/alertify/js/alertifyLog.js"
+	var="alertifyJsLog" />
+<script src="${alertifyJsLog}" type="text/javascript"></script>
+
+<div class="card mb-3">
+	<div class="card-header">
+		<i class="fas fa-chart-area"></i> Area Chart Example
+	</div>
+	<div class="card-body">
+		<canvas id="myAreaChart" width="100%" height="30"></canvas>
+	</div>
+	<div class="card-footer small text-muted">Updated yesterday at
+		11:59 PM</div>
+</div>

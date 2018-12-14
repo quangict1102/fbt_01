@@ -61,6 +61,7 @@
 	<spring:url value="/assets/vendor/datatables/dataTables.bootstrap4.js" var="bootstrap4Js" />
 	<spring:url value="/assets/js/adminJs/sb-admin.min.js" var="adminJs" />
 	<spring:url value="/assets/js/adminJs/datatables-demo.js" var="dataTableDemoJs" />
+	<spring:url value="/assets/js/adminJs/chart-area-demo.js" var="chartDemoJs" />
 
 	<script src="${bootstrapBundleJs}" type="text/javascript"></script>
 	<script src="${bootstrapEasingJs}" type="text/javascript"></script>
@@ -69,6 +70,7 @@
 	<script src="${bootstrap4Js}" type="text/javascript"></script>
 	<script src="${adminJs}" type="text/javascript"></script>
 	<script src="${dataTableDemoJs}" type="text/javascript"></script>
+	
 
 	<spring:url value="/assets/js/adminJs/ajaxAdmin.js" var="ajaxAdmin" />
 	<script src="${ajaxAdmin}" type="text/javascript"></script>
@@ -77,6 +79,7 @@
  	<script src="${callCHEditorJs}" type="text/javascript"></script>    
  	
  	<script src="${indexJs}" type="text/javascript"></script>
+ 	<script src="${chartDemoJs}" type="text/javascript"></script>
 
 
 </body>

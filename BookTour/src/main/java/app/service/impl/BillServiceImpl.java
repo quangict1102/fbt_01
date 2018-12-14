@@ -33,4 +33,15 @@ public class BillServiceImpl extends BaseServiceImpl implements BillService{
 		return null;
 	}
 
+	@Override
+	public long[] loadAllbyTime() {
+		System.out.println(getBillDAO().loadAllbyTime().get(0)[0]);
+		long arrDate[]=new long [30];
+		
+		for(Object[] object :getBillDAO().loadAllbyTime() ) {
+			arrDate[(Integer)object[0]]=(long)object[1];
+		}
+		return arrDate;
+	}
+
 }
